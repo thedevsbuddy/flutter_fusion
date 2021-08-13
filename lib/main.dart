@@ -9,6 +9,9 @@ import 'config/app_theme.dart';
 import 'config/config.dart';
 import 'routes/app.dart';
 
+
+// Updated on VSCode Web
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the storage
