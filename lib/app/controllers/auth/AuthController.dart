@@ -8,9 +8,7 @@ class AuthController extends GetxController with Controller {
 
   void login() async {
     showLoading();
-    var response =
-        await Request.get('https://jsonplaceholder.typicode.com', '/todos/1')
-            .catchError(handleError);
+    var response = await Request.get(Uri.parse('')).catchError(handleError);
     hideLoading();
     if (response == null) return;
   }

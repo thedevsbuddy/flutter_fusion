@@ -12,8 +12,8 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size screen = Get.size;
     return AuthLayout(
-      backgroundColor: Get.theme.backgroundColor,
       body: Container(
+        color: appTheme.primaryColor,
         height: screen.height,
         width: double.infinity,
         child: Column(
@@ -26,11 +26,14 @@ class SplashPage extends StatelessWidget {
               width: screen.width * 0.5,
               fit: BoxFit.cover,
               filterQuality: FilterQuality.high,
+              color: Colors.white,
             ),
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 32.0),
-              child: LoadingIconWidget(),
+              child: LoadingIconWidget(
+                color: Colors.white,
+              ),
             ),
           ],
         ),

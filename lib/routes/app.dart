@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../views/views.dart';
+import '../app/views/views.dart';
 
 List<GetPage> routes = [
   // Auth Routes
@@ -11,12 +11,11 @@ List<GetPage> routes = [
   /*=======================================================*/
 
   // Setting Page Route
-  GetPage(
-      name: '/settings',
-      page: () => SettingPage(),
-      transition: Transition.downToUp),
-
-  // Setting Page Route
-  GetPage(
-      name: '/home', page: () => HomePage(), transition: Transition.downToUp),
+  // GetPage(
+  //     name: '/settings',
+  //     page: () => SettingPage()),
+  //
+  // // Setting Page Route
+  // GetPage(
+  //     name: '/home', page: () => HomePage(), transition: Transition.downToUp),
 ];

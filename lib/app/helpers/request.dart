@@ -9,38 +9,32 @@ import '../exceptions/app_exception.dart';
 class Request {
   static const int TIME_OUT_DURATION = 20;
   //GET
-  static Future<dynamic> get(String baseUrl, String api) async {
-    var uri = Uri.parse(baseUrl + api);
+  static Future<dynamic> get(Uri url) async {
     try {
       var response =
-          await http.get(uri).timeout(Duration(seconds: TIME_OUT_DURATION));
+          await http.get(url).timeout(Duration(seconds: TIME_OUT_DURATION));
       return _processResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection', uri.toString());
+      throw FetchDataException('No Internet connection', url.toString());
     } on TimeoutException {
       throw ApiNotRespondingException(
-          'API not responded in time', uri.toString());
+          'API not responded in time', url.toString());
     }
   }
 
   //POST
-  static Future<dynamic> post(
-      String baseUrl, String api, dynamic payloadObj) async {
-    var uri = Uri.parse(baseUrl + api);
-    var payload = json.encode(payloadObj);
+  static Future<dynamic> post(Uri url, {dynamic body}) async {
+    var payload = json.encode(body);
     try {
       var response = await http
-          .post(uri, body: payload)
+          .post(url, body: payload)
           .timeout(Duration(seconds: TIME_OUT_DURATION));
-      throw BadRequestException(
-          '{"reason":"your message is incorrect", "reason_code":"invalid_message"}',
-          response.request!.url.toString());
       return _processResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection', uri.toString());
+      throw FetchDataException('No Internet connection', url.toString());
     } on TimeoutException {
       throw ApiNotRespondingException(
-          'API not responded in time', uri.toString());
+          'API not responded in time', url.toString());
     }
   }
 

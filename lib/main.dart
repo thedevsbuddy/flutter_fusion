@@ -14,7 +14,6 @@ void main() async {
   // Initialize the storage
   await GetStorage.init();
   // Initialize Get Storage
-  GetStorage storage = GetStorage();
 
   // Initialize Auth controller
   Get.put(AuthController());
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
       title: "${Config.appName}",
-      theme: AppTheme.appTheme,
+      theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
       home: SplashPage(),
       getPages: routes,

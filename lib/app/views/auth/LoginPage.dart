@@ -41,21 +41,21 @@ class LoginPage extends StatelessWidget {
                     ),
                     SizedBox(height: 15),
                     Text("Welcome Back,",
-                        style: TextStyles.title(context)!
+                        style: TextStyles.title!
                             .copyWith(fontWeight: FontWeight.w700)),
                     SizedBox(height: 5),
                     Text("Sign in to continue",
-                        style: TextStyles.body(context)!
+                        style: TextStyles.body!
                             .copyWith(fontWeight: FontWeight.bold)),
                   ],
                 ),
                 Form(
-                  key: authController.formKey,
+                  key: UniqueKey(),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
                       TextFormField(
-                        controller: authController.emailInput,
+                        controller: null,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: "Email",
@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       SizedBox(height: 25),
                       TextFormField(
-                        controller: authController.passwordInput,
+                        controller: null,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           labelText: "Password",
@@ -94,7 +94,7 @@ class LoginPage extends StatelessWidget {
                           FlatButton(
                             child: Text(
                               "Forgot Password?",
-                              style: TextStyles.button(context),
+                              style: TextStyles.button,
                             ),
                             color: Colors.transparent,
                             onPressed: () {
@@ -111,9 +111,7 @@ class LoginPage extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                           style: TextButton.styleFrom(
-                            backgroundColor: colorScheme(context,
-                                defaultColor: Palette.accentLight,
-                                dark: Palette.accentDark),
+                            backgroundColor: appTheme.accentColor,
                             padding: const EdgeInsets.symmetric(vertical: 12.0),
                           ),
                           onPressed: () {
@@ -126,7 +124,7 @@ class LoginPage extends StatelessWidget {
                         child: FlatButton(
                           child: Text(
                             "New user? Sign Up",
-                            style: TextStyles.button(context),
+                            style: TextStyles.button,
                           ),
                           color: Colors.transparent,
                           onPressed: () {

@@ -27,7 +27,7 @@ class MasterLayout extends StatelessWidget {
         elevation: 0,
         title: Text(
           "${title != null ? title : Config.appName}",
-          style: TextStyles.subtitle(context)?.copyWith(
+          style: TextStyles.subtitle?.copyWith(
             color: Palette.darker,
           ),
         ),

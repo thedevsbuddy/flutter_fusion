@@ -83,23 +83,24 @@ class AppTheme {
   //======================================
   // Theme
   //======================================
-  static final ThemeData appTheme = ThemeData(
+  static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     iconTheme: _iconTheme,
     textTheme: _textTheme,
     fontFamily: 'ProductSans',
     scaffoldBackgroundColor: Palette.offWhite,
     backgroundColor: Palette.white,
-    primaryColor: Palette.accent,
-    primaryColorLight: Palette.accent,
-    hintColor: Palette.darker,
+    primaryColor: Palette.primary,
+    primaryColorLight: Palette.primaryLight,
+    hintColor: Palette.accent,
+    accentColor: Palette.accent,
     appBarTheme: AppBarTheme(
-      color: Colors.black,
+      color: Colors.white,
       elevation: 0.0,
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: Palette.darker),
       textTheme: TextTheme(
         headline6: TextStyle(
-            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+            color: Palette.darker, fontSize: 18, fontWeight: FontWeight.w500),
       ),
     ),
     inputDecorationTheme: _inputTheme(),
