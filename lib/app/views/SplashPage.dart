@@ -6,14 +6,15 @@ import 'layouts/AuthLayout.dart';
 import 'widgets/Widgets.dart';
 
 class SplashPage extends StatelessWidget {
-  SplashPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final Size screen = Get.size;
+
+    Future.delayed(Duration(seconds: 3), () => Get.offNamed('/settings'));
+
     return AuthLayout(
       body: Container(
-        color: appTheme.primaryColor,
+        color: Get.theme.primaryColor,
         height: screen.height,
         width: double.infinity,
         child: Column(

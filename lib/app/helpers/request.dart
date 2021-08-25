@@ -46,11 +46,9 @@ class Request {
       case 200:
         var responseJson = utf8.decode(response.bodyBytes);
         return responseJson;
-        break;
       case 201:
         var responseJson = utf8.decode(response.bodyBytes);
         return responseJson;
-        break;
       case 400:
         throw BadRequestException(
             utf8.decode(response.bodyBytes), response.request!.url.toString());

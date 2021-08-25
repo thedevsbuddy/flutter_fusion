@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../config/color_palette.dart';
 import '../../../config/config.dart';
 import '../../helpers/adaptive_ui/adaptive_ui.dart';
 import '../../helpers/global.dart';
@@ -41,11 +40,11 @@ class LoginPage extends StatelessWidget {
                     ),
                     SizedBox(height: 15),
                     Text("Welcome Back,",
-                        style: TextStyles.title!
+                        style: TextStyles.title(context)!
                             .copyWith(fontWeight: FontWeight.w700)),
                     SizedBox(height: 5),
                     Text("Sign in to continue",
-                        style: TextStyles.body!
+                        style: TextStyles.body(context)!
                             .copyWith(fontWeight: FontWeight.bold)),
                   ],
                 ),
@@ -94,7 +93,7 @@ class LoginPage extends StatelessWidget {
                           FlatButton(
                             child: Text(
                               "Forgot Password?",
-                              style: TextStyles.button,
+                              style: Get.textTheme.button,
                             ),
                             color: Colors.transparent,
                             onPressed: () {
@@ -111,7 +110,7 @@ class LoginPage extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                           style: TextButton.styleFrom(
-                            backgroundColor: appTheme.accentColor,
+                            backgroundColor: Get.theme.accentColor,
                             padding: const EdgeInsets.symmetric(vertical: 12.0),
                           ),
                           onPressed: () {
@@ -124,7 +123,7 @@ class LoginPage extends StatelessWidget {
                         child: FlatButton(
                           child: Text(
                             "New user? Sign Up",
-                            style: TextStyles.button,
+                            style: Get.textTheme.button,
                           ),
                           color: Colors.transparent,
                           onPressed: () {

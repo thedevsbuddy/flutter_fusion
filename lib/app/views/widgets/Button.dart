@@ -37,7 +37,7 @@ class Button extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 14.0.h, horizontal: 16.0.w),
       child: Text(
         '$label',
-        style: TextStyles.button?.copyWith(
+        style: TextStyles.button(context)?.copyWith(
           color: labelColor,
         ),
       ),

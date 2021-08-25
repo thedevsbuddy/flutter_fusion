@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvc/config/color_palette.dart';
 import 'package:flutter_mvc/config/config.dart';
 import 'package:get/get.dart';
 
@@ -27,9 +26,7 @@ class MasterLayout extends StatelessWidget {
         elevation: 0,
         title: Text(
           "${title != null ? title : Config.appName}",
-          style: TextStyles.subtitle?.copyWith(
-            color: Palette.darker,
-          ),
+          style: TextStyles.subtitle(context)?.copyWith(fontSize: 20.0),
         ),
         actions: [
           IconButton(

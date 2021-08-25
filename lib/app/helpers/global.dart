@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_mvc/app/controllers/ThemeController.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
@@ -10,11 +10,7 @@ import '../controllers/auth/AuthController.dart';
 //======================================
 AuthController authController = AuthController.to;
 AuthController auth = AuthController.to;
-
-//======================================
-// Get Instance of ThemeData
-//======================================
-ThemeData appTheme = Get.theme;
+ThemeController themeController = ThemeController.to;
 
 //======================================
 // Get storage Helper

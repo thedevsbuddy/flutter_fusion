@@ -19,7 +19,7 @@ class Config {
   //======================================
   // Font Family For The Headings And Titles
   //======================================
-  static String? headingFontFamily = GoogleFonts.nunito().fontFamily;
+  static String? headingFontFamily = GoogleFonts.raleway().fontFamily;
 
   //======================================
   // Font Family For The Body Text

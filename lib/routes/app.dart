@@ -11,9 +11,7 @@ List<GetPage> routes = [
   /*=======================================================*/
 
   // Setting Page Route
-  // GetPage(
-  //     name: '/settings',
-  //     page: () => SettingPage()),
+  GetPage(name: '/settings', page: () => SettingsPage()),
   //
   // // Setting Page Route
   // GetPage(
