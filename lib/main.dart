@@ -7,7 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'app/controllers/ThemeController.dart';
 import 'app/controllers/auth/AuthController.dart';
 import 'app/views/views.dart';
-import 'config/config.dart';
+import 'config/Config.dart';
 import 'config/theme/AppTheme.dart';
 import 'routes/app.dart';
 
@@ -28,14 +28,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        defaultTransition: Transition.rightToLeft,
-        title: "${Config.appName}",
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system,
-        home: SplashPage(),
-        getPages: routes,
-      );
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.rightToLeft,
+      title: "${Config.appName}",
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: SplashPage(),
+      getPages: routes,
+    );
   }
 }

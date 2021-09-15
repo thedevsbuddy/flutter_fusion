@@ -14,7 +14,7 @@ class Palette {
 
   static Color primary = Color(0xff9c58ff);
   static Color primaryLight = Color(0xff9c58ff);
-  static Color accent = Color(0xff9c58ff);
+  static Color accent = Color(0xffdddd2e);
   static Color danger = Color(0xFFEB3349);
   static Color success = Color(0xFF46db43);
   static Color info = Color(0xFF2775C8);

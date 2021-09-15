@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/config.dart';
+import '../../../config/Config.dart';
 import '../../helpers/adaptive_ui/adaptive_ui.dart';
 import '../../helpers/text_styles.dart';
 

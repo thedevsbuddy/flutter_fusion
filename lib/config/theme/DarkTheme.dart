@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../color_palette.dart';
-import '../config.dart';
+import '../ColorPalette.dart';
+import '../Config.dart';
 
 //======================================
 // Dark Input Border
@@ -94,11 +94,27 @@ final ThemeData darkThemeData = ThemeData(
   primaryColorLight: Palette.primaryLight,
   hintColor: Palette.accent,
   accentColor: Palette.accent,
+  buttonColor: Palette.accent,
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      backgroundColor: Palette.accent,
+    ),
+  ),
+  buttonTheme: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 20.0),
+  ),
   appBarTheme: AppBarTheme(
     color: Palette.darkest,
     elevation: 0.0,
     iconTheme: IconThemeData(color: Palette.offWhite),
-    textTheme: _textThemeDark,
+    textTheme: TextTheme(
+      headline6: TextStyle(
+        color: Palette.offWhite,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
   ),
   inputDecorationTheme: _inputTheme(),
 );

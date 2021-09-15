@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../color_palette.dart';
-import '../config.dart';
+import '../ColorPalette.dart';
+import '../Config.dart';
 
 //======================================
 // Input Border
@@ -76,7 +76,7 @@ TextTheme _textThemeLight = TextTheme(
     fontSize: 14.0,
     fontWeight: FontWeight.w600,
     fontFamily: Config.bodyFontFamily,
-    color: Palette.darker,
+    color: Palette.offWhite,
   ),
 );
 
@@ -93,14 +93,23 @@ final ThemeData lightThemeData = ThemeData(
   primaryColor: Palette.primary,
   primaryColorLight: Palette.primaryLight,
   hintColor: Palette.accent,
-  accentColor: Palette.accent,
+  accentColor: Color(0xff17416b),
+  buttonColor: Color(0xff17416b),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      backgroundColor: Color(0xff17416b),
+    ),
+  ),
+  buttonTheme: ButtonThemeData(
+    padding: EdgeInsets.symmetric(horizontal: 20.0),
+  ),
   appBarTheme: AppBarTheme(
-    color: Colors.white,
     elevation: 0.0,
-    iconTheme: IconThemeData(color: Palette.darker),
+    iconTheme: IconThemeData(color: Palette.offWhite),
     textTheme: TextTheme(
       headline6: TextStyle(
-        color: Palette.darker,
+        color: Palette.offWhite,
         fontSize: 18,
         fontWeight: FontWeight.w500,
       ),

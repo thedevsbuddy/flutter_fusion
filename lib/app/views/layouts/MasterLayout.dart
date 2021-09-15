@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvc/config/config.dart';
+import 'package:flutter_mvc/config/Config.dart';
 import 'package:get/get.dart';
-
-import '../../helpers/text_styles.dart';
 
 class MasterLayout extends StatelessWidget {
   final Widget body;
@@ -26,7 +24,6 @@ class MasterLayout extends StatelessWidget {
         elevation: 0,
         title: Text(
           "${title != null ? title : Config.appName}",
-          style: TextStyles.subtitle(context)?.copyWith(fontSize: 20.0),
         ),
         actions: [
           IconButton(

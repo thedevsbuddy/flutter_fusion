@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 
 import '../../helpers/adaptive_ui/adaptive_ui.dart';
 import '../../helpers/text_styles.dart';
-import '../../../config/color_palette.dart';
-import '../../../config/config.dart';
+import '../../../config/Config.dart';
 import '../../controllers/ThemeController.dart';
 import '../layouts/MasterLayout.dart';
 
@@ -40,7 +39,7 @@ class SettingsPage extends StatelessWidget {
                               onChanged: (value) {
                                 controller.setThemeMode(value.toString());
                               },
-                              activeColor: Palette.accent,
+                              activeColor: Get.theme.accentColor,
                             ),
                             Text(
                               'Light',
@@ -56,7 +55,7 @@ class SettingsPage extends StatelessWidget {
                               onChanged: (value) {
                                 controller.setThemeMode(value.toString());
                               },
-                              activeColor: Palette.accent,
+                              activeColor: Get.theme.accentColor,
                             ),
                             Text(
                               'Dark',
@@ -72,7 +71,7 @@ class SettingsPage extends StatelessWidget {
                               onChanged: (value) {
                                 controller.setThemeMode(value.toString());
                               },
-                              activeColor: Palette.accent,
+                              activeColor: Get.theme.accentColor,
                             ),
                             Text(
                               'System',
@@ -84,6 +83,13 @@ class SettingsPage extends StatelessWidget {
                     );
                   }),
                 ],
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  'I am a button',
+                  style: TextStyles.button(context),
+                ),
               )
             ],
           ),

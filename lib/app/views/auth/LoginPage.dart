@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../config/config.dart';
+import '../../../config/Config.dart';
 import '../../helpers/adaptive_ui/adaptive_ui.dart';
 import '../../helpers/global.dart';
 import '../../helpers/text_styles.dart';
