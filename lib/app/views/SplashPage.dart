@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../config/Config.dart';
 import '../helpers/global.dart';
 import 'layouts/AuthLayout.dart';
 import 'widgets/Widgets.dart';
@@ -10,7 +11,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size screen = Get.size;
 
-    Future.delayed(Duration(seconds: 3), () => Get.offNamed('/settings'));
+    redirectUser();
 
     return AuthLayout(
       body: Container(
@@ -40,5 +41,17 @@ class SplashPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void redirectUser() async {
+    if (Config.authRequired) {
+      if (auth.check()) {
+        Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+      } else {
+        Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/login'));
+      }
+    } else {
+      Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+    }
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class TextStyles {
   static TextStyle? heading1(BuildContext context) {
@@ -36,5 +35,9 @@ class TextStyles {
 
   static TextStyle? button(BuildContext context) {
     return Theme.of(context).textTheme.button;
+  }
+
+  static TextStyle? label(BuildContext context) {
+    return Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
   }
 }

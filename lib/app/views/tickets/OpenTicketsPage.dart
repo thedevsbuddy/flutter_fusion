@@ -5,7 +5,7 @@ import '../../../config/Config.dart';
 import '../../helpers/adaptive_ui/adaptive_ui.dart';
 import '../layouts/MasterLayout.dart';
 
-class SettingsPage extends StatelessWidget {
+class OpenTicketsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AdaptiveUI().init(context: context, height: Config.screenHeight, width: Config.screenWidth);

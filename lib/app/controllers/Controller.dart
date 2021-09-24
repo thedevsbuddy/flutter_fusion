@@ -5,29 +5,17 @@ import '../exceptions/app_exception.dart';
 
 class Controller {
   void handleError(error) {
-    hideLoading();
     if (error is BadRequestException) {
       var message = error.message;
-      Get.toNamed('bad-request-error',
-          parameters: {"message": message.toString()});
+      Get.toNamed('bad-request-error', parameters: {"message": message.toString()});
     } else if (error is FetchDataException) {
       var message = error.message;
       Get.toNamed('server-error', parameters: {"message": message.toString()});
     } else if (error is ApiNotRespondingException) {
-      Get.toNamed('server-error',
-          parameters: {"message": "Api took too long to respond!"});
+      Get.toNamed('server-error', parameters: {"message": "Api took too long to respond!"});
     } else {
-      Get.toNamed('server-error',
-          parameters: {"message": "Something went wrong!"});
+      Get.toNamed('server-error', parameters: {"message": "Something went wrong!"});
     }
-  }
-
-  showLoading() {
-    DialogHelper.showLoading();
-  }
-
-  hideLoading() {
-    DialogHelper.hideLoading();
   }
 }
 

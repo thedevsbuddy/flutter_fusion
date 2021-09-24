@@ -23,7 +23,15 @@ OutlineInputBorder _inputBorder() {
 InputDecorationTheme _inputTheme() {
   return InputDecorationTheme(
     isDense: true,
+    filled: true,
+    fillColor: Palette.white,
     labelStyle: TextStyle(
+      color: Palette.dark,
+    ),
+    hintStyle: TextStyle(
+      color: Palette.dark.withOpacity(0.5),
+    ),
+    prefixStyle: TextStyle(
       color: Palette.dark,
     ),
     border: _inputBorder(),

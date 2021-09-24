@@ -33,6 +33,7 @@ dependencies:
   get_storage: ^2.0.3
   google_fonts: ^2.1.0
   logger: ^1.0.0
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:

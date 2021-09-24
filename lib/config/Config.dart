@@ -9,7 +9,7 @@ class Config {
   //======================================
   // API base url
   //======================================
-  static String apiBaseUrl = "https://yourserver.com/api/v1";
+  static String apiBaseUrl = "https://api.virtualplatform.com.au/v2";
 
   //======================================
   // App Name

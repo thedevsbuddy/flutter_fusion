@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../helpers/str.dart';
 import 'package:get/get.dart';
+
+import '../helpers/Str.dart';
 
 class ShowSnack {
   // Success
-  static void success(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
+  static void success({required String message, Duration duration = const Duration(seconds: 3)}) {
     return Get.snackbar(
       "Success!",
       Str.ucFirst(message),
@@ -21,9 +20,7 @@ class ShowSnack {
   }
 
   // Error
-  static void error(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
+  static void error({required String message, Duration duration = const Duration(seconds: 3)}) {
     return Get.snackbar(
       "Error!",
       Str.ucFirst(message),
@@ -38,9 +35,7 @@ class ShowSnack {
   }
 
   // Info
-  static void info(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
+  static void info({required String message, Duration duration = const Duration(seconds: 3)}) {
     return Get.snackbar(
       "Info!",
       Str.ucFirst(message),
@@ -55,9 +50,7 @@ class ShowSnack {
   }
 
   // Warning
-  static void warning(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
+  static void warning({required String message, Duration duration = const Duration(seconds: 3)}) {
     return Get.snackbar(
       "Warning!",
       Str.ucFirst(message),
@@ -72,10 +65,7 @@ class ShowSnack {
   }
 
   // Warning
-  static void toast(
-      {required String message,
-      Duration duration = const Duration(seconds: 3),
-      SnackPosition position = SnackPosition.BOTTOM}) {
+  static void toast({required String message, Duration duration = const Duration(seconds: 3), SnackPosition position = SnackPosition.BOTTOM}) {
     return Get.snackbar(
       '',
       Str.ucFirst(message),
