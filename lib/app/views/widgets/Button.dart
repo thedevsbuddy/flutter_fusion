@@ -4,35 +4,6 @@ import 'package:flutter_mvc/config/ColorPalette.dart';
 
 import '../../helpers/TextStyles.dart';
 
-// class Button extends StatelessWidget {
-//   final double? minWidth;
-//   final String label;
-//   final GestureTapCallback onPressed;
-//   final Color? color;
-//   final Color? labelColor;
-//   final ShapeBorder? shape;
-//
-//   const Button({Key? key, this.minWidth, required this.label, required this.onPressed, this.color, this.labelColor, this.shape}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     AdaptiveUI().init(context: context, height: Config.screenHeight, width: Config.screenWidth);
-//     return TextButton(
-//       onPressed: onPressed,
-//       style: TextButton.styleFrom(
-//         backgroundColor: color,
-//         padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 20.0.w),
-//       ),
-//       child: Text(
-//         '$label',
-//         style: TextStyles.button(context)?.copyWith(
-//           color: labelColor,
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class Button extends StatelessWidget {
   final String label;
   final bool disabled;
@@ -50,9 +21,9 @@ class Button extends StatelessWidget {
     this.busy = false,
     this.onTap,
     this.leading,
+    this.flat = false,
   })  : outline = false,
         block = false,
-        flat = false,
         super(key: key);
 
   const Button.outline({
@@ -61,8 +32,18 @@ class Button extends StatelessWidget {
     this.leading,
     this.disabled = false,
     this.busy = false,
+    this.flat = false,
   })  : block = false,
-        flat = false,
+        outline = true;
+
+  const Button.outlineBlock({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+  })  : block = true,
         outline = true;
 
   const Button.block({
@@ -71,59 +52,103 @@ class Button extends StatelessWidget {
     this.leading,
     this.disabled = false,
     this.busy = false,
+    this.flat = false,
   })  : block = true,
-        flat = false,
-        outline = false;
-
-  const Button.flat({
-    required this.label,
-    this.onTap,
-    this.leading,
-    this.disabled = false,
-    this.busy = false,
-  })  : block = false,
-        flat = true,
         outline = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: !disabled ? onTap : () {},
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        width: double.infinity,
-        height: 48,
-        alignment: Alignment.center,
-        decoration: !outline
-            ? BoxDecoration(
-                color: !disabled ? Palette.primary : Palette.primary.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-              )
-            : BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                border: Border.all(
-                  color: Palette.primary,
-                  width: 1,
-                ),
-              ),
-        child: !busy
-            ? Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (leading != null) leading!,
-                  if (leading != null) SizedBox(width: 5),
-                  Text(
-                    label,
-                    style: TextStyles.button(context)?.copyWith(
-                      fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                      color: !outline ? Palette.white : Palette.primary,
+      child: block
+          ? AnimatedContainer(
+              duration: const Duration(milliseconds: 250),
+              padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+              width: double.infinity,
+              alignment: Alignment.center,
+              decoration: !outline
+                  ? BoxDecoration(
+                      color: !disabled
+                          ? Palette.primary
+                          : Palette.primary.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                    )
+                  : BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                      border: Border.all(
+                        color: !disabled
+                            ? Palette.primary
+                            : Palette.primary.withOpacity(0.5),
+                        width: 1,
+                      ),
                     ),
-                  ),
-                ],
-              )
-            : LoadingIconWidget(color: !outline ? Palette.white : Palette.primary),
-      ),
+              child: !busy
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (leading != null) leading!,
+                        if (leading != null) SizedBox(width: 5),
+                        Text(
+                          label,
+                          style: TextStyles.button(context)?.copyWith(
+                            fontWeight:
+                                !outline ? FontWeight.bold : FontWeight.w400,
+                            color: !outline ? Palette.white : Palette.primary,
+                          ),
+                        ),
+                      ],
+                    )
+                  : LoadingIconWidget(
+                      color: !outline ? Palette.white : Palette.primary),
+            )
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+                  alignment: Alignment.center,
+                  decoration: !outline
+                      ? BoxDecoration(
+                          color: !disabled
+                              ? Palette.primary
+                              : Palette.primary.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                        )
+                      : BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                          border: Border.all(
+                            color: Palette.primary,
+                            width: 1,
+                          ),
+                        ),
+                  child: !busy
+                      ? Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (leading != null) leading!,
+                            if (leading != null) SizedBox(width: 5),
+                            Text(
+                              label,
+                              style: TextStyles.button(context)?.copyWith(
+                                fontWeight: !outline
+                                    ? FontWeight.bold
+                                    : FontWeight.w400,
+                                color:
+                                    !outline ? Palette.white : Palette.primary,
+                              ),
+                            ),
+                          ],
+                        )
+                      : LoadingIconWidget(
+                          color: !outline ? Palette.white : Palette.primary),
+                ),
+              ],
+            ),
     );
   }
 }

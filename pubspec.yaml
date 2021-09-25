@@ -34,6 +34,8 @@ dependencies:
   google_fonts: ^2.1.0
   logger: ^1.0.0
   flutter_svg: ^0.22.0
+  basic_ui: 
+    path: packages/basic_ui
 
 dev_dependencies:
   flutter_test:
