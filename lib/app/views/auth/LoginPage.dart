@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvc/app/views/widgets/Widgets.dart';
 import 'package:flutter_mvc/app/views/widgets/forms/FormInput.dart';
-import 'package:flutter_mvc/app/views/widgets/forms/FormSelect.dart';
 import 'package:get/get.dart';
 
 import '../../../config/Config.dart';
@@ -67,15 +66,6 @@ class LoginPage extends StatelessWidget {
                         controller: authController.usernameInput,
                         hintText: "Password",
                         leading: Icon(Icons.lock_outline),
-                      ),
-                      FormSelect(
-                        options: [
-                          DropdownMenuItem(child: Text('Item 1'), value: 1),
-                          DropdownMenuItem(child: Text('Item 2'), value: 2),
-                          DropdownMenuItem(child: Text('Item 3'), value: 3),
-                        ],
-                        value: 1,
-                        onChanged: (value) {},
                       ),
                       SizedBox(height: 25),
                       Obx(
