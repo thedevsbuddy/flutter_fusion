@@ -9,7 +9,7 @@ class LoadingIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/icons/loading-circular.gif',
+      'assets/icons/loading.gif',
       height: height ?? 14.0,
       color: color ?? null,
     );

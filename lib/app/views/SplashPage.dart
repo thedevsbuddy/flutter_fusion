@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import '../../config/Config.dart';
 import '../helpers/global.dart';
 import 'layouts/AuthLayout.dart';
-import 'widgets/Widgets.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -14,9 +13,10 @@ class SplashPage extends StatelessWidget {
 
     redirectUser();
 
-    return AuthLayout(
+    return Scaffold(
+      backgroundColor: kcPrimary,
       body: Container(
-        color: Get.theme.primaryColor,
+        color: kcPrimary,
         height: screen.height,
         width: double.infinity,
         child: Column(
@@ -34,9 +34,7 @@ class SplashPage extends StatelessWidget {
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 32.0),
-              child: LoadingIconWidget(
-                height: spacer8,
-              ),
+              child: LoadingIconWidget(height: spacer),
             ),
           ],
         ),
@@ -47,13 +45,15 @@ class SplashPage extends StatelessWidget {
   void redirectUser() async {
     if (Config.authRequired) {
       if (auth.check()) {
-        Future.delayed(
+        await Future.delayed(
             Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
       } else {
-        Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/login'));
+        await Future.delayed(
+            Duration(seconds: 5), () => Get.offAllNamed('/login'));
       }
     } else {
-      Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+      await Future.delayed(
+          Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
     }
   }
 }
