@@ -62,8 +62,7 @@ class LoginPage extends StatelessWidget {
                           placeholder: "Username",
                           leading: Icon(Icons.person_outline),
                           validator: (value) => Validator("username", value!)
-                              .email()
-                              .require()
+                              .required()
                               .validate(),
                         ),
                         SizedBox(height: 25),
@@ -72,8 +71,7 @@ class LoginPage extends StatelessWidget {
                           placeholder: "Password",
                           leading: Icon(Icons.lock_outline),
                           validator: (value) => Validator("password", value!)
-                              .between(6, 8)
-                              .require()
+                              .required()
                               .validate(),
                         ),
                         SizedBox(height: 25),

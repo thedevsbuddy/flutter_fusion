@@ -11,7 +11,7 @@ class Validator {
   ///===========================
   /// Required rule
   ///===========================
-  Validator require() {
+  Validator required() {
     if (GetUtils.isLengthLessOrEqual(value, 0)) {
       errors.assign("$field", "${Str.ucFirst(field)} is required");
     }
