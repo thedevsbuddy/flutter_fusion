@@ -165,7 +165,7 @@ class Button extends StatelessWidget {
     Color btnBgColor = variant == ButtonType.PRIMARY
         ? kcPrimary
         : (variant == ButtonType.SECONDARY)
-            ? kcAccent
+            ? kcSecondary
             : (variant == ButtonType.DANGER)
                 ? kcDanger
                 : (variant == ButtonType.SUCCESS)
@@ -183,7 +183,7 @@ class Button extends StatelessWidget {
     Color btnTxtColor = variant == ButtonType.PRIMARY
         ? kcWhite
         : (variant == ButtonType.SECONDARY)
-            ? kcDarker
+            ? kcWhite
             : (variant == ButtonType.DANGER)
                 ? kcWhite
                 : (variant == ButtonType.SUCCESS)
