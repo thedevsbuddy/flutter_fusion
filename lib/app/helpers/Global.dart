@@ -10,6 +10,10 @@ import '../controllers/auth/AuthController.dart';
 //======================================
 AuthController authController = AuthController.to;
 AuthController auth = AuthController.to;
+
+//======================================
+// Get Instance of ThemeController
+//======================================
 ThemeController themeController = ThemeController.to;
 
 //======================================

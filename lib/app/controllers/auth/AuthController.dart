@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_mvc/app/helpers/Snackbar.dart';
+import 'package:basic_ui/helpers/Snackbar.dart';
 import 'package:flutter_mvc/app/models/UserModel.dart';
 import 'package:flutter_mvc/config/Config.dart';
 import 'package:get/get.dart';
+import 'package:basic_ui/basic_ui.dart';
 
 import '../../helpers/Global.dart';
 import '../../helpers/request.dart';
@@ -15,9 +16,6 @@ class AuthController extends GetxController with Controller {
   var _user = UserModel().obs;
 
   var _isBusy = false.obs;
-
-  var username = '';
-  var password = '';
 
   final TextEditingController usernameInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
@@ -61,6 +59,20 @@ class AuthController extends GetxController with Controller {
     Future.delayed(Duration(seconds: 3), () => hideLoading());
 
     // if (response == null) return;
+  }
+
+  Future<void> getUser() async {
+    var response = await Request.get(Uri.parse('${Config.apiBaseUrl}/profile'))
+        .catchError(handleError);
+
+    if (response.isNull) return;
+  }
+
+  void logout() async {
+    await storage.remove('auth_token');
+    await storage.remove('user');
+
+    Get.offAllNamed('/login');
   }
 
   bool check() {
