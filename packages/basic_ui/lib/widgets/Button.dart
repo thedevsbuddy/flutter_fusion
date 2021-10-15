@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
-import 'LoadingIconWidget.dart';
-import '../../config/ColorPalette.dart';
 
-import '../../helpers/TextStyles.dart';
+import '../helpers/TextStyles.dart';
+import '../helpers/ColorPalette.dart';
+import 'LoadingIconWidget.dart';
+
+enum ButtonType {
+  PRIMARY,
+  SECONDARY,
+  DANGER,
+  SUCCESS,
+  INFO,
+  WARNING,
+  DARK,
+  LIGHT
+}
 
 class Button extends StatelessWidget {
   final String label;
@@ -13,6 +24,7 @@ class Button extends StatelessWidget {
   final Widget? leading;
   final bool block;
   final bool flat;
+  final ButtonType variant;
 
   const Button({
     Key? key,
@@ -24,6 +36,7 @@ class Button extends StatelessWidget {
     this.flat = false,
   })  : outline = false,
         block = false,
+        variant = ButtonType.PRIMARY,
         super(key: key);
 
   const Button.outline({
@@ -33,6 +46,7 @@ class Button extends StatelessWidget {
     this.disabled = false,
     this.busy = false,
     this.flat = false,
+    this.variant = ButtonType.PRIMARY,
   })  : block = false,
         outline = true;
 
@@ -43,6 +57,7 @@ class Button extends StatelessWidget {
     this.disabled = false,
     this.busy = false,
     this.flat = false,
+    this.variant = ButtonType.PRIMARY,
   })  : block = true,
         outline = true;
 
@@ -53,11 +68,136 @@ class Button extends StatelessWidget {
     this.disabled = false,
     this.busy = false,
     this.flat = false,
+    this.variant = ButtonType.PRIMARY,
   })  : block = true,
         outline = false;
 
+  const Button.primary({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.PRIMARY;
+
+  const Button.secondary({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.SECONDARY;
+
+  const Button.success({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.SUCCESS;
+
+  const Button.danger({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.DANGER;
+
+  const Button.info({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.INFO;
+
+  const Button.warning({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.WARNING;
+
+  const Button.dark({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.DARK;
+
+  const Button.light({
+    required this.label,
+    this.onTap,
+    this.leading,
+    this.disabled = false,
+    this.busy = false,
+    this.flat = false,
+    this.block = false,
+    this.outline = false,
+  }) : variant = ButtonType.LIGHT;
+
   @override
   Widget build(BuildContext context) {
+    Color btnBgColor = variant == ButtonType.PRIMARY
+        ? kcPrimary
+        : (variant == ButtonType.SECONDARY)
+            ? kcAccent
+            : (variant == ButtonType.DANGER)
+                ? kcDanger
+                : (variant == ButtonType.SUCCESS)
+                    ? kcSuccess
+                    : (variant == ButtonType.INFO)
+                        ? kcInfo
+                        : (variant == ButtonType.WARNING)
+                            ? kcWarning
+                            : (variant == ButtonType.DARK)
+                                ? kcDarker
+                                : (variant == ButtonType.LIGHT)
+                                    ? kcOffWhite
+                                    : kcPrimary;
+
+    Color btnTxtColor = variant == ButtonType.PRIMARY
+        ? kcWhite
+        : (variant == ButtonType.SECONDARY)
+            ? kcDarker
+            : (variant == ButtonType.DANGER)
+                ? kcWhite
+                : (variant == ButtonType.SUCCESS)
+                    ? kcWhite
+                    : (variant == ButtonType.INFO)
+                        ? kcWhite
+                        : (variant == ButtonType.WARNING)
+                            ? kcDarker
+                            : (variant == ButtonType.DARK)
+                                ? kcWhite
+                                : (variant == ButtonType.LIGHT)
+                                    ? kcDarker
+                                    : kcWhite;
+
     return GestureDetector(
       onTap: !disabled ? onTap : () {},
       child: block
@@ -68,9 +208,8 @@ class Button extends StatelessWidget {
               alignment: Alignment.center,
               decoration: !outline
                   ? BoxDecoration(
-                      color: !disabled
-                          ? Palette.primary
-                          : Palette.primary.withOpacity(0.5),
+                      color:
+                          !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                     )
                   : BoxDecoration(
@@ -78,8 +217,8 @@ class Button extends StatelessWidget {
                       borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                       border: Border.all(
                         color: !disabled
-                            ? Palette.primary
-                            : Palette.primary.withOpacity(0.5),
+                            ? btnBgColor
+                            : btnBgColor.withOpacity(0.5),
                         width: 1,
                       ),
                     ),
@@ -94,13 +233,13 @@ class Button extends StatelessWidget {
                           style: TextStyles.button(context)?.copyWith(
                             fontWeight:
                                 !outline ? FontWeight.bold : FontWeight.w400,
-                            color: !outline ? Palette.white : Palette.primary,
+                            color: !outline ? btnTxtColor : btnBgColor,
                           ),
                         ),
                       ],
                     )
                   : LoadingIconWidget(
-                      color: !outline ? Palette.white : Palette.primary),
+                      color: !outline ? btnTxtColor : btnBgColor),
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,15 +253,19 @@ class Button extends StatelessWidget {
                   decoration: !outline
                       ? BoxDecoration(
                           color: !disabled
-                              ? Palette.primary
-                              : Palette.primary.withOpacity(0.5),
+                              ? btnBgColor
+                              : btnBgColor.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                          border: Border.all(
+                            color: btnBgColor,
+                            width: 1,
+                          ),
                         )
                       : BoxDecoration(
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                           border: Border.all(
-                            color: Palette.primary,
+                            color: btnBgColor,
                             width: 1,
                           ),
                         ),
@@ -138,14 +281,13 @@ class Button extends StatelessWidget {
                                 fontWeight: !outline
                                     ? FontWeight.bold
                                     : FontWeight.w400,
-                                color:
-                                    !outline ? Palette.white : Palette.primary,
+                                color: !outline ? btnTxtColor : btnBgColor,
                               ),
                             ),
                           ],
                         )
                       : LoadingIconWidget(
-                          color: !outline ? Palette.white : Palette.primary),
+                          color: !outline ? btnTxtColor : btnBgColor),
                 ),
               ],
             ),

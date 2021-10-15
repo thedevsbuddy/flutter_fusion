@@ -1,13 +1,10 @@
+import 'package:basic_ui/basic_ui.dart';
+import 'package:adaptive_ui/adaptive_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mvc/app/views/widgets/Widgets.dart';
-import 'package:flutter_mvc/app/views/widgets/forms/FormInput.dart';
 import 'package:get/get.dart';
 
 import '../../../config/Config.dart';
 import '../../helpers/Global.dart';
-import '../../helpers/TextStyles.dart';
-import '../../helpers/adaptive_ui/adaptive_ui.dart';
-import '../../helpers/Keyboard.dart';
 import '../../views/layouts/AuthLayout.dart';
 
 class LoginPage extends StatelessWidget {
@@ -58,13 +55,13 @@ class LoginPage extends StatelessWidget {
                     children: [
                       FormInput(
                         controller: authController.usernameInput,
-                        hintText: "Username",
+                        placeholder: "Username",
                         leading: Icon(Icons.person_outline),
                       ),
                       SizedBox(height: 25),
                       FormInput.password(
                         controller: authController.usernameInput,
-                        hintText: "Password",
+                        placeholder: "Password",
                         leading: Icon(Icons.lock_outline),
                       ),
                       SizedBox(height: 25),

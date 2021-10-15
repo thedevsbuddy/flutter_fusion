@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FormInput extends StatelessWidget {
   final TextEditingController? controller;
-  final String? hintText;
+  final String? placeholder;
   final String? labelText;
   final String? Function(String?)? validator;
   final Icon? leading;
@@ -13,7 +13,7 @@ class FormInput extends StatelessWidget {
   const FormInput({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -25,7 +25,7 @@ class FormInput extends StatelessWidget {
   const FormInput.text({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.validator,
     this.labelText,
     this.leading,
@@ -37,7 +37,7 @@ class FormInput extends StatelessWidget {
   const FormInput.password({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -49,7 +49,7 @@ class FormInput extends StatelessWidget {
   const FormInput.number({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -61,7 +61,7 @@ class FormInput extends StatelessWidget {
   const FormInput.email({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -73,7 +73,7 @@ class FormInput extends StatelessWidget {
   const FormInput.datetime({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -85,7 +85,7 @@ class FormInput extends StatelessWidget {
   const FormInput.url({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -97,7 +97,7 @@ class FormInput extends StatelessWidget {
   const FormInput.multiline({
     Key? key,
     this.controller,
-    this.hintText = "Input hint",
+    this.placeholder = "Input hint",
     this.labelText,
     this.validator,
     this.leading,
@@ -114,7 +114,7 @@ class FormInput extends StatelessWidget {
       minLines: type == TextInputType.multiline ? rows : 1,
       maxLines: type == TextInputType.multiline ? null : 1,
       decoration: InputDecoration(
-        hintText: hintText,
+        hintText: placeholder,
         labelText: labelText,
         prefixIcon: leading,
       ),

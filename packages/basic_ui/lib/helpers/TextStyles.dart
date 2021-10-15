@@ -14,7 +14,7 @@ class TextStyles {
   }
 
   static TextStyle? title(BuildContext context) {
-    return Theme.of(context).textTheme.headline2;
+    return Theme.of(context).textTheme.headline2?.copyWith(fontSize: 30.0);
   }
 
   static TextStyle? subtitle(BuildContext context) {
@@ -22,11 +22,11 @@ class TextStyles {
   }
 
   static TextStyle? body(BuildContext context) {
-    return Theme.of(context).textTheme.bodyText1;
+    return Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.0);
   }
 
   static TextStyle? bodySm(BuildContext context) {
-    return Theme.of(context).textTheme.bodyText1;
+    return Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 14.0);
   }
 
   static TextStyle? caption(BuildContext context) {
@@ -34,10 +34,16 @@ class TextStyles {
   }
 
   static TextStyle? button(BuildContext context) {
-    return Theme.of(context).textTheme.button;
+    return Theme.of(context)
+        .textTheme
+        .button
+        ?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600);
   }
 
   static TextStyle? label(BuildContext context) {
-    return Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
+    return Theme.of(context)
+        .textTheme
+        .button
+        ?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../ColorPalette.dart';
+import 'package:basic_ui/basic_ui.dart';
 import '../Config.dart';
 
 //======================================
@@ -10,7 +9,7 @@ import '../Config.dart';
 OutlineInputBorder _inputBorder() {
   return OutlineInputBorder(
     borderSide: BorderSide(
-      color: Palette.darker.withOpacity(0.3),
+      color: kcDarker.withOpacity(0.3),
       width: 1,
     ),
     borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -24,15 +23,15 @@ InputDecorationTheme _inputTheme() {
   return InputDecorationTheme(
     isDense: true,
     filled: true,
-    fillColor: Palette.white,
+    fillColor: kcWhite,
     labelStyle: TextStyle(
-      color: Palette.dark,
+      color: kcDark,
     ),
     hintStyle: TextStyle(
-      color: Palette.dark.withOpacity(0.5),
+      color: kcDark.withOpacity(0.5),
     ),
     prefixStyle: TextStyle(
-      color: Palette.dark,
+      color: kcDark,
     ),
     border: _inputBorder(),
     enabledBorder: _inputBorder(),
@@ -44,7 +43,7 @@ InputDecorationTheme _inputTheme() {
 // Icon Theme
 //======================================
 IconThemeData _iconTheme = IconThemeData(
-  color: Palette.dark,
+  color: kcDark,
   size: 16.0,
 );
 
@@ -56,35 +55,35 @@ TextTheme _textThemeLight = TextTheme(
     fontSize: 35,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
-    color: Palette.darker,
+    color: kcDarker,
   ),
   headline2: TextStyle(
     fontSize: 30,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
-    color: Palette.darker,
+    color: kcDarker,
   ),
   headline3: TextStyle(
     fontSize: 25,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
-    color: Palette.darker,
+    color: kcDarker,
   ),
   bodyText1: TextStyle(
     fontSize: 16.0,
     fontFamily: Config.bodyFontFamily,
-    color: Palette.darker,
+    color: kcDarker,
   ),
   bodyText2: TextStyle(
     fontSize: 14.0,
     fontFamily: Config.bodyFontFamily,
-    color: Palette.darker,
+    color: kcDarker,
   ),
   button: TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w600,
     fontFamily: Config.bodyFontFamily,
-    color: Palette.offWhite,
+    color: kcOffWhite,
   ),
 );
 
@@ -96,17 +95,17 @@ final ThemeData lightThemeData = ThemeData(
   iconTheme: _iconTheme,
   textTheme: _textThemeLight,
   fontFamily: GoogleFonts.raleway().fontFamily,
-  scaffoldBackgroundColor: Palette.offWhite,
-  backgroundColor: Palette.white,
-  primaryColor: Palette.primary,
-  primaryColorLight: Palette.primaryLight,
-  hintColor: Palette.accent,
-  accentColor: Color(0xff17416b),
-  buttonColor: Color(0xff17416b),
+  scaffoldBackgroundColor: kcOffWhite,
+  backgroundColor: kcWhite,
+  primaryColor: kcPrimary,
+  primaryColorLight: kcPrimaryLight,
+  hintColor: kcAccent,
+  accentColor: kcAccent,
+  buttonColor: kcPrimary,
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      backgroundColor: Color(0xff17416b),
+      backgroundColor: kcPrimary,
     ),
   ),
   buttonTheme: ButtonThemeData(
@@ -114,10 +113,10 @@ final ThemeData lightThemeData = ThemeData(
   ),
   appBarTheme: AppBarTheme(
     elevation: 0.0,
-    iconTheme: IconThemeData(color: Palette.offWhite),
+    iconTheme: IconThemeData(color: kcOffWhite),
     textTheme: TextTheme(
       headline6: TextStyle(
-        color: Palette.offWhite,
+        color: kcOffWhite,
         fontSize: 18,
         fontWeight: FontWeight.w500,
       ),

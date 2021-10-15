@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../helpers/Global.dart';
 
 class LoadingIconWidget extends StatelessWidget {
   final double? height;
@@ -10,7 +9,7 @@ class LoadingIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      assetIcon('loading-sm.gif'),
+      'assets/icons/loading.gif',
       height: height ?? 14.0,
       color: color ?? null,
     );
