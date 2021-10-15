@@ -35,7 +35,7 @@ class SplashPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 32.0),
               child: LoadingIconWidget(
-                color: Colors.white,
+                height: spacer8,
               ),
             ),
           ],
@@ -47,7 +47,8 @@ class SplashPage extends StatelessWidget {
   void redirectUser() async {
     if (Config.authRequired) {
       if (auth.check()) {
-        Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+        Future.delayed(
+            Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
       } else {
         Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/login'));
       }

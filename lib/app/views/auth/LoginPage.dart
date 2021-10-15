@@ -30,6 +30,7 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,29 +52,37 @@ class LoginPage extends StatelessWidget {
                               .copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
-                  Column(
-                    children: [
-                      FormInput(
-                        controller: authController.usernameInput,
-                        placeholder: "Username",
-                        leading: Icon(Icons.person_outline),
-                      ),
-                      SizedBox(height: 25),
-                      FormInput.password(
-                        controller: authController.usernameInput,
-                        placeholder: "Password",
-                        leading: Icon(Icons.lock_outline),
-                      ),
-                      SizedBox(height: 25),
-                      Obx(
-                        () => Button.block(
+                  Form(
+                    key: auth.formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      children: [
+                        FormInput.text(
+                          controller: auth.usernameInput,
+                          placeholder: "Username",
+                          leading: Icon(Icons.person_outline),
+                          validator: (value) => Validator("username", value!)
+                              .email()
+                              .require()
+                              .validate(),
+                        ),
+                        SizedBox(height: 25),
+                        FormInput.password(
+                          controller: auth.passwordInput,
+                          placeholder: "Password",
+                          leading: Icon(Icons.lock_outline),
+                          validator: (value) => Validator("password", value!)
+                              .between(6, 8)
+                              .require()
+                              .validate(),
+                        ),
+                        SizedBox(height: 25),
+                        Button.block(
                           label: "Login",
                           onTap: () => authController.login(),
-                          busy: authController.isLoading,
-                          disabled: authController.isLoading,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

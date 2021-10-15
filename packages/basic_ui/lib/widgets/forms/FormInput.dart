@@ -5,6 +5,7 @@ class FormInput extends StatelessWidget {
   final String? placeholder;
   final String? labelText;
   final String? Function(String?)? validator;
+  final void Function(String?)? onSaved;
   final Icon? leading;
   final bool isPassword;
   final TextInputType type;
@@ -18,6 +19,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.text,
         isPassword = false,
         super(key: key);
@@ -30,6 +32,7 @@ class FormInput extends StatelessWidget {
     this.labelText,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.text,
         isPassword = false,
         super(key: key);
@@ -42,6 +45,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.text,
         isPassword = true,
         super(key: key);
@@ -54,6 +58,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.number,
         isPassword = false,
         super(key: key);
@@ -66,6 +71,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.emailAddress,
         isPassword = false,
         super(key: key);
@@ -78,6 +84,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.datetime,
         isPassword = false,
         super(key: key);
@@ -90,6 +97,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 1,
+    this.onSaved,
   })  : type = TextInputType.url,
         isPassword = false,
         super(key: key);
@@ -102,6 +110,7 @@ class FormInput extends StatelessWidget {
     this.validator,
     this.leading,
     this.rows = 4,
+    this.onSaved,
   })  : type = TextInputType.multiline,
         isPassword = false,
         super(key: key);
@@ -120,6 +129,7 @@ class FormInput extends StatelessWidget {
       ),
       obscureText: isPassword,
       validator: validator,
+      onSaved: onSaved,
     );
   }
 }

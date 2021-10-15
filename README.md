@@ -1,16 +1,12 @@
-# flutter_mvc
+# Flutter MVC Starter
 
-A new Flutter project.
+A starter project to begin any new flutter project.
+It has the ```Get``` package and some more custom made helpers and packages to help the dev to build their apps with ease.
+
+It uses the ```MVC``` pattern which is by default in the ```Get``` Package.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Just download it and start working on your project.

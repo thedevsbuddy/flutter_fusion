@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_mvc/app/helpers/Snackbar.dart';
 import 'package:flutter_mvc/app/models/UserModel.dart';
 import 'package:flutter_mvc/config/Config.dart';
 import 'package:get/get.dart';
@@ -9,41 +10,57 @@ import '../Controller.dart';
 
 class AuthController extends GetxController with Controller {
   static AuthController get to => Get.find();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   var _user = UserModel().obs;
 
-  var _isLoading = false.obs;
+  var _isBusy = false.obs;
+
+  var username = '';
+  var password = '';
 
   final TextEditingController usernameInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
 
   // Getters
-  bool get isLoading => this._isLoading.value;
+  bool get isBusy => this._isBusy.value;
   UserModel get user => this._user.value;
 
   @override
   void onInit() {
-    usernameInput.text = "bob@bob.com.au";
-    passwordInput.text = "S3cR3tP4ssW0rd";
-
     super.onInit();
   }
 
   void login() async {
-    _isLoading(true);
+    final isValid = formKey.currentState!.validate();
+
+    if (!isValid) {
+      return;
+    }
+
+    if (usernameInput.text.isEmpty) {
+      ShowSnack.error(message: "Please type username to continue!");
+      return;
+    }
+    if (passwordInput.text.isEmpty) {
+      ShowSnack.error(message: "Please type password to continue!");
+      return;
+    }
+
+    showLoading(message: "Logging you in...");
 
     Map<String, dynamic> body = {
       "username": usernameInput.text,
       "password": passwordInput.text,
     };
 
-    var response = await Request.post(Uri.parse('${Config.apiBaseUrl}/auth'), body: body).catchError(handleError);
+    // var response =
+    //     await Request.post(Uri.parse('${Config.apiBaseUrl}/auth'), body: body)
+    //         .catchError(handleError);
 
-    _isLoading(false);
+    Future.delayed(Duration(seconds: 3), () => hideLoading());
 
-    if (response == null) return;
-
-    // TODO: add success stuffs
+    // if (response == null) return;
   }
 
   bool check() {

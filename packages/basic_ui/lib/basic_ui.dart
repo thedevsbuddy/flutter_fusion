@@ -12,6 +12,7 @@ export 'helpers/Keyboard.dart';
 export 'helpers/Str.dart';
 export 'helpers/TextStyles.dart';
 export 'helpers/Sizes.dart';
+export 'helpers/Validator.dart';
 
 /// =========================
 /// Export all Widgets files

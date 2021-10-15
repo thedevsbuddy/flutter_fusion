@@ -17,26 +17,39 @@ OutlineInputBorder _inputBorder() {
 }
 
 //======================================
+// Input Error Border
+//======================================
+OutlineInputBorder _inputErrorBorder() {
+  return OutlineInputBorder(
+    borderSide: BorderSide(
+      color: kcDanger.withOpacity(0.3),
+      width: 1,
+    ),
+    borderRadius: BorderRadius.all(Radius.circular(4)),
+  );
+}
+
+//======================================
 // Input Theme
 //======================================
 InputDecorationTheme _inputTheme() {
   return InputDecorationTheme(
-    isDense: true,
-    filled: true,
-    fillColor: kcWhite,
-    labelStyle: TextStyle(
-      color: kcDark,
-    ),
-    hintStyle: TextStyle(
-      color: kcDark.withOpacity(0.5),
-    ),
-    prefixStyle: TextStyle(
-      color: kcDark,
-    ),
-    border: _inputBorder(),
-    enabledBorder: _inputBorder(),
-    focusedBorder: _inputBorder(),
-  );
+      isDense: true,
+      filled: true,
+      fillColor: kcWhite,
+      labelStyle: TextStyle(
+        color: kcDark,
+      ),
+      hintStyle: TextStyle(
+        color: kcDark.withOpacity(0.5),
+      ),
+      prefixStyle: TextStyle(
+        color: kcDark,
+      ),
+      border: _inputBorder(),
+      enabledBorder: _inputBorder(),
+      focusedBorder: _inputBorder(),
+      errorBorder: _inputErrorBorder());
 }
 
 //======================================
