@@ -29,6 +29,16 @@ class Validator {
   }
 
   ///===========================
+  /// Number rule
+  ///===========================
+  Validator number() {
+    if (!GetUtils.isNull(value)) {
+      errors.assign("$field", "${Str.ucFirst(field)} needs to be a number!");
+    }
+    return this;
+  }
+
+  ///===========================
   /// Min character rule
   ///===========================
   Validator min(int minLength) {

@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^2.1.0
+  get: ^4.3.4
 
 dev_dependencies:
   flutter_test:
