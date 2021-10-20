@@ -1,5 +1,5 @@
-import 'package:basic_ui/basic_ui.dart';
 import 'package:get/get.dart';
+import 'Str.dart';
 
 class Validator {
   Map<String, String> errors = {};
@@ -8,9 +8,7 @@ class Validator {
 
   Validator(this.field, this.value);
 
-  ///===========================
   /// Required rule
-  ///===========================
   Validator required() {
     if (GetUtils.isLengthLessOrEqual(value, 0)) {
       errors.assign("$field", "${Str.ucFirst(field)} is required");
@@ -18,9 +16,7 @@ class Validator {
     return this;
   }
 
-  ///===========================
   /// Email rule
-  ///===========================
   Validator email() {
     if (!GetUtils.isEmail(value)) {
       errors.assign("$field", "${Str.ucFirst(field)} needs to be an email!");
@@ -28,9 +24,7 @@ class Validator {
     return this;
   }
 
-  ///===========================
   /// Number rule
-  ///===========================
   Validator number() {
     if (!GetUtils.isNull(value)) {
       errors.assign("$field", "${Str.ucFirst(field)} needs to be a number!");
@@ -38,9 +32,7 @@ class Validator {
     return this;
   }
 
-  ///===========================
   /// Min character rule
-  ///===========================
   Validator min(int minLength) {
     if (value.length < minLength) {
       errors.assign(
@@ -49,9 +41,7 @@ class Validator {
     return this;
   }
 
-  ///===========================
   /// Max character rule
-  ///===========================
   Validator max(int maxLength) {
     if (GetUtils.isLengthGreaterThan(value, maxLength)) {
       errors.assign("$field",
@@ -60,9 +50,7 @@ class Validator {
     return this;
   }
 
-  ///===========================
-  /// Character between rule
-  ///===========================
+  /// Characters length is between given rule
   Validator between(int minLength, int maxLength) {
     if (!GetUtils.isLengthBetween(value, minLength, maxLength)) {
       errors.assign("$field",
@@ -71,11 +59,8 @@ class Validator {
     return this;
   }
 
-  ///===========================
-  /// Validator
-  ///===========================
+  /// Validate the string
   String? validate() {
-    print(errors);
     return errors["$field"];
   }
 }

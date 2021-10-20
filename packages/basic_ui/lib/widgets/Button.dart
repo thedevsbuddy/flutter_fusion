@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/TextStyles.dart';
+import '../helpers/TextStyl.dart';
 import '../helpers/ColorPalette.dart';
 import 'LoadingIconWidget.dart';
 
@@ -230,7 +230,7 @@ class Button extends StatelessWidget {
                         if (leading != null) SizedBox(width: 5),
                         Text(
                           label,
-                          style: TextStyles.button(context)?.copyWith(
+                          style: TextStyl.button(context)?.copyWith(
                             fontWeight:
                                 !outline ? FontWeight.bold : FontWeight.w400,
                             color: !outline ? btnTxtColor : btnBgColor,
@@ -277,7 +277,7 @@ class Button extends StatelessWidget {
                             if (leading != null) SizedBox(width: 5),
                             Text(
                               label,
-                              style: TextStyles.button(context)?.copyWith(
+                              style: TextStyl.button(context)?.copyWith(
                                 fontWeight: !outline
                                     ? FontWeight.bold
                                     : FontWeight.w400,

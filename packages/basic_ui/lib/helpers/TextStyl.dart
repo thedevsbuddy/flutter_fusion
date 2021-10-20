@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TextStyles {
+class TextStyl {
   static TextStyle? heading1(BuildContext context) {
     return Theme.of(context).textTheme.headline1;
   }
@@ -28,7 +28,10 @@ class TextStyles {
   }
 
   static TextStyle? body(BuildContext context) {
-    return Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.0);
+    return Theme.of(context).textTheme.bodyText1?.copyWith(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w500,
+        );
   }
 
   static TextStyle? bodySm(BuildContext context) {

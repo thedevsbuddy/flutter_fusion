@@ -44,11 +44,11 @@ class LoginPage extends StatelessWidget {
                       ),
                       SizedBox(height: 15),
                       Text("Welcome Back,",
-                          style: TextStyles.title(context)!
+                          style: TextStyl.title(context)!
                               .copyWith(fontWeight: FontWeight.w700)),
                       SizedBox(height: 5),
                       Text("Sign in to continue",
-                          style: TextStyles.body(context)!
+                          style: TextStyl.body(context)!
                               .copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),

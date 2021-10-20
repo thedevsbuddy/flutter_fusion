@@ -8,14 +8,7 @@ export 'helpers/ColorPalette.dart';
 /// =========================
 /// Export all Helpers files
 /// =========================
-export 'helpers/Keyboard.dart';
-export 'helpers/ColorPalette.dart';
-export 'helpers/Str.dart';
-export 'helpers/TextStyles.dart';
-export 'helpers/Sizes.dart';
-export 'helpers/Validator.dart';
-export 'helpers/Utils.dart';
-export 'helpers/Snackbar.dart';
+export 'helpers/Helpers.dart';
 
 /// =========================
 /// Export all Widgets files
