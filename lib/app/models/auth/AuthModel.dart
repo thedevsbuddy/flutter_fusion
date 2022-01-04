@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import '../UserModel.dart';
-import 'JwtModel.dart';
 
 AuthModel authModelFromJson(String str) => AuthModel.fromJson(json.decode(str));
 
@@ -10,19 +9,19 @@ String authModelToJson(AuthModel data) => json.encode(data.toJson());
 class AuthModel {
   AuthModel({
     required this.user,
-    required this.jwt,
+    required this.token,
   });
 
   UserModel user;
-  JwtModel jwt;
+  String token;
 
   factory AuthModel.fromJson(Map<String, dynamic> json) => AuthModel(
         user: UserModel.fromJson(json["user"]),
-        jwt: JwtModel.fromJson(json["jwt"]),
+        token: json["token"],
       );
 
   Map<String, dynamic> toJson() => {
         "user": user.toJson(),
-        "jwt": jwt,
+        "token": token,
       };
 }

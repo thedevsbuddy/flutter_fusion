@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:basic_ui/helpers/Snackbar.dart';
-import 'package:flutter_mvc/app/models/UserModel.dart';
-import 'package:flutter_mvc/config/Config.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:basic_ui/basic_ui.dart';
 
+import '../../../config/Config.dart';
 import '../../helpers/Global.dart';
 import '../../helpers/request.dart';
-import '../Controller.dart';
+import '../../models/UserModel.dart';
 
-class AuthController extends GetxController with Controller {
+class AuthController extends GetxController {
   static AuthController get to => Get.find();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -36,36 +33,19 @@ class AuthController extends GetxController with Controller {
       return;
     }
 
-    if (usernameInput.text.isEmpty) {
-      ShowSnack.error(message: "Please type username to continue!");
-      return;
-    }
-    if (passwordInput.text.isEmpty) {
-      ShowSnack.error(message: "Please type password to continue!");
-      return;
-    }
-
-    showLoading(message: "Logging you in...");
-
     Map<String, dynamic> body = {
       "username": usernameInput.text,
       "password": passwordInput.text,
     };
 
     // var response =
-    //     await Request.post(Uri.parse('${Config.apiBaseUrl}/auth'), body: body)
-    //         .catchError(handleError);
-
-    Future.delayed(Duration(seconds: 3), () => hideLoading());
+    //     await Request.post(Uri.parse('${Config.apiBaseUrl}/auth'), body: body);
 
     // if (response == null) return;
   }
 
   Future<void> getUser() async {
-    var response = await Request.get(Uri.parse('${Config.apiBaseUrl}/profile'))
-        .catchError(handleError);
-
-    if (response.isNull) return;
+    var response = await Request.get(Uri.parse('${Config.apiBaseUrl}/profile'));
   }
 
   void logout() async {

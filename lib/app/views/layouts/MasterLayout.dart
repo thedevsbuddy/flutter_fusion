@@ -27,10 +27,11 @@ class MasterLayout extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Get.toNamed('/settings');
-              })
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Get.toNamed('/settings');
+            },
+          ),
         ],
       ),
       drawer: drawer ?? null,
