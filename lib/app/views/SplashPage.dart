@@ -4,15 +4,34 @@ import 'package:get/get.dart';
 
 import '../../config/Config.dart';
 import '../helpers/global.dart';
-import 'layouts/AuthLayout.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  initState() {
+    super.initState();
+    redirectUser();
+  }
+
+  void redirectUser() async {
+    if (Config.authRequired) {
+      if (auth.check()) {
+        await Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+      } else {
+        await Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/login'));
+      }
+    } else {
+      await Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size screen = Get.size;
-
-    redirectUser();
-
     return Scaffold(
       backgroundColor: kcPrimary,
       body: Container(
@@ -40,20 +59,5 @@ class SplashPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void redirectUser() async {
-    if (Config.authRequired) {
-      if (auth.check()) {
-        await Future.delayed(
-            Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
-      } else {
-        await Future.delayed(
-            Duration(seconds: 5), () => Get.offAllNamed('/login'));
-      }
-    } else {
-      await Future.delayed(
-          Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
-    }
   }
 }

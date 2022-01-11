@@ -1,6 +1,7 @@
+import 'package:basic_ui/basic_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:basic_ui/basic_ui.dart';
+
 import '../Config.dart';
 
 //======================================
@@ -113,8 +114,6 @@ final ThemeData lightThemeData = ThemeData(
   primaryColor: kcPrimary,
   primaryColorLight: kcPrimaryLight,
   hintColor: kcAccent,
-  accentColor: kcAccent,
-  buttonColor: kcPrimary,
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       padding: EdgeInsets.symmetric(horizontal: 20.0),

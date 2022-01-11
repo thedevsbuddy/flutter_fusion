@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'app/controllers/ThemeController.dart';
 import 'app/controllers/auth/AuthController.dart';
 import 'app/views/views.dart';
+import 'app/views/widgets/ThemeBuilder.dart';
 import 'config/Config.dart';
 import 'config/theme/AppTheme.dart';
 import 'routes/app.dart';
@@ -14,8 +14,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the storage
   await GetStorage.init();
-  // Initialize Theme controller
-  Get.put(ThemeController());
   // Initialize Auth controller
   Get.put(AuthController());
 
@@ -26,15 +24,26 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.rightToLeft,
-      title: "${Config.appName}",
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light, //
-      home: SplashPage(),
-      getPages: routes,
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
+        statusBarBrightness: Theme.of(context).brightness,
+      ),
+    );
+
+    return ThemeBuilder(
+      builder: (context, _themeMode) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          defaultTransition: Transition.rightToLeft,
+          title: "${Config.appName}",
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: _themeMode,
+          home: SplashPage(),
+          getPages: routes,
+        );
+      },
     );
   }
 }

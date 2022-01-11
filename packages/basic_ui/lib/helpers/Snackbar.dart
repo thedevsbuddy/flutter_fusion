@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 
 class ShowSnack {
   // Success
-  static void success(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
-    return Get.snackbar(
+  static void success({required String message, Duration duration = const Duration(seconds: 3)}) {
+    Get.snackbar(
       "Success!",
       Str.ucFirst(message),
       snackPosition: SnackPosition.BOTTOM,
@@ -21,10 +19,8 @@ class ShowSnack {
   }
 
   // Error
-  static void error(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
-    return Get.snackbar(
+  static void error({required String message, Duration duration = const Duration(seconds: 3)}) {
+    Get.snackbar(
       "Error!",
       Str.ucFirst(message),
       snackPosition: SnackPosition.BOTTOM,
@@ -38,10 +34,8 @@ class ShowSnack {
   }
 
   // Info
-  static void info(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
-    return Get.snackbar(
+  static void info({required String message, Duration duration = const Duration(seconds: 3)}) {
+    Get.snackbar(
       "Info!",
       Str.ucFirst(message),
       snackPosition: SnackPosition.BOTTOM,
@@ -55,10 +49,8 @@ class ShowSnack {
   }
 
   // Warning
-  static void warning(
-      {required String message,
-      Duration duration = const Duration(seconds: 3)}) {
-    return Get.snackbar(
+  static void warning({required String message, Duration duration = const Duration(seconds: 3)}) {
+    Get.snackbar(
       "Warning!",
       Str.ucFirst(message),
       snackPosition: SnackPosition.BOTTOM,
@@ -76,7 +68,7 @@ class ShowSnack {
       {required String message,
       Duration duration = const Duration(seconds: 3),
       SnackPosition position = SnackPosition.BOTTOM}) {
-    return Get.snackbar(
+    Get.snackbar(
       '',
       Str.ucFirst(message),
       snackPosition: position,

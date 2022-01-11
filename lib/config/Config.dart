@@ -9,7 +9,7 @@ class Config {
   //======================================
   // API base url
   //======================================
-  static String apiBaseUrl = "https://api.virtualplatform.com.au/v2";
+  static String apiBaseUrl = "https://example.com/api";
 
   //======================================
   // App Name
@@ -29,7 +29,7 @@ class Config {
   //======================================
   // Design screen width
   //======================================
-  static double screenWidth = 375.0; // Default iPhone design screen Width
+  static double screenWidth = 375.0;
 
   //======================================
   // Design screen height

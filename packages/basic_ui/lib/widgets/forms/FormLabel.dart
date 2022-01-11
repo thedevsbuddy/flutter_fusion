@@ -1,8 +1,6 @@
 import 'package:basic_ui/basic_ui.dart';
 import 'package:flutter/material.dart';
 
-import '../../helpers/TextStyl.dart';
-
 class FormLabel extends StatelessWidget {
   FormLabel({required this.label, this.color});
 
