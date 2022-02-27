@@ -6,7 +6,7 @@ class MasterLayout extends StatelessWidget {
   final Widget body;
   final Drawer? drawer;
   final Color? backgroundColor;
-  final String? title;
+  final dynamic title;
 
   MasterLayout({
     Key? key,
@@ -22,9 +22,11 @@ class MasterLayout extends StatelessWidget {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         elevation: 0,
-        title: Text(
-          "${title != null ? title : Config.appName}",
-        ),
+        title: title is String
+            ? Text(
+                "${title != null ? title : Config.appName}",
+              )
+            : title,
         actions: [
           IconButton(
             icon: Icon(Icons.settings),

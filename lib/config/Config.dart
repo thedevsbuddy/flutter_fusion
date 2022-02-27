@@ -4,7 +4,7 @@ class Config {
   //======================================
   // Is Auth Required In App
   //======================================
-  static bool authRequired = true;
+  static bool authRequired = false;
 
   //======================================
   // API base url

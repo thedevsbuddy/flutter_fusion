@@ -36,6 +36,7 @@ dependencies:
   flutter_svg: ^0.22.0
   basic_ui: 
     path: packages/basic_ui
+  connectivity_plus: ^2.2.1
 
 dev_dependencies:
   flutter_test:

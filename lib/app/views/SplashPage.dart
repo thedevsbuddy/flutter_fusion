@@ -20,12 +20,12 @@ class _SplashPageState extends State<SplashPage> {
   void redirectUser() async {
     if (Config.authRequired) {
       if (auth.check()) {
-        await Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+        await 5.delay(() => Get.offAllNamed('/dashboard'));
       } else {
-        await Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/login'));
+        await 5.delay(() => Get.offAllNamed('/login'));
       }
     } else {
-      await Future.delayed(Duration(seconds: 5), () => Get.offAllNamed('/dashboard'));
+      await 5.delay(() => Get.offAllNamed('/dashboard'));
     }
   }
 
@@ -53,7 +53,7 @@ class _SplashPageState extends State<SplashPage> {
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 32.0),
-              child: LoadingIconWidget(height: spacer),
+              child: LoadingIconWidget(height: spacer, color: kcWhite),
             ),
           ],
         ),

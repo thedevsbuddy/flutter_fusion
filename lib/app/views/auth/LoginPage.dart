@@ -1,5 +1,5 @@
-import 'package:basic_ui/basic_ui.dart';
 import 'package:adaptive_ui/adaptive_ui.dart';
+import 'package:basic_ui/basic_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,10 +10,7 @@ import '../../views/layouts/AuthLayout.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AdaptiveUI().init(
-        context: context,
-        height: Config.screenHeight,
-        width: Config.screenWidth);
+    AdaptiveUI().init(context: context, height: Config.screenHeight, width: Config.screenWidth);
 
     var screen = Get.size;
 
@@ -38,18 +35,14 @@ class LoginPage extends StatelessWidget {
                       SizedBox(height: 60),
                       Container(
                         child: Image.asset(
-                          image('logo_icon.png'),
+                          image('logo.png'),
                           width: 75,
                         ),
                       ),
                       SizedBox(height: 15),
-                      Text("Welcome Back,",
-                          style: TextStyl.title(context)!
-                              .copyWith(fontWeight: FontWeight.w700)),
+                      Text("Welcome Back,", style: TextStyl.title(context)!.copyWith(fontWeight: FontWeight.w700)),
                       SizedBox(height: 5),
-                      Text("Sign in to continue",
-                          style: TextStyl.body(context)!
-                              .copyWith(fontWeight: FontWeight.bold)),
+                      Text("Sign in to continue", style: TextStyl.body(context)!.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   Form(
@@ -61,18 +54,14 @@ class LoginPage extends StatelessWidget {
                           controller: auth.usernameInput,
                           placeholder: "Username",
                           leading: Icon(Icons.person_outline),
-                          validator: (value) => Validator("username", value!)
-                              .required()
-                              .validate(),
+                          validator: (value) => Validator("username", value!).required().validate(),
                         ),
                         SizedBox(height: 25),
                         FormInput.password(
                           controller: auth.passwordInput,
                           placeholder: "Password",
                           leading: Icon(Icons.lock_outline),
-                          validator: (value) => Validator("password", value!)
-                              .required()
-                              .validate(),
+                          validator: (value) => Validator("password", value!).required().validate(),
                         ),
                         SizedBox(height: 25),
                         Button.block(
