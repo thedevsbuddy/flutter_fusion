@@ -24,7 +24,7 @@ class _ThemeBuilderState extends State<ThemeBuilder> {
     if (mounted) setState(() {});
   }
 
-  void changeTheme(mode) {
+  void changeThemeTo(mode) {
     storage.write('theme_mode', mode);
     this.loadTheme();
   }

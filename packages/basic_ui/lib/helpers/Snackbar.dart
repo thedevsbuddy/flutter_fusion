@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ShowSnack {
-  // Success
+  /// Success
   static void success({required String message, Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Success!",
@@ -18,7 +18,7 @@ class ShowSnack {
     );
   }
 
-  // Error
+  /// Error
   static void error({required String message, Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Error!",
@@ -33,7 +33,7 @@ class ShowSnack {
     );
   }
 
-  // Info
+  /// Info
   static void info({required String message, Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Info!",
@@ -48,7 +48,7 @@ class ShowSnack {
     );
   }
 
-  // Warning
+  /// Warning
   static void warning({required String message, Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Warning!",
@@ -63,17 +63,14 @@ class ShowSnack {
     );
   }
 
-  // Warning
-  static void toast(
-      {required String message,
-      Duration duration = const Duration(seconds: 3),
-      SnackPosition position = SnackPosition.BOTTOM}) {
+  /// Toast
+  static void toast({required String message, Duration duration = const Duration(seconds: 3), SnackPosition position = SnackPosition.BOTTOM}) {
     Get.snackbar(
-      '',
-      Str.ucFirst(message),
+      "",
+      "${Str.ucFirst(message)}",
       snackPosition: position,
-      backgroundColor: Colors.black.withOpacity(0.9),
-      colorText: Colors.grey[200],
+      titleText: SizedBox.shrink(),
+      backgroundColor: Get.theme.backgroundColor,
       margin: EdgeInsets.all(0.0),
       borderRadius: 0.0,
       duration: duration,

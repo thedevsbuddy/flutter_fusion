@@ -22,6 +22,14 @@ class DashboardPage extends StatelessWidget {
               ? LoadingIconWidget(message: "Please wait...")
               : MasterLayout(
                   title: "Dashboard",
+                  actions: [
+                    IconButton(
+                      icon: Icon(Icons.settings),
+                      onPressed: () {
+                        Get.toNamed('/settings');
+                      },
+                    ),
+                  ],
                   body: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all(12.0.w),

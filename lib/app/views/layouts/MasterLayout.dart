@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvc/config/Config.dart';
-import 'package:get/get.dart';
 
 class MasterLayout extends StatelessWidget {
   final Widget body;
   final Drawer? drawer;
   final Color? backgroundColor;
   final dynamic title;
+  final List<Widget>? actions;
 
   MasterLayout({
     Key? key,
@@ -14,6 +14,7 @@ class MasterLayout extends StatelessWidget {
     this.drawer,
     this.backgroundColor,
     this.title,
+    this.actions,
   }) : super(key: key);
 
   @override
@@ -27,14 +28,7 @@ class MasterLayout extends StatelessWidget {
                 "${title != null ? title : Config.appName}",
               )
             : title,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Get.toNamed('/settings');
-            },
-          ),
-        ],
+        actions: actions,
       ),
       drawer: drawer ?? null,
       body: SafeArea(

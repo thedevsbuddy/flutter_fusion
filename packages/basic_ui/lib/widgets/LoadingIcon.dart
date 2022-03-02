@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class LoadingIconWidget extends StatelessWidget {
+class LoadingIcon extends StatelessWidget {
   final double? height;
   final Color? color;
 
-  LoadingIconWidget({Key? key, this.height, this.color}) : super(key: key);
+  LoadingIcon({Key? key, this.height, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

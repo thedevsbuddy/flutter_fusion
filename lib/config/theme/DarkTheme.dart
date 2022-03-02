@@ -1,12 +1,12 @@
 import 'package:basic_ui/basic_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_mvc/app/helpers/Global.dart';
 
 import '../Config.dart';
 
-//======================================
-// Dark Input Border
-//======================================
+///======================================
+/// Dark Input Border
+///======================================
 OutlineInputBorder _inputBorder() {
   return OutlineInputBorder(
     borderSide: BorderSide(
@@ -17,9 +17,9 @@ OutlineInputBorder _inputBorder() {
   );
 }
 
-//======================================
-// Dark Input Theme
-//======================================
+///======================================
+/// Dark Input Theme
+///======================================
 InputDecorationTheme _inputTheme() {
   return InputDecorationTheme(
     isDense: true,
@@ -32,17 +32,17 @@ InputDecorationTheme _inputTheme() {
   );
 }
 
-//======================================
-// Dark Icon Theme
-//======================================
+///======================================
+/// Dark Icon Theme
+///======================================
 IconThemeData _iconTheme = IconThemeData(
   color: kcOffWhite,
   size: 16.0,
 );
 
-//======================================
-// Dark Text Theme
-//======================================
+///======================================
+/// Dark Text Theme
+///======================================
 TextTheme _textThemeDark = TextTheme(
   headline1: TextStyle(
     fontSize: 30,
@@ -58,6 +58,21 @@ TextTheme _textThemeDark = TextTheme(
   ),
   headline3: TextStyle(
     fontSize: 20,
+    fontFamily: Config.headingFontFamily,
+    fontWeight: FontWeight.w600,
+    color: kcWhite,
+  ),
+  headline4: TextStyle(
+    fontFamily: Config.headingFontFamily,
+    fontWeight: FontWeight.w600,
+    color: kcWhite,
+  ),
+  headline5: TextStyle(
+    fontFamily: Config.headingFontFamily,
+    fontWeight: FontWeight.w600,
+    color: kcWhite,
+  ),
+  headline6: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
@@ -80,19 +95,19 @@ TextTheme _textThemeDark = TextTheme(
   ),
 );
 
-//======================================
-// Dark Theme
-//======================================
+///======================================
+/// Dark Theme
+///======================================
 final ThemeData darkThemeData = ThemeData(
   brightness: Brightness.dark,
   iconTheme: _iconTheme,
   textTheme: _textThemeDark,
-  fontFamily: GoogleFonts.raleway().fontFamily,
   scaffoldBackgroundColor: kcDarker,
   backgroundColor: kcDark,
   primaryColor: kcPrimary,
   primaryColorLight: kcPrimaryLight,
   hintColor: kcAccent,
+  primarySwatch: generateMaterialColor(kcPrimary),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -103,16 +118,23 @@ final ThemeData darkThemeData = ThemeData(
     padding: EdgeInsets.symmetric(horizontal: 20.0),
   ),
   appBarTheme: AppBarTheme(
-    color: kcDarkest,
     elevation: 0.0,
+    backgroundColor: kcPrimary,
     iconTheme: IconThemeData(color: kcOffWhite),
-    textTheme: TextTheme(
+    toolbarTextStyle: TextTheme(
       headline6: TextStyle(
         color: kcOffWhite,
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-    ),
+    ).headline6,
+    titleTextStyle: TextTheme(
+      headline6: TextStyle(
+        color: kcOffWhite,
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
+    ).headline6,
   ),
   inputDecorationTheme: _inputTheme(),
 );

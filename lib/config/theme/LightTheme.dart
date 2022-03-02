@@ -1,6 +1,6 @@
 import 'package:basic_ui/basic_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_mvc/app/helpers/Global.dart';
 
 import '../Config.dart';
 
@@ -83,6 +83,21 @@ TextTheme _textThemeLight = TextTheme(
     fontWeight: FontWeight.w600,
     color: kcDarker,
   ),
+  headline4: TextStyle(
+    fontFamily: Config.headingFontFamily,
+    fontWeight: FontWeight.w600,
+    color: kcWhite,
+  ),
+  headline5: TextStyle(
+    fontFamily: Config.headingFontFamily,
+    fontWeight: FontWeight.w600,
+    color: kcWhite,
+  ),
+  headline6: TextStyle(
+    fontFamily: Config.headingFontFamily,
+    fontWeight: FontWeight.w600,
+    color: kcWhite,
+  ),
   bodyText1: TextStyle(
     fontSize: 16.0,
     fontFamily: Config.bodyFontFamily,
@@ -108,11 +123,11 @@ final ThemeData lightThemeData = ThemeData(
   brightness: Brightness.light,
   iconTheme: _iconTheme,
   textTheme: _textThemeLight,
-  fontFamily: GoogleFonts.raleway().fontFamily,
   scaffoldBackgroundColor: kcOffWhite,
   backgroundColor: kcWhite,
   primaryColor: kcPrimary,
   primaryColorLight: kcPrimaryLight,
+  primarySwatch: generateMaterialColor(kcPrimary),
   hintColor: kcAccent,
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
@@ -125,14 +140,22 @@ final ThemeData lightThemeData = ThemeData(
   ),
   appBarTheme: AppBarTheme(
     elevation: 0.0,
+    backgroundColor: kcPrimary,
     iconTheme: IconThemeData(color: kcOffWhite),
-    textTheme: TextTheme(
+    toolbarTextStyle: TextTheme(
       headline6: TextStyle(
         color: kcOffWhite,
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-    ),
+    ).headline6,
+    titleTextStyle: TextTheme(
+      headline6: TextStyle(
+        color: kcOffWhite,
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
+    ).headline6,
   ),
   inputDecorationTheme: _inputTheme(),
 );

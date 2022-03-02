@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/TextStyl.dart';
 import '../helpers/ColorPalette.dart';
-import 'LoadingIconWidget.dart';
+import '../helpers/TextStyl.dart';
+import 'LoadingIcon.dart';
 
-enum ButtonType {
-  PRIMARY,
-  SECONDARY,
-  DANGER,
-  SUCCESS,
-  INFO,
-  WARNING,
-  DARK,
-  LIGHT
-}
+enum ButtonType { PRIMARY, SECONDARY, DANGER, SUCCESS, INFO, WARNING, DARK, LIGHT }
 
 class Button extends StatelessWidget {
   final String label;
@@ -208,17 +199,14 @@ class Button extends StatelessWidget {
               alignment: Alignment.center,
               decoration: !outline
                   ? BoxDecoration(
-                      color:
-                          !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
+                      color: !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                     )
                   : BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                       border: Border.all(
-                        color: !disabled
-                            ? btnBgColor
-                            : btnBgColor.withOpacity(0.5),
+                        color: !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
                         width: 1,
                       ),
                     ),
@@ -231,15 +219,13 @@ class Button extends StatelessWidget {
                         Text(
                           label,
                           style: TextStyl.button(context)?.copyWith(
-                            fontWeight:
-                                !outline ? FontWeight.bold : FontWeight.w400,
+                            fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
                             color: !outline ? btnTxtColor : btnBgColor,
                           ),
                         ),
                       ],
                     )
-                  : LoadingIconWidget(
-                      color: !outline ? btnTxtColor : btnBgColor),
+                  : LoadingIcon(color: !outline ? btnTxtColor : btnBgColor),
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -247,14 +233,11 @@ class Button extends StatelessWidget {
               children: [
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+                  padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
                   alignment: Alignment.center,
                   decoration: !outline
                       ? BoxDecoration(
-                          color: !disabled
-                              ? btnBgColor
-                              : btnBgColor.withOpacity(0.5),
+                          color: !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                           border: Border.all(
                             color: btnBgColor,
@@ -278,16 +261,13 @@ class Button extends StatelessWidget {
                             Text(
                               label,
                               style: TextStyl.button(context)?.copyWith(
-                                fontWeight: !outline
-                                    ? FontWeight.bold
-                                    : FontWeight.w400,
+                                fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
                                 color: !outline ? btnTxtColor : btnBgColor,
                               ),
                             ),
                           ],
                         )
-                      : LoadingIconWidget(
-                          color: !outline ? btnTxtColor : btnBgColor),
+                      : LoadingIcon(color: !outline ? btnTxtColor : btnBgColor),
                 ),
               ],
             ),

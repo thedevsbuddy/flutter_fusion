@@ -53,7 +53,7 @@ class _SplashPageState extends State<SplashPage> {
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 32.0),
-              child: LoadingIconWidget(height: spacer, color: kcWhite),
+              child: LoadingIcon(height: spacer, color: kcWhite),
             ),
           ],
         ),

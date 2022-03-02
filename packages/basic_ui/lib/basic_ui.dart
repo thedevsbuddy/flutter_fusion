@@ -14,7 +14,7 @@ export 'helpers/Helpers.dart';
 /// Export all Widgets files
 /// =========================
 export 'widgets/Button.dart';
-export 'widgets/LoadingIconWidget.dart';
+export 'widgets/LoadingIcon.dart';
 export 'widgets/forms/FormInput.dart';
 export 'widgets/forms/FormLabel.dart';
 export 'widgets/forms/FormSelect.dart';

@@ -28,7 +28,7 @@ class AppController extends GetxController {
         _isConnected(false);
       } else {
         _isConnected(true);
-        onReConnect();
+        onReconnect();
       }
     });
     scrollController.addListener(() {
@@ -44,7 +44,7 @@ class AppController extends GetxController {
     }
   }
 
-  void onReConnect() {
+  void onReconnect() {
     // TODO: Implement onReConnect Method
   }
 
