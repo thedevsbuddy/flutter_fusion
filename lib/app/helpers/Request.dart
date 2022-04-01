@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:basic_ui/basic_ui.dart';
-import 'package:flutter_mvc/app/models/ApiResponse.dart';
-import 'package:flutter_mvc/config/Config.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../config/Config.dart';
+import '../models/ApiResponse.dart';
 import '../views/views.dart';
 import 'Global.dart';
 
@@ -104,5 +104,19 @@ class Request {
       uri = "/$uri";
     }
     return Uri.parse("${Config.apiBaseUrl}$uri");
+  }
+
+  ///======================
+  /// Sanitize the API uri
+  ///======================
+  static String _handleParams(Map<String, dynamic>? params) {
+    String _params = '';
+
+    params?.keys.forEach((key) {
+      log.w(key);
+      // _params += "";
+    });
+
+    return _params;
   }
 }
