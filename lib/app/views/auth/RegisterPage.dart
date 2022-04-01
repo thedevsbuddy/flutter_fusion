@@ -7,7 +7,7 @@ import '../../../config/Config.dart';
 import '../../helpers/Global.dart';
 import '../../views/layouts/AuthLayout.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AdaptiveUI().init(context: context, height: Config.screenHeight, width: Config.screenWidth);
@@ -40,46 +40,60 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 15),
-                      Text("Welcome Back,", style: TextStyl.title(context)!.copyWith(fontWeight: FontWeight.w700)),
+                      Text("Welcome,", style: TextStyl.title(context)!.copyWith(fontWeight: FontWeight.w700)),
                       SizedBox(height: 5),
-                      Text("Sign in to continue", style: TextStyl.body(context)!.copyWith(fontWeight: FontWeight.bold)),
+                      Text("Create an account to continue.", style: TextStyl.body(context)!.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   Form(
-                    key: auth.formKey,
+                    // key: auth.formKey,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: Column(
                       children: [
                         FormInput.text(
                           controller: auth.usernameInput,
-                          placeholder: "Username",
+                          placeholder: "Name",
                           leading: Icon(Icons.person_outline),
-                          validator: (value) => Validator("username", value!).required().validate(),
+                          validator: (value) => Validator("Name", value!).required().validate(),
+                        ),
+                        SizedBox(height: 25),
+                        FormInput.text(
+                          controller: auth.usernameInput,
+                          placeholder: "Username",
+                          leading: Icon(Icons.alternate_email_outlined),
+                          validator: (value) => Validator("Username", value!).required().validate(),
+                        ),
+                        SizedBox(height: 25),
+                        FormInput.email(
+                          controller: auth.usernameInput,
+                          placeholder: "Email",
+                          leading: Icon(Icons.email_outlined),
+                          validator: (value) => Validator("Email", value!).email().required().validate(),
                         ),
                         SizedBox(height: 25),
                         FormInput.password(
                           controller: auth.passwordInput,
                           placeholder: "Password",
                           leading: Icon(Icons.lock_outline),
-                          validator: (value) => Validator("password", value!).required().validate(),
+                          validator: (value) => Validator("Password", value!).required().validate(),
                         ),
                         SizedBox(height: 25),
                         Button.block(
-                          label: "Login",
+                          label: "Register",
                           onTap: () => authController.login(),
                           busy: auth.isBusy,
                           disabled: auth.isBusy,
                         ),
                         SizedBox(height: 16),
                         GestureDetector(
-                          onTap: () => Get.offNamed("/register"),
+                          onTap: () => Get.offNamed("/login"),
                           child: Text.rich(
                             TextSpan(
-                              text: "Don't have an account?",
+                              text: "Already have an account?",
                               style: TextStyl.button(context)?.copyWith(color: Theme.of(context).textTheme.bodyText1?.color),
                               children: [
                                 TextSpan(
-                                  text: " Join Now",
+                                  text: " Login",
                                   style: TextStyl.button(context)?.copyWith(color: Theme.of(context).primaryColor),
                                 ),
                               ],

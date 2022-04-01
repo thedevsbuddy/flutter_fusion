@@ -22,6 +22,7 @@ class SettingsPage extends StatelessWidget {
           : controller.isBusy
               ? LoadingIconWidget(message: "Please wait...")
               : MasterLayout(
+                  title: "Settings",
                   body: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all(12.0.w),
