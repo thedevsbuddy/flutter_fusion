@@ -17,6 +17,8 @@ class AppController extends GetxController {
   bool get isSticky => this.setSticky.value;
   bool get isBusy => this.setBusy.value;
   bool get isConnected => this._isConnected.value;
+
+  /// Variables
   late StreamSubscription<ConnectivityResult> subscription;
 
   @override
@@ -45,7 +47,7 @@ class AppController extends GetxController {
   }
 
   void onReconnect() {
-    // TODO: Implement onReConnect Method
+    // TODO: Implement onReconnect Method
   }
 
   void checkConnection() async {
