@@ -7,6 +7,7 @@ List<GetPage> routes = [
   /// Auth Routes
   /// ===============================
   GetPage(name: '/login', page: () => LoginPage()),
+  GetPage(name: '/register', page: () => RegisterPage()),
 
   ///=======================================================///
 
