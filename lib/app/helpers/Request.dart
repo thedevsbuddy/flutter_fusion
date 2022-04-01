@@ -16,26 +16,26 @@ class Request {
   ///====================
   /// GET Request
   ///====================
-  static Future<dynamic> get(String url, {bool authenticate = false}) async {
-    var response = await http.get(_sanitizedUri(url), headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+  static Future<dynamic> get(String url, {Map<String, dynamic>? params, bool authenticate = false}) async {
+    var response = await http.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// POST Request
   ///====================
-  static Future<dynamic> post(String url, {dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> post(String url, {Map<String, dynamic>? params, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.post(_sanitizedUri(url), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// PUT Request
   ///====================
-  static Future<dynamic> put(String url, {dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> put(String url, {Map<String, dynamic>? params, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.put(_sanitizedUri(url), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
   }
@@ -43,9 +43,9 @@ class Request {
   ///====================
   /// DELETE Request
   ///====================
-  static Future<dynamic> delete(String url, {dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> delete(String url, {Map<String, dynamic>? params, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.delete(_sanitizedUri(url), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
   }
@@ -99,9 +99,11 @@ class Request {
   ///======================
   /// Sanitize the API uri
   ///======================
-  static dynamic _sanitizedUri(String uri) {
+  static dynamic _sanitizedUri(String uri, Map<String, dynamic>? params) {
     if (uri.toString()[0] != "/") {
-      uri = "/$uri";
+      uri = "/$uri${_handleParams(params)}";
+    } else {
+      uri = "$uri${_handleParams(params)}";
     }
     return Uri.parse("${Config.apiBaseUrl}$uri");
   }
@@ -113,10 +115,12 @@ class Request {
     String _params = '';
 
     params?.keys.forEach((key) {
-      log.w(key);
-      // _params += "";
+      if (params.keys.first == key) {
+        _params += "?$key=${params[key]}";
+      } else {
+        _params += "&$key=${params[key]}";
+      }
     });
-
     return _params;
   }
 }
