@@ -30,4 +30,15 @@ class ApiResponse {
   bool isOk() => status == 'success';
   bool isSuccessful() => status == 'success';
   bool hasError() => status == 'error';
+  bool hasData() {
+    if (data == null) {
+      return false;
+    } else if (data is List) {
+      if (data.length > 0) return true;
+    } else if (data is Map) {
+      if (data.length > 0) return true;
+    }
+
+    return false;
+  }
 }
