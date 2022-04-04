@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:basic_ui/basic_ui.dart';
 import 'package:get/get.dart';
@@ -16,26 +17,61 @@ class Request {
   ///====================
   /// GET Request
   ///====================
-  static Future<dynamic> get(String url, {Map<String, dynamic>? params, bool authenticate = false}) async {
-    var response = await http.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+  static Future<dynamic> get(String url, {Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
+    log.w(_getHeaders(token: authenticate, userHeaders: headers));
+    var response = await http.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// POST Request
   ///====================
-  static Future<dynamic> post(String url, {Map<String, dynamic>? params, dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> post(String url, {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    return _processResponse(response);
+  }
+
+  ///====================
+  /// MULTIPART Request
+  ///====================
+  static Future<dynamic> multipart(String url, {required String method, Map<String, dynamic>? params, Map<String, String>? headers, required Map<String, dynamic> body, bool authenticate = false}) async {
+    assert(body.containsKey('files'));
+    assert(method.toUpperCase() == "POST" || method.toUpperCase() == "PUT");
+    var request = http.MultipartRequest(method, _sanitizedUri(url, params));
+
+    var fileMap = body['files'];
+
+    fileMap.keys.forEach((key) async {
+      if (fileMap.keys[key] is List<File>) {
+        // TODO: Handle multiple files
+      } else if (fileMap.keys[key] is File) {
+        request.files.add(await http.MultipartFile.fromPath('$key', fileMap.keys[key].path));
+      }
+    });
+
+    body.keys.forEach((key) {
+      if (key != 'files') {
+        request.fields['$key'] = body[key];
+      }
+    });
+
+    log.w(request.fields.toString());
+    log.i(request.files.toString());
+    return;
+
+    var payload = json.encode(body);
+    var response = http.Response.fromStream(await request.send());
+    // var response = await http.post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// PUT Request
   ///====================
-  static Future<dynamic> put(String url, {Map<String, dynamic>? params, dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> put(String url, {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
   }
@@ -43,9 +79,9 @@ class Request {
   ///====================
   /// DELETE Request
   ///====================
-  static Future<dynamic> delete(String url, {Map<String, dynamic>? params, dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> delete(String url, {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
   }
@@ -55,7 +91,7 @@ class Request {
   ///
   /// @var bool token = true
   ///======================================
-  static Map<String, String> _getHeaders({bool token = true}) {
+  static Map<String, String> _getHeaders({bool token = true, Map<String, String>? userHeaders}) {
     Map<String, String> headers = {
       "Accept": "application/json",
       "Content-type": "application/json",
@@ -65,6 +101,8 @@ class Request {
       var _token = storage.read('token');
       headers = {"Content-type": "application/json", "Accept": "application/json", "Authorization": "Bearer $_token"};
     }
+    headers.assignAll(userHeaders!);
+
     return headers;
   }
 
