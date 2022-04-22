@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
+import 'dart:io';
 
 import 'package:basic_ui/basic_ui.dart';
 import 'package:get/get.dart';
@@ -37,32 +37,33 @@ class Request {
   ///====================
   static Future<dynamic> multipart(String url, {required String method, Map<String, dynamic>? params, Map<String, String>? headers, required Map<String, dynamic> body, bool authenticate = false}) async {
     assert(body.containsKey('files'));
+    assert(body['files'] != null);
+    assert(body['files'] is Map<String, File>);
     assert(method.toUpperCase() == "POST" || method.toUpperCase() == "PUT");
-    var request = http.MultipartRequest(method, _sanitizedUri(url, params));
+
+    var request = http.MultipartRequest("$method", _sanitizedUri(url, params));
+
+    body.keys.forEach((key) {
+      if (key != 'files') {
+        request.fields['$key'] = body["$key"];
+      }
+    });
 
     var fileMap = body['files'];
 
     fileMap.keys.forEach((key) async {
-      if (fileMap.keys[key] is List<File>) {
+      if (fileMap["$key"] is List<File>) {
         // TODO: Handle multiple files
-      } else if (fileMap.keys[key] is File) {
-        request.files.add(await http.MultipartFile.fromPath('$key', fileMap.keys[key].path));
+      } else if (fileMap["$key"] is File) {
+        request.files.add(await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
       }
     });
 
-    body.keys.forEach((key) {
-      if (key != 'files') {
-        request.fields['$key'] = body[key];
-      }
-    });
+    // Set Headers
+    request.headers.addAll(_getHeaders(token: authenticate));
 
-    log.w(request.fields.toString());
-    log.i(request.files.toString());
-    return;
-
-    var payload = json.encode(body);
-    var response = http.Response.fromStream(await request.send());
-    // var response = await http.post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http.Response.fromStream(await request.send());
+    log.i(response.statusCode);
     return _processResponse(response);
   }
 
