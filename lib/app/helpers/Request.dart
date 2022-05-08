@@ -122,7 +122,7 @@ class Request {
         break;
       case 401:
       case 403:
-        ShowSnack.toast(message: "You are logged out!");
+        Toastr.show(message: "You are logged out!");
         auth.logout();
         break;
       case 422:

@@ -23,6 +23,6 @@ class SettingController extends AppController {
   void changeTheme(context, themeMode) {
     _selectedTheme(themeMode);
     ThemeBuilder.of(context)?.changeThemeTo(_selectedTheme.value);
-    ShowSnack.toast(message: "ThemeMode updated to $themeMode");
+    Toastr.show(message: "ThemeMode updated to $themeMode");
   }
 }

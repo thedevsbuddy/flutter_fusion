@@ -28,3 +28,17 @@ const Color kcWarning = Color(0xFFF59E0B);
 /// Design specific colors
 const Color kcAppbarBackground = kcPrimary;
 const Color kcAppBarSearchBoxColor = Color(0xffD34A44);
+
+Color getContrastColor(Color color) {
+  int d = 0;
+
+// Counting the perceptive luminance - human eye favors green color...
+  double luminance = (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
+
+  if (luminance > 0.7)
+    d = 0; // bright colors - black font
+  else
+    d = 255; // dark colors - white font
+
+  return Color.fromARGB(color.alpha, d, d, d);
+}

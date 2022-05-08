@@ -2,7 +2,7 @@ import 'package:basic_ui/basic_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ShowSnack {
+class Toastr {
   /// Success
   static void success({required String message, Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
@@ -64,7 +64,7 @@ class ShowSnack {
   }
 
   /// Toast
-  static void toast({required String message, Duration duration = const Duration(seconds: 3), SnackPosition position = SnackPosition.BOTTOM}) {
+  static void show({required String message, Duration duration = const Duration(seconds: 3), SnackPosition position = SnackPosition.BOTTOM}) {
     Get.snackbar(
       "",
       "${Str.ucFirst(message)}",
