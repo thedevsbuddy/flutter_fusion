@@ -4,228 +4,273 @@ import '../helpers/ColorPalette.dart';
 import '../helpers/TextStyl.dart';
 import 'LoadingIcon.dart';
 
-enum ButtonType { PRIMARY, SECONDARY, DANGER, SUCCESS, INFO, WARNING, DARK, LIGHT }
+enum ButtonVariant { PRIMARY, SECONDARY, DANGER, SUCCESS, INFO, WARNING, DARK, LIGHT }
 
-class Button extends StatelessWidget {
+class Button extends StatefulWidget {
+  late final _ButtonState btnState;
+
   final String label;
-  final bool disabled;
-  final bool busy;
-  final void Function()? onTap;
+  final void Function(_ButtonState)? onTap;
   final bool outline;
   final Widget? leading;
+  final Widget? loadingIcon;
   final bool block;
   final bool flat;
-  final ButtonType variant;
+  final ButtonVariant variant;
 
-  const Button({
+  Button({
     Key? key,
     required this.label,
-    this.disabled = false,
-    this.busy = false,
     this.onTap,
     this.leading,
+    this.loadingIcon,
     this.flat = false,
   })  : outline = false,
         block = false,
-        variant = ButtonType.PRIMARY,
+        variant = ButtonVariant.PRIMARY,
         super(key: key);
 
-  const Button.outline({
+  Button.outline({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
-    this.variant = ButtonType.PRIMARY,
+    this.variant = ButtonVariant.PRIMARY,
   })  : block = false,
-        outline = true;
+        outline = true,
+        super(key: key);
 
-  const Button.outlineBlock({
+  Button.outlineBlock({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
-    this.variant = ButtonType.PRIMARY,
+    this.variant = ButtonVariant.PRIMARY,
   })  : block = true,
-        outline = true;
+        outline = true,
+        super(key: key);
 
-  const Button.block({
+  Button.block({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
-    this.variant = ButtonType.PRIMARY,
+    this.variant = ButtonVariant.PRIMARY,
   })  : block = true,
-        outline = false;
+        outline = false,
+        super(key: key);
 
-  const Button.primary({
+  Button.primary({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.PRIMARY;
+  })  : variant = ButtonVariant.PRIMARY,
+        super(key: key);
 
-  const Button.secondary({
+  Button.secondary({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.SECONDARY;
+  })  : variant = ButtonVariant.SECONDARY,
+        super(key: key);
 
-  const Button.success({
+  Button.success({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.SUCCESS;
+  })  : variant = ButtonVariant.SUCCESS,
+        super(key: key);
 
-  const Button.danger({
+  Button.danger({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.DANGER;
+  })  : variant = ButtonVariant.DANGER,
+        super(key: key);
 
-  const Button.info({
+  Button.info({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.INFO;
+  })  : variant = ButtonVariant.INFO,
+        super(key: key);
 
-  const Button.warning({
+  Button.warning({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.WARNING;
+  })  : variant = ButtonVariant.WARNING,
+        super(key: key);
 
-  const Button.dark({
+  Button.dark({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.DARK;
+  })  : variant = ButtonVariant.DARK,
+        super(key: key);
 
-  const Button.light({
+  Button.light({
+    Key? key,
     required this.label,
     this.onTap,
     this.leading,
-    this.disabled = false,
-    this.busy = false,
+    this.loadingIcon,
     this.flat = false,
     this.block = false,
     this.outline = false,
-  }) : variant = ButtonType.LIGHT;
+  })  : variant = ButtonVariant.LIGHT,
+        super(key: key);
+
+  @override
+  State<Button> createState() {
+    btnState = _ButtonState();
+    return btnState;
+  }
+}
+
+class _ButtonState extends State<Button> {
+  bool isBusy = false;
+  bool isDisabled = false;
+
+  setBusy(bool val) {
+    setState(() {
+      isBusy = val;
+    });
+    return widget.btnState;
+  }
+
+  setDisabled(bool val) {
+    setState(() {
+      isDisabled = val;
+    });
+    return widget.btnState;
+  }
 
   @override
   Widget build(BuildContext context) {
-    Color btnBgColor = variant == ButtonType.PRIMARY
+    Color btnBgColor = widget.variant == ButtonVariant.PRIMARY
         ? kcPrimary
-        : (variant == ButtonType.SECONDARY)
+        : (widget.variant == ButtonVariant.SECONDARY)
             ? kcSecondary
-            : (variant == ButtonType.DANGER)
+            : (widget.variant == ButtonVariant.DANGER)
                 ? kcDanger
-                : (variant == ButtonType.SUCCESS)
+                : (widget.variant == ButtonVariant.SUCCESS)
                     ? kcSuccess
-                    : (variant == ButtonType.INFO)
+                    : (widget.variant == ButtonVariant.INFO)
                         ? kcInfo
-                        : (variant == ButtonType.WARNING)
+                        : (widget.variant == ButtonVariant.WARNING)
                             ? kcWarning
-                            : (variant == ButtonType.DARK)
+                            : (widget.variant == ButtonVariant.DARK)
                                 ? kcDarker
-                                : (variant == ButtonType.LIGHT)
+                                : (widget.variant == ButtonVariant.LIGHT)
                                     ? kcOffWhite
                                     : kcPrimary;
 
-    Color btnTxtColor = variant == ButtonType.PRIMARY
+    Color btnTxtColor = widget.variant == ButtonVariant.PRIMARY
         ? kcWhite
-        : (variant == ButtonType.SECONDARY)
+        : (widget.variant == ButtonVariant.SECONDARY)
             ? kcWhite
-            : (variant == ButtonType.DANGER)
+            : (widget.variant == ButtonVariant.DANGER)
                 ? kcWhite
-                : (variant == ButtonType.SUCCESS)
+                : (widget.variant == ButtonVariant.SUCCESS)
                     ? kcWhite
-                    : (variant == ButtonType.INFO)
+                    : (widget.variant == ButtonVariant.INFO)
                         ? kcWhite
-                        : (variant == ButtonType.WARNING)
+                        : (widget.variant == ButtonVariant.WARNING)
                             ? kcDarker
-                            : (variant == ButtonType.DARK)
+                            : (widget.variant == ButtonVariant.DARK)
                                 ? kcWhite
-                                : (variant == ButtonType.LIGHT)
+                                : (widget.variant == ButtonVariant.LIGHT)
                                     ? kcDarker
                                     : kcWhite;
 
     return GestureDetector(
-      onTap: !disabled ? onTap : () {},
-      child: block
+      onTap: () {
+        if (!isBusy && !isDisabled) {
+          widget.onTap!(widget.btnState);
+        }
+      },
+      child: widget.block
           ? AnimatedContainer(
               duration: const Duration(milliseconds: 250),
               padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
               width: double.infinity,
               alignment: Alignment.center,
-              decoration: !outline
+              decoration: !widget.outline
                   ? BoxDecoration(
-                      color: !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                      color: !isDisabled ? btnBgColor : btnBgColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(!widget.flat ? 8 : 0),
                     )
                   : BoxDecoration(
                       color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                      borderRadius: BorderRadius.circular(!widget.flat ? 8 : 0),
                       border: Border.all(
-                        color: !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
+                        color: !isDisabled ? btnBgColor : btnBgColor.withOpacity(0.5),
                         width: 1,
                       ),
                     ),
-              child: !busy
+              child: !isBusy
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (leading != null) leading!,
-                        if (leading != null) SizedBox(width: 5),
+                        if (widget.leading != null) widget.leading!,
+                        if (widget.leading != null) SizedBox(width: 5),
                         Text(
-                          label,
+                          widget.label,
                           style: TextStyl.button(context)?.copyWith(
-                            fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                            color: !outline ? btnTxtColor : btnBgColor,
+                            fontWeight: !widget.outline ? FontWeight.bold : FontWeight.w400,
+                            color: !widget.outline ? btnTxtColor : btnBgColor,
                           ),
                         ),
                       ],
                     )
-                  : LoadingIcon(color: !outline ? btnTxtColor : btnBgColor),
+                  : widget.loadingIcon != null
+                      ? SizedBox(height: 20, width: 20, child: widget.loadingIcon)
+                      : LoadingIcon(
+                          color: !widget.outline ? btnTxtColor : btnBgColor,
+                          height: 16,
+                        ),
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -235,10 +280,10 @@ class Button extends StatelessWidget {
                   duration: const Duration(milliseconds: 250),
                   padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
                   alignment: Alignment.center,
-                  decoration: !outline
+                  decoration: !widget.outline
                       ? BoxDecoration(
-                          color: !disabled ? btnBgColor : btnBgColor.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                          color: !isDisabled ? btnBgColor : btnBgColor.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(!widget.flat ? 8 : 0),
                           border: Border.all(
                             color: btnBgColor,
                             width: 1,
@@ -246,28 +291,33 @@ class Button extends StatelessWidget {
                         )
                       : BoxDecoration(
                           color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                          borderRadius: BorderRadius.circular(!widget.flat ? 8 : 0),
                           border: Border.all(
                             color: btnBgColor,
                             width: 1,
                           ),
                         ),
-                  child: !busy
+                  child: !isBusy
                       ? Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            if (leading != null) leading!,
-                            if (leading != null) SizedBox(width: 5),
+                            if (widget.leading != null) widget.leading!,
+                            if (widget.leading != null) SizedBox(width: 5),
                             Text(
-                              label,
+                              widget.label,
                               style: TextStyl.button(context)?.copyWith(
-                                fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                                color: !outline ? btnTxtColor : btnBgColor,
+                                fontWeight: !widget.outline ? FontWeight.bold : FontWeight.w400,
+                                color: !widget.outline ? btnTxtColor : btnBgColor,
                               ),
                             ),
                           ],
                         )
-                      : LoadingIcon(color: !outline ? btnTxtColor : btnBgColor),
+                      : widget.loadingIcon != null
+                          ? SizedBox(height: 20, width: 20, child: widget.loadingIcon)
+                          : LoadingIcon(
+                              color: !widget.outline ? btnTxtColor : btnBgColor,
+                              height: 16,
+                            ),
                 ),
               ],
             ),

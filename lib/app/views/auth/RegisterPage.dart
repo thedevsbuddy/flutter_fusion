@@ -79,10 +79,13 @@ class RegisterPage extends StatelessWidget {
                         ),
                         SizedBox(height: 25),
                         Button.block(
+                          key: UniqueKey(),
                           label: "Register",
-                          onTap: () => authController.login(),
-                          busy: auth.isBusy,
-                          disabled: auth.isBusy,
+                          onTap: (btn) {
+                            btn.setBusy(true).setDisabled(true);
+                            authController.login();
+                            btn.setBusy(false).setDisabled(false);
+                          },
                         ),
                         SizedBox(height: 16),
                         GestureDetector(

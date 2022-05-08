@@ -15,7 +15,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AdaptiveUI().init(context: context, height: Config.screenHeight, width: Config.screenWidth);
-    final Size screen = Get.size;
+    // final Size screen = Get.size;
     return Obx(
       () => !controller.isConnected
           ? NotConnectedErrorPage()

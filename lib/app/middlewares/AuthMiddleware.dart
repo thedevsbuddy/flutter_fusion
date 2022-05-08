@@ -12,5 +12,6 @@ class AuthMiddleware extends GetMiddleware {
     if (!auth.check()) {
       return RouteSettings(name: '/login');
     }
+    return null;
   }
 }
