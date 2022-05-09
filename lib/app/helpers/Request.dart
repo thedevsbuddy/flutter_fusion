@@ -8,7 +8,6 @@ import 'package:http/http.dart' as http;
 
 import '../../config/Config.dart';
 import '../models/ApiResponse.dart';
-import '../views/views.dart';
 import 'Global.dart';
 
 class Request {
@@ -118,20 +117,17 @@ class Request {
       case 201:
         return body;
       case 400:
-        Get.to(() => ServerErrorPage(message: "Something went wrong!"), transition: Transition.fade);
-        break;
+        return body;
       case 401:
       case 403:
         Toastr.show(message: "You are logged out!");
         auth.logout();
-        break;
+        return;
       case 422:
-        Get.to(() => ServerErrorPage(message: "${body.message}"), transition: Transition.fade);
-        break;
+        return body;
       case 500:
       default:
-        Get.to(() => ServerErrorPage(message: "${body.message}"), transition: Transition.fade);
-        break;
+        return body;
     }
   }
 
