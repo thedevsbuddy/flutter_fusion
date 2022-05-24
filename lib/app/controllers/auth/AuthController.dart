@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mvc/app/controllers/AppController.dart';
+import 'package:basic_ui/basic_ui.dart';
+
+import '../../../config/Config.dart';
+import '../../helpers/Request.dart';
+import '../../models/ApiResponse.dart';
+import '../AppController.dart';
 import 'package:get/get.dart';
 
 import '../../helpers/Global.dart';
@@ -7,13 +11,9 @@ import '../../models/UserModel.dart';
 
 class AuthController extends AppController {
   static AuthController get to => Get.find();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   /// Observables
   var _user = UserModel().obs;
-
-  final TextEditingController usernameInput = TextEditingController();
-  final TextEditingController passwordInput = TextEditingController();
 
   /// Getters
   UserModel get user => this._user.value;
@@ -24,59 +24,44 @@ class AuthController extends AppController {
     getUser();
   }
 
-  void login() async {
-    // final isValid = formKey.currentState!.validate();
-    //
-    // if (!isValid) {
-    //   ShowSnack.error(message: "Please fill all the required fields!");
-    //   return;
-    // }
-    //
-    // Map<String, dynamic> body = {
-    //   "username": usernameInput.text,
-    //   "password": passwordInput.text,
-    // };
-    //
-    // setBusy(true);
-    // ApiResponse response = await Request.post('/auth', body: body);
-    //
-    // if (response.hasError()) {
-    //   ShowSnack.error(message: "${response.message}");
-    //   setBusy(false);
-    //   return;
-    // }
-    // ShowSnack.success(message: "${response.message}");
-    // await storage.write("token", response.data['token']);
-    // await storage.write("user", response.data['user']);
-    // _user(UserModel.fromJson(response.data['user']));
-    // setBusy(false);
-    // Get.offAllNamed("/dashboard");
-  }
-
   Future<void> getUser() async {
-    // if (storage.read("token") != null) {
-    //   ApiResponse response = await Request.get('/profile', authenticate: true);
-    //   if (response.hasError()) {
-    //     ShowSnack.error(message: "${response.message}");
-    //     setBusy(false);
-    //     return;
-    //   }
-    //   await storage.write("user", response.data);
-    //   _user(UserModel.fromJson(response.data));
-    // }
+    if (storage.read("token") != null) {
+      ApiResponse response = await Request.get('/profile', authenticate: true);
+
+      if (response.hasError()) {
+        Toastr.show(message: "${response.message}");
+        return;
+      }
+
+      if (response.hasData()) {
+        await storage.write("user", response.data);
+        _user(UserModel.fromJson(response.data));
+      }
+    }
   }
 
   Future<void> logout() async {
-    // ApiResponse response = await Request.post('/logout', authenticate: true);
-    // if (response.hasError()) {
-    //   ShowSnack.error(message: "${response.message}");
-    //   setBusy(false);
-    //   return;
-    // }
-    // ShowSnack.success(message: "${response.message}");
-    // await storage.remove('token');
-    // await storage.remove('user');
-    // Get.offAllNamed('/login');
+    ApiResponse response = await Request.post('/logout', authenticate: true);
+    if (response.hasError()) {
+      Toastr.show(message: "${response.message}");
+      return;
+    }
+    Toastr.show(message: "${response.message}");
+    await storage.remove('token');
+    await storage.remove('user');
+    if (auth.check()) {
+      Get.offAllNamed('/login');
+    } else {
+      Get.offAllNamed('${Config.homeUrl}');
+    }
+  }
+
+  Future<void> setUserData(data) async {
+    await storage.write("user", data);
+  }
+
+  Future<void> setUserToken(token) async {
+    await storage.write("token", token);
   }
 
   bool check() {

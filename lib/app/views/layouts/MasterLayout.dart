@@ -19,20 +19,20 @@ class MasterLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: AppBar(
-        elevation: 0,
-        title: title is String
-            ? Text(
-                "${title != null ? title : Config.appName}",
-              )
-            : title,
-        actions: actions,
-      ),
-      drawer: drawer ?? null,
-      body: SafeArea(
-        child: body,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: AppBar(
+          elevation: 0,
+          title: title is String
+              ? Text(
+                  "${title != null ? title : Config.appName}",
+                )
+              : title,
+          actions: actions,
+        ),
+        drawer: drawer ?? null,
+        body: body,
       ),
     );
   }

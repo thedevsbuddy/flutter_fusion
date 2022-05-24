@@ -17,6 +17,11 @@ class Config {
   static String appName = "Flutter Starter MVC";
 
   //======================================
+  // Home/Dashboard URL [To be used to redirect user after login]
+  //======================================
+  static String homeUrl = "/dashboard";
+
+  //======================================
   // Font Family For The Headings And Titles
   //======================================
   static String? headingFontFamily = GoogleFonts.raleway().fontFamily;

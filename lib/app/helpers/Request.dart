@@ -16,25 +16,44 @@ class Request {
   ///====================
   /// GET Request
   ///====================
-  static Future<dynamic> get(String url, {Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
+  static Future<dynamic> get(String url,
+      {Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      bool authenticate = false}) async {
     log.w(_getHeaders(token: authenticate, userHeaders: headers));
-    var response = await http.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http
+        .get(_sanitizedUri(url, params),
+            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// POST Request
   ///====================
-  static Future<dynamic> post(String url, {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> post(String url,
+      {Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      dynamic body,
+      bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http
+        .post(_sanitizedUri(url, params),
+            body: payload,
+            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// MULTIPART Request
   ///====================
-  static Future<dynamic> multipart(String url, {required String method, Map<String, dynamic>? params, Map<String, String>? headers, required Map<String, dynamic> body, bool authenticate = false}) async {
+  static Future<dynamic> multipart(String url,
+      {required String method,
+      Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      required Map<String, dynamic> body,
+      bool authenticate = false}) async {
     assert(body.containsKey('files'));
     assert(body['files'] != null);
     assert(body['files'] is Map<String, File>);
@@ -54,7 +73,8 @@ class Request {
       if (fileMap["$key"] is List<File>) {
         // TODO: Handle multiple files
       } else if (fileMap["$key"] is File) {
-        request.files.add(await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
+        request.files.add(
+            await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
       }
     });
 
@@ -69,9 +89,17 @@ class Request {
   ///====================
   /// PUT Request
   ///====================
-  static Future<dynamic> put(String url, {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> put(String url,
+      {Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      dynamic body,
+      bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http
+        .put(_sanitizedUri(url, params),
+            body: payload,
+            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
   }
@@ -79,9 +107,17 @@ class Request {
   ///====================
   /// DELETE Request
   ///====================
-  static Future<dynamic> delete(String url, {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  static Future<dynamic> delete(String url,
+      {Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      dynamic body,
+      bool authenticate = false}) async {
     var payload = json.encode(body);
-    var response = await http.delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    var response = await http
+        .delete(_sanitizedUri(url, params),
+            body: payload,
+            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
   }
@@ -91,7 +127,8 @@ class Request {
   ///
   /// @var bool token = true
   ///======================================
-  static Map<String, String> _getHeaders({bool token = true, Map<String, String>? userHeaders}) {
+  static Map<String, String> _getHeaders(
+      {bool token = true, Map<String, String>? userHeaders}) {
     Map<String, String> headers = {
       "Accept": "application/json",
       "Content-type": "application/json",
@@ -99,9 +136,13 @@ class Request {
 
     if (token) {
       var _token = storage.read('token');
-      headers = {"Content-type": "application/json", "Accept": "application/json", "Authorization": "Bearer $_token"};
+      headers = {
+        "Content-type": "application/json",
+        "Accept": "application/json",
+        "Authorization": "Bearer $_token"
+      };
     }
-    headers.assignAll(userHeaders!);
+    if (userHeaders != null) headers.assignAll(userHeaders);
 
     return headers;
   }

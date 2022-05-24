@@ -6,7 +6,12 @@ import 'package:get/get.dart';
 import '../../helpers/Global.dart';
 
 class ServerErrorPage extends StatelessWidget {
-  ServerErrorPage({Key? key, required this.message, this.action, this.actionLabel = "Retry"}) : super(key: key);
+  ServerErrorPage(
+      {Key? key,
+      required this.message,
+      this.action,
+      this.actionLabel = "Retry"})
+      : super(key: key);
 
   final String message;
   final VoidCallback? action;
@@ -32,7 +37,8 @@ class ServerErrorPage extends StatelessWidget {
             SizedBox(height: 24.0),
             Text('Oops!', style: Theme.of(context).textTheme.headline3),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32.0)
+                  .copyWith(top: 8.0),
               child: Text(
                 '$message',
                 style: Theme.of(context).textTheme.subtitle1,
@@ -40,15 +46,18 @@ class ServerErrorPage extends StatelessWidget {
               ),
             ),
             Spacer(flex: 1),
-            Button(
-              key: UniqueKey(),
-              label: "Go Back",
-              leading: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
+            Container(
+              height: 50,
+              child: Button.block(
+                key: UniqueKey(),
+                label: "Go Back",
+                leading: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                ),
+                onTap: (_) => Get.back(),
+                flat: true,
               ),
-              onTap: (_) => Get.back(),
-              flat: true,
             ),
           ],
         ),

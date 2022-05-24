@@ -10,6 +10,7 @@ class FormInput extends StatelessWidget {
   final bool isPassword;
   final TextInputType type;
   final int rows;
+  final TextInputAction action;
 
   const FormInput({
     Key? key,
@@ -20,6 +21,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.text,
         isPassword = false,
         super(key: key);
@@ -33,6 +35,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.text,
         isPassword = false,
         super(key: key);
@@ -46,6 +49,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.text,
         isPassword = true,
         super(key: key);
@@ -59,6 +63,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.number,
         isPassword = false,
         super(key: key);
@@ -72,6 +77,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.emailAddress,
         isPassword = false,
         super(key: key);
@@ -85,6 +91,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.datetime,
         isPassword = false,
         super(key: key);
@@ -98,6 +105,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 1,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.url,
         isPassword = false,
         super(key: key);
@@ -111,6 +119,7 @@ class FormInput extends StatelessWidget {
     this.leading,
     this.rows = 4,
     this.onSaved,
+    this.action = TextInputAction.next,
   })  : type = TextInputType.multiline,
         isPassword = false,
         super(key: key);
@@ -130,6 +139,7 @@ class FormInput extends StatelessWidget {
       obscureText: isPassword,
       validator: validator,
       onSaved: onSaved,
+      textInputAction: action,
     );
   }
 }

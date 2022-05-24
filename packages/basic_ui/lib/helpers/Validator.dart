@@ -28,7 +28,8 @@ class Validator {
   /// Equal rule
   Validator isEqual(dynamic val, String fieldMatchWith) {
     if (value != val) {
-      errors.assign("$field", "${Str.ucFirst(fieldMatchWith)} and ${Str.ucFirst(field)} doesn't match!");
+      errors.assign("$field",
+          "${Str.ucFirst(fieldMatchWith)} and ${Str.ucFirst(field)} doesn't match!");
     }
     return this;
   }
@@ -44,7 +45,8 @@ class Validator {
   /// Min character rule
   Validator min(int minLength) {
     if (value.length < minLength) {
-      errors.assign("$field", "${Str.ucFirst(field)} must be $minLength character!");
+      errors.assign(
+          "$field", "${Str.ucFirst(field)} must be $minLength character!");
     }
     return this;
   }
@@ -52,7 +54,8 @@ class Validator {
   /// Max character rule
   Validator max(int maxLength) {
     if (GetUtils.isLengthGreaterThan(value, maxLength)) {
-      errors.assign("$field", "${Str.ucFirst(field)} must be less than or equal to $maxLength character!");
+      errors.assign("$field",
+          "${Str.ucFirst(field)} must be less than or equal to $maxLength character!");
     }
     return this;
   }
@@ -60,7 +63,17 @@ class Validator {
   /// Characters length is between given rule
   Validator between(int minLength, int maxLength) {
     if (!GetUtils.isLengthBetween(value, minLength, maxLength)) {
-      errors.assign("$field", "${Str.ucFirst(field)} must be between $minLength and $maxLength character!");
+      errors.assign("$field",
+          "${Str.ucFirst(field)} must be between $minLength and $maxLength character!");
+    }
+    return this;
+  }
+
+  /// Value does not contain any special character
+  Validator specialCharacter({String? allowed}) {
+    if (value.contains(RegExp(r'[\s\-$&+,:;=?@#|<>\.^*()%!\\]'))) {
+      errors.assign("$field",
+          "${Str.ucFirst(field)} not allow any special character except underscores (_)");
     }
     return this;
   }

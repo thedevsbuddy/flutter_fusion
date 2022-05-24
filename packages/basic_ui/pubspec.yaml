@@ -8,7 +8,6 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  adaptive_ui: ^0.1.1
   flutter:
     sdk: flutter
   google_fonts: ^2.1.0

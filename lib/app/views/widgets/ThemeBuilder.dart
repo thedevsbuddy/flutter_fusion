@@ -39,7 +39,9 @@ class _ThemeBuilderState extends State<ThemeBuilder> {
           ? ThemeMode.system
           : _mode == 'light'
               ? ThemeMode.light
-              : ThemeMode.dark;
+              : _mode == 'dark'
+                  ? ThemeMode.dark
+                  : ThemeMode.system;
     });
   }
 

@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 
 class Toastr {
   /// Success
-  static void success({required String message, Duration duration = const Duration(seconds: 3)}) {
+  static void success(
+      {required String message,
+      Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Success!",
       Str.ucFirst(message),
@@ -19,7 +21,9 @@ class Toastr {
   }
 
   /// Error
-  static void error({required String message, Duration duration = const Duration(seconds: 3)}) {
+  static void error(
+      {required String message,
+      Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Error!",
       Str.ucFirst(message),
@@ -34,7 +38,9 @@ class Toastr {
   }
 
   /// Info
-  static void info({required String message, Duration duration = const Duration(seconds: 3)}) {
+  static void info(
+      {required String message,
+      Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Info!",
       Str.ucFirst(message),
@@ -49,7 +55,9 @@ class Toastr {
   }
 
   /// Warning
-  static void warning({required String message, Duration duration = const Duration(seconds: 3)}) {
+  static void warning(
+      {required String message,
+      Duration duration = const Duration(seconds: 3)}) {
     Get.snackbar(
       "Warning!",
       Str.ucFirst(message),
@@ -64,13 +72,20 @@ class Toastr {
   }
 
   /// Toast
-  static void show({required String message, Duration duration = const Duration(seconds: 3), SnackPosition position = SnackPosition.BOTTOM}) {
+  static void show(
+      {required String message,
+      Duration duration = const Duration(seconds: 3),
+      SnackPosition position = SnackPosition.BOTTOM}) {
     Get.snackbar(
       "",
-      "${Str.ucFirst(message)}",
+      "",
       snackPosition: position,
       titleText: SizedBox.shrink(),
-      backgroundColor: Get.theme.backgroundColor,
+      backgroundColor: Colors.black.withOpacity(0.95),
+      messageText: Text(
+        "${Str.ucFirst(message)}",
+        style: TextStyle(color: Colors.white, fontSize: 14),
+      ),
       margin: EdgeInsets.all(0.0),
       borderRadius: 0.0,
       duration: duration,
