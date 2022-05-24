@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppController extends GetxController {
-  static AppController get to => Get.find();
-  ScrollController scrollController = new ScrollController(keepScrollOffset: false);
+  ScrollController scrollController =
+      new ScrollController(keepScrollOffset: false);
 
   /// Observables
   RxBool setSticky = false.obs;
@@ -25,7 +25,9 @@ class AppController extends GetxController {
   void onInit() {
     super.onInit();
     this.checkConnection();
-    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
         _isConnected(false);
       } else {
