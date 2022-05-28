@@ -1,4 +1,4 @@
-import 'package:basic_ui/basic_ui.dart';
+import 'package:ui_x/ui_x.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mvc/app/controllers/AppController.dart';
 import 'package:flutter_mvc/app/views/errors/ServerErrorPage.dart';

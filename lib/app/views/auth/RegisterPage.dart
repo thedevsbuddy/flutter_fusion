@@ -1,8 +1,7 @@
-import 'package:basic_ui/basic_ui.dart';
+import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../config/Config.dart';
 import '../../helpers/Global.dart';
 import '../../views/layouts/AuthLayout.dart';
 

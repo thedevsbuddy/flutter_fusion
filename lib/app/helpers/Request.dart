@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:basic_ui/basic_ui.dart';
+import 'package:ui_x/ui_x.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 

@@ -1,4 +1,4 @@
-import 'package:basic_ui/basic_ui.dart';
+import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvc/app/helpers/Global.dart';
 
@@ -24,7 +24,8 @@ class LoadingIconWidget extends StatelessWidget {
                 color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
-                  BoxShadow(color: Colors.black.withOpacity(0.15), blurRadius: 5),
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.15), blurRadius: 5),
                 ],
               ),
               child: Column(

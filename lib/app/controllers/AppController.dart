@@ -18,14 +18,17 @@ class AppController extends GetxController {
   bool get isBusy => this.setBusy.value;
   bool get isConnected => this._isConnected.value;
 
-  /// Variables
-  late StreamSubscription<ConnectivityResult> subscription;
+  /// StreamSubscription for ConnectivityResult
+  /// ```dart
+  /// StreamSubscription<ConnectivityResult>
+  /// ```
+  late StreamSubscription<ConnectivityResult> connectivitySubscription;
 
   @override
   void onInit() {
     super.onInit();
     this.checkConnection();
-    subscription = Connectivity()
+    connectivitySubscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
@@ -48,10 +51,15 @@ class AppController extends GetxController {
     }
   }
 
+  /// Executes when user re-connect to any network.
+  /// ```
+  /// [Cellular Data | WiFi]
+  /// ```
   void onReconnect() {
-    // TODO: Implement onReconnect Method
+    /// TODO: Implement onReconnect Method
   }
 
+  /// Checks User connection state.
   void checkConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
 
@@ -65,7 +73,7 @@ class AppController extends GetxController {
   @override
   void onClose() {
     scrollController.dispose();
-    subscription.cancel();
+    connectivitySubscription.cancel();
     super.onClose();
   }
 }
