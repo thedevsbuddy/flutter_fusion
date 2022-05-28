@@ -1,4 +1,4 @@
-library basic_ui;
+library ui_x;
 
 /// ========================
 /// Export all Config files

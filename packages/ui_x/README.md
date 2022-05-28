@@ -1,4 +1,4 @@
-# basic_ui
+# ui_x
 
 A new Flutter package project.
 
