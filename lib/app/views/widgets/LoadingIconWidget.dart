@@ -1,6 +1,6 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvc/app/helpers/Global.dart';
+import 'package:ui_x/ui_x.dart';
 
 class LoadingIconWidget extends StatelessWidget {
   LoadingIconWidget({Key? key, this.message = "Loading..."}) : super(key: key);
@@ -24,8 +24,7 @@ class LoadingIconWidget extends StatelessWidget {
                 color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.15), blurRadius: 5),
+                  BoxShadow(color: Colors.black.withOpacity(0.15), blurRadius: 5),
                 ],
               ),
               child: Column(
@@ -39,7 +38,7 @@ class LoadingIconWidget extends StatelessWidget {
                   SizedBox(height: 20),
                   Text(
                     "$message",
-                    style: TextStyl.body(context),
+                    style: TextStyl.body,
                     textAlign: TextAlign.center,
                   ),
                 ],

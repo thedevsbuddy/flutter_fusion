@@ -1,9 +1,9 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvc/app/controllers/DashboardController.dart';
 import 'package:flutter_mvc/app/views/errors/NotConnectedErrorPage.dart';
 import 'package:flutter_mvc/app/views/widgets/LoadingIconWidget.dart';
 import 'package:get/get.dart';
+import 'package:ui_x/ui_x.dart';
 
 import '../layouts/MasterLayout.dart';
 
@@ -43,33 +43,27 @@ class DashboardPage extends StatelessWidget {
                               : ListView.separated(
                                   itemCount: controller.tasks.length,
                                   itemBuilder: (context, index) {
-                                    Map<String, dynamic> task =
-                                        controller.tasks[index];
+                                    Map<String, dynamic> task = controller.tasks[index];
                                     return GestureDetector(
-                                      onDoubleTap: () =>
-                                          controller.removeTask(index),
+                                      onDoubleTap: () => controller.removeTask(index),
                                       child: Container(
                                         color: kcWhite,
                                         child: ListTile(
                                           dense: true,
                                           title: Text(
                                             "${task['task']}",
-                                            style: TextStyl.subtitle(context)
-                                                ?.copyWith(fontSize: 18),
+                                            style: TextStyl.heading1,
                                           ),
                                           trailing: Checkbox(
                                             value: task['completed'],
-                                            onChanged: (val) =>
-                                                controller.toggleTask(index),
+                                            onChanged: (val) => controller.toggleTask(index),
                                           ),
-                                          onTap: () =>
-                                              controller.toggleTask(index),
+                                          onTap: () => controller.toggleTask(index),
                                         ),
                                       ),
                                     );
                                   },
-                                  separatorBuilder: (context, idx) =>
-                                      Divider(height: 0),
+                                  separatorBuilder: (context, idx) => Divider(height: 0),
                                 ),
                         ),
                         Row(

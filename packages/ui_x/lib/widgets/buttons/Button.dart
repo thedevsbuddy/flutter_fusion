@@ -230,7 +230,7 @@ class Button extends StatelessWidget {
                           if (leading != null) SizedBox(width: 5),
                           Text(
                             label,
-                            style: TextStyl.button(context)?.copyWith(
+                            style: TextStyl.button?.copyWith(
                               fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
                               color: !outline ? btnTxtColor : btnBgColor,
                             ),
@@ -277,7 +277,7 @@ class Button extends StatelessWidget {
                               if (leading != null) SizedBox(width: 5),
                               Text(
                                 label,
-                                style: TextStyl.button(context)?.copyWith(
+                                style: TextStyl.button?.copyWith(
                                   fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
                                   color: !outline ? btnTxtColor : btnBgColor,
                                 ),
