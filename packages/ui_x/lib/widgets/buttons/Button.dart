@@ -161,9 +161,10 @@ class Button extends StatelessWidget {
   })  : variant = ButtonVariant.LIGHT,
         super(key: key);
 
+  final ButtonController btnController = Get.find<ButtonController>();
+
   @override
   Widget build(BuildContext context) {
-    final ButtonController btnController = Get.put(ButtonController(), tag: key.toString());
     Color btnBgColor = variant == ButtonVariant.PRIMARY
         ? kcPrimary
         : (variant == ButtonVariant.SECONDARY)

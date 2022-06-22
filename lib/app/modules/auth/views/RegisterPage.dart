@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../helpers/Global.dart';
-import '../../views/layouts/AuthLayout.dart';
+import '../../../helpers/Global.dart';
+import '../../../views/layouts/AuthLayout.dart';
 
 class RegisterPage extends StatelessWidget {
   @override

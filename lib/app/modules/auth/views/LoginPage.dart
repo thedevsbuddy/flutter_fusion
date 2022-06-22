@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../controllers/auth/LoginController.dart';
-import '../../helpers/Global.dart';
-import '../../views/layouts/AuthLayout.dart';
+import '../../../helpers/Global.dart';
+import '../../../views/layouts/AuthLayout.dart';
+import '../controllers/LoginController.dart';
 
 class LoginPage extends StatelessWidget {
   final LoginController controller = Get.put(LoginController());
@@ -67,7 +67,11 @@ class LoginPage extends StatelessWidget {
                         Button.block(
                           key: UniqueKey(),
                           label: "Login",
-                          onTap: (ButtonController btn) => controller.login(btn),
+                          onTap: (ButtonController btn) async {
+                            btn.setBusy(true).setDisabled(true);
+                            await controller.login();
+                            btn.setBusy(false).setDisabled(false);
+                          },
                         ),
                         SizedBox(height: 16),
                         GestureDetector(

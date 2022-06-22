@@ -1,8 +1,9 @@
-import 'package:flutter_mvc/app/controllers/AppController.dart';
 import 'package:get/get.dart';
 
+import 'AppController.dart';
+
 class ExampleController extends AppController {
-  static ExampleController get to => Get.find();
+  static ExampleController get instance => Get.find();
 
   /// Observables
 

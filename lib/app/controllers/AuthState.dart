@@ -1,20 +1,20 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:get/get.dart';
+import 'package:ui_x/ui_x.dart';
 
-import '../../../config/Config.dart';
-import '../../helpers/Request.dart';
-import '../../helpers/Global.dart';
-import '../../models/ApiResponse.dart';
-import '../../models/UserModel.dart';
-import '../AppController.dart';
+import '../../config/Config.dart';
+import '../helpers/Global.dart';
+import '../helpers/Request.dart';
+import '../models/ApiResponse.dart';
+import '../models/UserModel.dart';
+import 'AppController.dart';
 
 /// Manages authentication states and logics
 /// for entire application
-class AuthController extends AppController {
-  /// Static Getter for [AuthController]
+class AuthState extends AppController {
+  /// Static Getter for [AuthState]
   ///
-  /// Can be accessed by calling `AuthController.to`
-  static AuthController get to => Get.find<AuthController>();
+  /// Can be accessed by calling `AuthState.instance`
+  static AuthState get instance => Get.find<AuthState>();
 
   /// Observables
   var _user = UserModel().obs;
@@ -55,7 +55,7 @@ class AuthController extends AppController {
     Toastr.show(message: "${response.message}");
     await storage.remove('token');
     await storage.remove('user');
-    if (check()) {
+    if (await this.check) {
       Get.offAllNamed('/login');
     } else {
       Get.offAllNamed('${Config.homeUrl}');
@@ -73,10 +73,9 @@ class AuthController extends AppController {
   }
 
   /// Checks if user is logged in by validating the token
-  check() async {
+  Future<bool> get check async {
     if (storage.read('token') != null) {
-      ApiResponse response =
-          await Request.get("/validate-token", authenticate: true);
+      ApiResponse response = await Request.get("/validate-token", authenticate: true);
       if (response.hasError()) {
         return false;
       }

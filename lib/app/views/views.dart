@@ -1,8 +1,6 @@
 export 'SplashPage.dart';
 
 /// AUTH RELATED ROUTES
-export 'auth/LoginPage.dart';
-export 'auth/RegisterPage.dart';
 export 'dashboard/DashboardPage.dart';
 
 /// MAIN ROUTES

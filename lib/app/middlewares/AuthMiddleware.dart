@@ -9,7 +9,7 @@ class AuthMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (!auth.check()) {
+    if (auth.check) {
       return RouteSettings(name: '/login');
     }
     return null;

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../app/modules/auth/views/LoginPage.dart';
+import '../app/modules/auth/views/RegisterPage.dart';
 import '../app/views/views.dart';
 
 List<GetPage> routes = [

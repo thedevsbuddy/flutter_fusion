@@ -1,8 +1,8 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mvc/app/controllers/AppController.dart';
 import 'package:flutter_mvc/app/views/errors/ServerErrorPage.dart';
 import 'package:get/get.dart';
+import 'package:ui_x/ui_x.dart';
 
 class DashboardController extends AppController {
   static DashboardController get to => Get.find();
@@ -21,33 +21,33 @@ class DashboardController extends AppController {
     super.onInit();
     setBusy(true);
     for (int i in Iterable.generate(5)) {
-      _tasks.add({'task': "Task no. $i", "completed": false});
+      _tasks.add({'id': i + 1, 'task': "Task no. $i", "completed": false});
     }
     setBusy(false);
   }
 
-  void saveTask(ButtonController btn) async {
+  Future<void> saveTask() async {
     try {
-      btn.setBusy(true).setDisabled(true);
-      // await Future.delayed(1.seconds);
+      if (taskInput.text.isEmpty) {
+        Toastr.show(message: "Please enter a task to continue!");
+        return;
+      }
+      await Future.delayed(1.seconds);
       _tasks.add({
+        "id": _tasks.last['id'] + 1,
         "task": taskInput.text,
         "completed": false,
       });
       taskInput.clear();
-      btn.setBusy(false).setDisabled(false);
     } catch (e) {
-      btn.setBusy(false).setDisabled(false);
       Get.to(ServerErrorPage(message: "$e"));
     }
   }
 
-  void toggleTask(int index) async {
+  void toggleTask(int id) async {
     try {
-      var selectedTask = _tasks[index];
-      selectedTask['completed'] = !selectedTask['completed'];
-      _tasks.removeAt(index);
-      _tasks.insert(index, selectedTask);
+      _tasks.where((t) => t['id'] == id).first.update("completed", (value) => value = !value);
+      _tasks.refresh();
     } catch (e) {
       Get.to(ServerErrorPage(message: "$e"));
     }

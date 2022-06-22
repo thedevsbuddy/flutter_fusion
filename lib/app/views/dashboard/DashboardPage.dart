@@ -52,13 +52,13 @@ class DashboardPage extends StatelessWidget {
                                           dense: true,
                                           title: Text(
                                             "${task['task']}",
-                                            style: TextStyl.heading1,
+                                            style: TextStyl.body,
                                           ),
                                           trailing: Checkbox(
                                             value: task['completed'],
-                                            onChanged: (val) => controller.toggleTask(index),
+                                            onChanged: (val) => controller.toggleTask(task['id']),
                                           ),
-                                          onTap: () => controller.toggleTask(index),
+                                          onTap: () => controller.toggleTask(task['id']),
                                         ),
                                       ),
                                     );
@@ -80,7 +80,21 @@ class DashboardPage extends StatelessWidget {
                             Button(
                               key: UniqueKey(),
                               label: "Create",
-                              onTap: (btn) => controller.saveTask(btn),
+                              onTap: (btn) async {
+                                btn.setBusy(true);
+                                await controller.saveTask();
+                                btn.setBusy(false);
+                              },
+                            ),
+                            SizedBox(width: 12),
+                            Button(
+                              key: UniqueKey(),
+                              label: "Create Again",
+                              onTap: (btn) async {
+                                btn.setBusy(true);
+                                await controller.saveTask();
+                                btn.setBusy(false);
+                              },
                             ),
                           ],
                         ),

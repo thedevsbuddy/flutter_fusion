@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'app/controllers/auth/AuthController.dart';
+import 'app/services/GlobalBindings.dart';
 import 'app/views/views.dart';
 import 'app/views/widgets/ThemeBuilder.dart';
 import 'config/Config.dart';
@@ -17,8 +17,6 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
   // Initialize the storage
   await GetStorage.init();
-  // Initialize Auth controller
-  Get.put(AuthController());
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
@@ -29,9 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
-            : Colors.black,
+        statusBarColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
         statusBarBrightness: Theme.of(context).brightness,
       ),
     );
@@ -45,6 +41,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: _themeMode,
+          initialBinding: GlobalBindings(),
           home: SplashPage(),
           getPages: routes,
         );
@@ -56,8 +53,6 @@ class MyApp extends StatelessWidget {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

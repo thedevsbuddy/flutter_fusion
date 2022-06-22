@@ -1,9 +1,9 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ui_x/ui_x.dart';
 
 import '../../config/Config.dart';
-import '../helpers/global.dart';
+import '../helpers/Global.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
 
   void redirectUser() async {
     if (Config.authRequired) {
-      if (auth.check()) {
+      if (await auth.check) {
         await 5.delay(() => Get.offAllNamed('/dashboard'));
       } else {
         await 5.delay(() => Get.offAllNamed('/login'));
