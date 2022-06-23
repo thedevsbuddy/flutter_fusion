@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
 import '../../../helpers/Global.dart';
-import '../../../views/layouts/AuthLayout.dart';
+import '../../../shared/views/layouts/AuthLayout.dart';
 
 class RegisterPage extends StatelessWidget {
   @override

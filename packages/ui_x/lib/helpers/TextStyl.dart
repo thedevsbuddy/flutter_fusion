@@ -44,7 +44,7 @@ class TextStyl {
   }
 
   static TextStyle? get button {
-    return Theme.of(Get.context!).textTheme.button?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600);
+    return Theme.of(Get.context!).textTheme.button?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, height: 1.07);
   }
 
   static TextStyle? get label {

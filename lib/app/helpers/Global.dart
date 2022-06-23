@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
 
-import '../controllers/AuthState.dart';
+import '../shared/controllers/AuthState.dart';
+
 
 ///======================================
 /// Get Instance of AuthController

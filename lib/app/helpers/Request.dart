@@ -16,14 +16,9 @@ class Request {
   ///====================
   /// GET Request
   ///====================
-  static Future<dynamic> get(String url,
-      {Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      bool authenticate = false}) async {
-    log.w(_getHeaders(token: authenticate, userHeaders: headers));
+  static Future<dynamic> get(String url, {Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
     var response = await http
-        .get(_sanitizedUri(url, params),
-            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
@@ -32,15 +27,10 @@ class Request {
   /// POST Request
   ///====================
   static Future<dynamic> post(String url,
-      {Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      dynamic body,
-      bool authenticate = false}) async {
+      {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
     var response = await http
-        .post(_sanitizedUri(url, params),
-            body: payload,
-            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
@@ -73,8 +63,7 @@ class Request {
       if (fileMap["$key"] is List<File>) {
         // TODO: Handle multiple files
       } else if (fileMap["$key"] is File) {
-        request.files.add(
-            await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
+        request.files.add(await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
       }
     });
 
@@ -90,15 +79,10 @@ class Request {
   /// PUT Request
   ///====================
   static Future<dynamic> put(String url,
-      {Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      dynamic body,
-      bool authenticate = false}) async {
+      {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
     var response = await http
-        .put(_sanitizedUri(url, params),
-            body: payload,
-            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
@@ -108,15 +92,10 @@ class Request {
   /// DELETE Request
   ///====================
   static Future<dynamic> delete(String url,
-      {Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      dynamic body,
-      bool authenticate = false}) async {
+      {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
     var payload = json.encode(body);
     var response = await http
-        .delete(_sanitizedUri(url, params),
-            body: payload,
-            headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
@@ -127,8 +106,7 @@ class Request {
   ///
   /// @var bool token = true
   ///======================================
-  static Map<String, String> _getHeaders(
-      {bool token = true, Map<String, String>? userHeaders}) {
+  static Map<String, String> _getHeaders({bool token = true, Map<String, String>? userHeaders}) {
     Map<String, String> headers = {
       "Accept": "application/json",
       "Content-type": "application/json",
@@ -136,11 +114,7 @@ class Request {
 
     if (token) {
       var _token = storage.read('token');
-      headers = {
-        "Content-type": "application/json",
-        "Accept": "application/json",
-        "Authorization": "Bearer $_token"
-      };
+      headers = {"Content-type": "application/json", "Accept": "application/json", "Authorization": "Bearer $_token"};
     }
     if (userHeaders != null) headers.assignAll(userHeaders);
 

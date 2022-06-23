@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvc/app/modules/auth/services/login/LoginService.dart';
-import 'package:flutter_mvc/app/views/errors/ServerErrorPage.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
 import '../../../../config/Config.dart';
-import '../../../controllers/AppController.dart';
 import '../../../helpers/Global.dart';
 import '../../../models/ApiResponse.dart';
+import '../../../shared/controllers/AppController.dart';
+import '../../../shared/views/errors/ServerErrorPage.dart';
+import '../../Modules.dart';
 
 class LoginController extends AppController {
   static LoginController get instance => Get.find();
@@ -24,19 +24,20 @@ class LoginController extends AppController {
       // Toastr.show(message: "Please fill all the required fields!");
       return;
     }
+
     try {
       ApiResponse response = await _loginService.login(identifier: identifierInput.text, password: passwordInput.text);
-      log.w(response.data['user']);
+      // log.w(response.data);
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");
         return;
       }
-      // await auth.setUserData(jsonEncode(response.data['user']));
+      await auth.setUserData(response.data['user']);
       await auth.setUserToken(response.data['token']);
       Toastr.show(message: "${response.message}");
 
       Get.offAllNamed("${Config.homeUrl}");
-    } catch (e) {
+    } on Exception catch (e) {
       Get.to(() => ServerErrorPage(message: "$e"));
     }
   }

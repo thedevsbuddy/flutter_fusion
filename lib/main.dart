@@ -5,9 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'app/services/GlobalBindings.dart';
-import 'app/views/views.dart';
-import 'app/views/widgets/ThemeBuilder.dart';
+import 'app/shared/bindings/Bindings.dart';
+import 'app/shared/views/widgets/ThemeBuilder.dart';
 import 'config/Config.dart';
 import 'config/theme/AppTheme.dart';
 import 'routes/app.dart';
@@ -15,7 +14,8 @@ import 'routes/app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
-  // Initialize the storage
+
+  /// Initialize the storage
   await GetStorage.init();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -42,7 +42,8 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
           themeMode: _themeMode,
           initialBinding: GlobalBindings(),
-          home: SplashPage(),
+          initialRoute: "/",
+          // home: SplashPage(),
           getPages: routes,
         );
       },
