@@ -8,9 +8,10 @@ class GlobalBindings implements Bindings {
   @override
   void dependencies() {
     /// [AuthService] instance
-    Get.lazyPut<AuthService>(() => AuthService.MOCK_ENABLED ? MockAuthService() : AppAuthService());
+    Get.lazyPut<AuthService>(
+        () => AuthService.MOCK_ENABLED ? MockAuthService() : AppAuthService());
 
-    /// Initialize Auth controller
+    /// Initialize [AuthState]
     Get.lazyPut<AuthState>(() => AuthState(), fenix: true);
 
     /// [ButtonController] instance
