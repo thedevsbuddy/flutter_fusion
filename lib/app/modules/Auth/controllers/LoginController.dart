@@ -12,7 +12,7 @@ import '../../Modules.dart';
 class LoginController extends AppController {
   static LoginController get instance => Get.find();
 
-  final LoginService _loginService = Get.put<LoginService>(LoginService.MOCK_ENABLED ? MockLoginService() : AppLoginService());
+  final LoginService _loginService = LoginService.instance;
 
   /// Variables
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -26,7 +26,15 @@ class LoginController extends AppController {
     }
 
     try {
-      ApiResponse response = await _loginService.login(identifier: identifierInput.text, password: passwordInput.text);
+
+      /// Prepare form data to be sent to server
+      Map<String, dynamic> body = {
+        "email": identifierInput.text,
+        "password": passwordInput.text,
+      };
+
+      /// Call api to login user
+      ApiResponse response = await _loginService.submit(body: body);
       // log.w(response.data);
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");

@@ -1,20 +1,12 @@
 import 'package:get/get_utils/get_utils.dart';
 
 import '../../../../models/ApiResponse.dart';
-import 'LoginService.dart';
+import 'RegisterService.dart';
 
-class MockLoginService implements LoginService {
+class MockRegisterService implements RegisterService {
   @override
-  Future<ApiResponse> login({required String identifier, required String password}) async {
+  Future<ApiResponse> submit({required Map<String, dynamic> body}) async {
     return await Future.delayed(2.seconds, (){
-      if (identifier != 'shoaib' && password != 'secret') {
-        return ApiResponse(
-          status: "0",
-          message: "Credentials do not match in our records.",
-          data: null,
-        );
-      }
-
       return ApiResponse(
         status: "1",
         message: "Logged in successfully.",
@@ -35,9 +27,4 @@ class MockLoginService implements LoginService {
 
   }
 
-  @override
-  Future<ApiResponse> googleLogin() {
-    // TODO: implement googleLogin
-    throw UnimplementedError();
-  }
 }

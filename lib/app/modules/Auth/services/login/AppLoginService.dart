@@ -4,13 +4,13 @@ import 'LoginService.dart';
 
 class AppLoginService implements LoginService {
   @override
-  Future<ApiResponse> login({required String identifier, required String password}) async {
+  Future<ApiResponse> submit({required Map<String, dynamic> body}) async {
     // TODO: implement login
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> googleLogin() {
+  Future<ApiResponse> google() {
     // TODO: implement googleLogin
     throw UnimplementedError();
   }
