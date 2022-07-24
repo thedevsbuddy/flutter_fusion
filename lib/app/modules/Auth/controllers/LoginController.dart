@@ -19,7 +19,7 @@ class LoginController extends AppController {
   final TextEditingController identifierInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
 
-  Future<void> login() async {
+  Future<void> submit() async {
     if (!formKey.currentState!.validate()) {
       // Toastr.show(message: "Please fill all the required fields!");
       return;
@@ -46,7 +46,7 @@ class LoginController extends AppController {
 
       Get.offAllNamed("${Config.homeUrl}");
     } on Exception catch (e) {
-      Get.to(() => ServerErrorPage(message: "$e"));
+      Get.to(() => ServerErrorPage(message: "${e.toString()}"));
     }
   }
 }

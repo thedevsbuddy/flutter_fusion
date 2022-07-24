@@ -1,17 +1,17 @@
-import 'package:flutter_mvc/app/models/ApiResponse.dart';
 
+import '../../../../helpers/Request.dart';
+import '../../../../models/ApiResponse.dart';
 import 'LoginService.dart';
 
-class AppLoginService implements LoginService {
+class AppLoginService implements LoginService{
   @override
   Future<ApiResponse> submit({required Map<String, dynamic> body}) async {
-    // TODO: implement login
-    throw UnimplementedError();
+    return await Request.post('/login', body: body);
   }
 
   @override
   Future<ApiResponse> google() {
-    // TODO: implement googleLogin
+    // TODO: implement google
     throw UnimplementedError();
   }
 }

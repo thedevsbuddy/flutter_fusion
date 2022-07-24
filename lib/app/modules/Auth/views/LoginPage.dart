@@ -1,3 +1,4 @@
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
@@ -27,7 +28,7 @@ class LoginPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
+                children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -38,9 +39,9 @@ class LoginPage extends StatelessWidget {
                           width: 75,
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: spacer),
                       Text("Welcome Back,", style: TextStyl.title!.copyWith(fontWeight: FontWeight.w700)),
-                      SizedBox(height: 5),
+                      const SizedBox(height: spacer1),
                       Text("Sign in to continue", style: TextStyl.body!.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -52,7 +53,7 @@ class LoginPage extends StatelessWidget {
                         FormInput.text(
                           controller: controller.identifierInput,
                           placeholder: "Username",
-                          leading: Icon(Icons.person_outline),
+                          leading: Icon(FeatherIcons.user),
                           validator: (value) => Validator("username", value!).specialCharacter().required().validate(),
                         ),
                         SizedBox(height: 25),
@@ -69,7 +70,7 @@ class LoginPage extends StatelessWidget {
                           label: "Login",
                           onTap: (ButtonController btn) async {
                             btn.setBusy(true).setDisabled(true);
-                            await controller.login();
+                            await controller.submit();
                             btn.setBusy(false).setDisabled(false);
                           },
                         ),

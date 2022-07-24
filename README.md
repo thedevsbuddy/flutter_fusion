@@ -1,9 +1,9 @@
 # Flutter MVC Starter
 
 A starter project to begin any new flutter project.
-It has the ```Get``` package and some more custom made helpers and packages to help the dev to build their apps with ease.
+It has the ```GetX``` package and some more custom made helpers and packages to help the dev to build their apps with ease.
 
-It uses the ```MVC``` pattern which is by default in the ```Get``` Package.
+It uses the ```MVC``` pattern which is one of the best pattern among developers.
 
 ## Getting Started
 

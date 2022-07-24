@@ -9,18 +9,14 @@ import '../../Modules.dart';
 
 class RegisterController extends AppController {
   static RegisterController get instance => Get.find();
-
   final LoginController loginController = Get.put(LoginController());
-
-  final RegisterService _registerService = Get.put<RegisterService>(RegisterService.MOCK_ENABLED ? MockRegisterService() : AppRegisterService());
-
+  final RegisterService _registerService = RegisterService.instance;
 
   /// Observable
   var _selectedState = 0.obs;
 
   /// Getters
   int get selectedState => _selectedState.value;
-
 
   /// Variables
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -33,23 +29,22 @@ class RegisterController extends AppController {
   final TextEditingController confirmPasswordInput = TextEditingController();
 
   @override
-  void onInit(){
+  void onInit() {
     super.onInit();
   }
 
   Future<void> submit() async {
-    if (!formKey.currentState!.validate()) {
-      return;
-    }
+    if (!formKey.currentState!.validate()) return;
 
     try {
       Map<String, dynamic> body = {
-        "full_name": firstNameInput.text + " " + lastNameInput.text,
+        "first_name": firstNameInput.text,
+        "last_name": lastNameInput.text,
         "email": emailInput.text,
         "password": passwordInput.text,
         "phone": phoneInput.text,
         "state": _selectedState.value,
-        "referal_code": "",
+        "referral_code": "",
       };
 
       ApiResponse response = await _registerService.submit(body: body);
@@ -58,15 +53,17 @@ class RegisterController extends AppController {
         Toastr.show(message: "${response.message}");
         return;
       }
-      Toastr.show(message: "${response.message}");
 
-      Get.offAllNamed('/login');
+      loginController.identifierInput.text = emailInput.text;
+      loginController.passwordInput.text = passwordInput.text;
+
+      await loginController.submit();
     } on Exception catch (e) {
-      Get.to(() => ServerErrorPage(message: "$e"));
+      Get.to(() => ServerErrorPage(message: "${e.toString()}"));
     }
   }
 
-  void onStateSelect(int state){
+  void onStateSelect(int state) {
     _selectedState(state);
   }
 }
