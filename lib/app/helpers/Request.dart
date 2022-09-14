@@ -112,10 +112,10 @@ class Request {
         .get(_sanitizedUri(url, {}), headers: _getHeaders(token: authenticate, userHeaders: {}))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = new File('$dir/$fileName');
-    await file.writeAsBytes(response.bodyBytes);
-    return file;
+    String _dir = (await getApplicationDocumentsDirectory()).path;
+    File _file = new File('$_dir/$fileName');
+    await _file.writeAsBytes(response.bodyBytes);
+    return _file;
   }
 
   ///======================================
