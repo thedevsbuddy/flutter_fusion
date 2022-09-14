@@ -20,7 +20,7 @@ class Request {
   ///====================
   static Future<dynamic> get(String url,
       {Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
-    var response = await _client
+    http.Response response = await _client
         .get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
@@ -31,8 +31,8 @@ class Request {
   ///====================
   static Future<dynamic> post(String url,
       {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
-    var payload = json.encode(body);
-    var response = await _client
+    String payload = json.encode(body);
+    http.Response response = await _client
         .post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
@@ -42,16 +42,16 @@ class Request {
   /// MULTIPART Request
   ///====================
   static Future<dynamic> multipart(String url,
-      {required String method,
+      {String method = 'POST',
+      required Map<String, dynamic> body,
       Map<String, dynamic>? params,
       Map<String, String>? headers,
-      required Map<String, dynamic> body,
       bool authenticate = false}) async {
     assert(body.containsKey('files'));
     assert(body['files'] != null);
     assert(body['files'] is Map<String, File> || body['files'] is Map<String, List<File>>);
     assert(method.toUpperCase() == "POST" || method.toUpperCase() == "PUT");
-    var request = http.MultipartRequest("$method", _sanitizedUri(url, params));
+    http.MultipartRequest request = http.MultipartRequest("$method", _sanitizedUri(url, params));
 
     body.keys.forEach((key) {
       if (key != 'files') {
@@ -59,7 +59,7 @@ class Request {
       }
     });
 
-    var fileMap = body['files'];
+    Map<String, dynamic> fileMap = body['files'];
 
     fileMap.keys.forEach((key) async {
       if (fileMap["$key"] is List<File>) {
@@ -74,7 +74,7 @@ class Request {
     /// Set Headers
     request.headers.addAll(_getHeaders(token: authenticate));
 
-    var response = await http.Response.fromStream(await _client.send(request));
+    http.Response response = await http.Response.fromStream(await _client.send(request));
     return _processResponse(response);
   }
 
@@ -83,8 +83,8 @@ class Request {
   ///====================
   static Future<dynamic> put(String url,
       {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
-    var payload = json.encode(body);
-    var response = await _client
+    String payload = json.encode(body);
+    http.Response response = await _client
         .put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
@@ -96,8 +96,8 @@ class Request {
   ///====================
   static Future<dynamic> delete(String url,
       {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
-    var payload = json.encode(body);
-    var response = await _client
+    String payload = json.encode(body);
+    http.Response response = await _client
         .delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
@@ -108,7 +108,7 @@ class Request {
   /// DOWNLOAD [File] Request
   ///====================
   static Future<dynamic> download(String url, {String? fileName, bool authenticate = false}) async {
-    var response = await _client
+    http.Response response = await _client
         .get(_sanitizedUri(url, {}), headers: _getHeaders(token: authenticate, userHeaders: {}))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
