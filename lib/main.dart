@@ -5,11 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'app/shared/bindings/Bindings.dart';
+import 'app/shared/controllers/AuthState.dart';
 import 'app/shared/views/widgets/ThemeBuilder.dart';
 import 'config/Config.dart';
 import 'config/theme/AppTheme.dart';
-import 'routes/app.dart';
+import 'routes/Router.dart';
+import 'routes/Routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,9 @@ void main() async {
 
   /// Initialize the storage
   await GetStorage.init();
+
+  /// Initialize [AuthState]
+  Get.lazyPut<AuthState>(() => AuthState(), fenix: true);
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
@@ -27,9 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
-            : Colors.black,
+        statusBarColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
         statusBarBrightness: Theme.of(context).brightness,
       ),
     );
@@ -43,8 +45,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: _themeMode,
-          initialBinding: GlobalBindings(),
-          initialRoute: "/",
+          initialRoute: Routes.splash,
           getPages: routes,
         );
       },
@@ -55,8 +56,6 @@ class MyApp extends StatelessWidget {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

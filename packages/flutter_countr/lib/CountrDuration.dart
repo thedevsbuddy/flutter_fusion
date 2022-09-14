@@ -1,4 +1,3 @@
-
 class CountrDuration {
   final String? days;
   final String? hours;

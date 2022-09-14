@@ -8,8 +8,12 @@ import '../../../shared/views/errors/ServerErrorPage.dart';
 import '../../Modules.dart';
 
 class RegisterController extends AppController {
-  static RegisterController get instance => Get.find();
-  final LoginController loginController = Get.put(LoginController());
+  static RegisterController get instance {
+    if (!Get.isRegistered<RegisterController>()) Get.put(RegisterController());
+    return Get.find<RegisterController>();
+  }
+
+  final LoginController loginController = LoginController.instance;
   final RegisterService _registerService = RegisterService.instance;
 
   /// Observable

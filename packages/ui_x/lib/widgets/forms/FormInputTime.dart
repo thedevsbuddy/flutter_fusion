@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ui_x/helpers/ColorPalette.dart';
 
 class FormInputTime extends StatelessWidget {
-  FormInputTime({Key? key, this.value, this.onChanged, this.firstDate, this.lastDate}) : super(key: key);
+  FormInputTime(
+      {Key? key, this.value, this.onChanged, this.firstDate, this.lastDate})
+      : super(key: key);
 
   final TimeOfDay? value;
   final TimeOfDay? firstDate;
@@ -30,7 +32,8 @@ class FormInputTime extends StatelessWidget {
           border: Border.all(color: Colors.black.withOpacity(0.25), width: 1.0),
           borderRadius: BorderRadius.circular(4),
         ),
-        child: Text("${value!.hour < 10 ? "0" + value!.hour.toString() : value!.hour}-${value!.minute}"),
+        child: Text(
+            "${value!.hour < 10 ? "0" + value!.hour.toString() : value!.hour}-${value!.minute}"),
       ),
     );
   }

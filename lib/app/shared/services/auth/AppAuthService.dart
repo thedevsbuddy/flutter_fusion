@@ -15,19 +15,7 @@ class AppAuthService implements AuthService {
   }
 
   @override
-  Future<ApiResponse> login({required String identifier, required String password}) async {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<ApiResponse> register({required Map<String, dynamic> body}) async {
-    // TODO: implement register
-    throw UnimplementedError();
-  }
-
-  @override
-  void logout() {
-    // TODO: implement logout
+  Future<ApiResponse> logout() async {
+    return await Request.get('/logout', authenticate: true);
   }
 }

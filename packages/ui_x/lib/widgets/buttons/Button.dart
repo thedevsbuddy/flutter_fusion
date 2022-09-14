@@ -161,7 +161,7 @@ class Button extends StatelessWidget {
   })  : variant = ButtonVariant.LIGHT,
         super(key: key);
 
-  final ButtonController btnController = Get.find<ButtonController>();
+  final ButtonController btnController = ButtonController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -300,6 +300,11 @@ class Button extends StatelessWidget {
 }
 
 class ButtonController extends GetxController {
+  static ButtonController get instance {
+    if (!Get.isRegistered<ButtonController>()) Get.create(() => ButtonController());
+    return Get.find<ButtonController>();
+  }
+
   RxBool _isBusy = RxBool(false);
   RxBool _isDisabled = RxBool(false);
 

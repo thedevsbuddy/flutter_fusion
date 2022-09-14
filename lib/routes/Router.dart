@@ -4,14 +4,7 @@ import '../app/modules/Modules.dart';
 import 'middlewares/AuthMiddleware.dart';
 
 List<GetPage> routes = [
-  ///================================
-  /// Splash Routes
-  /// ===============================
-  GetPage(name: '/', page: () => SplashPage()),
-
-  ///================================
-  /// Auth Routes
-  /// ===============================
+  GetPage(name: '/splash', page: () => SplashPage()),
   GetPage(name: '/login', page: () => LoginPage()),
   GetPage(name: '/register', page: () => RegisterPage()),
 
@@ -26,4 +19,8 @@ List<GetPage> routes = [
   /// Setting Page Route
   /// ===============================
   GetPage(name: '/settings', page: () => SettingsPage()),
+  GetPage(
+    name: '/settings/store',
+    page: () => SettingsPage(),
+  ),
 ];

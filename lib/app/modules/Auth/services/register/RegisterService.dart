@@ -10,10 +10,13 @@ abstract class RegisterService {
 
   /// Create and get the instance of [RegisterService]
   static RegisterService get instance {
-    if (!Get.isRegistered<RegisterService>()) Get.lazyPut<RegisterService>(() => _MOCK_ENABLED ? MockRegisterService() : AppRegisterService());
+    if (!Get.isRegistered<RegisterService>())
+      Get.lazyPut<RegisterService>(
+          () => _MOCK_ENABLED ? MockRegisterService() : AppRegisterService());
 
     return Get.find<RegisterService>();
   }
+
   /// Register user
   Future<ApiResponse> submit({required Map<String, dynamic> body});
 }

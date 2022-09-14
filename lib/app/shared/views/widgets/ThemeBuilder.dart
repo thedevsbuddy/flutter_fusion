@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../helpers/Global.dart';
 
-
 class ThemeBuilder extends StatefulWidget {
   final Widget Function(BuildContext context, ThemeMode themeMode) builder;
   ThemeBuilder({required this.builder});

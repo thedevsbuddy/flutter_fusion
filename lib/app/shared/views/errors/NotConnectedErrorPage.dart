@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvc/app/helpers/Global.dart';
 
 class NotConnectedErrorPage extends StatelessWidget {
-  NotConnectedErrorPage({Key? key, this.message = "You are not connected to internet!", this.action, this.actionLabel = "Retry"}) : super(key: key);
+  NotConnectedErrorPage(
+      {Key? key,
+      this.message = "You are not connected to internet!",
+      this.action,
+      this.actionLabel = "Retry"})
+      : super(key: key);
 
   final String? message;
   final VoidCallback? action;
@@ -28,7 +33,8 @@ class NotConnectedErrorPage extends StatelessWidget {
             SizedBox(height: 24.0),
             Text('Oops!', style: Theme.of(context).textTheme.headline3),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32.0)
+                  .copyWith(top: 8.0),
               child: Text(
                 '$message',
                 style: Theme.of(context).textTheme.subtitle1,

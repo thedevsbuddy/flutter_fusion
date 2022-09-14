@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Shoaib Khan",
+    "username": "spyder",
+    "email": "shoabkhan33@gmail.com",
+    "password": "secret",
+    "phone": "9589988584",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 2,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@gmail.com",
+    "password": "secret",
+    "phone": "9876543210",
+    "avatar": "avatar.png"
+  }
+]

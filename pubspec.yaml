@@ -1,5 +1,5 @@
 name: flutter_mvc
-description: A new Flutter project.
+description: A flutter project starting point to get started with flutter projects with ease and some awesome built in features.
 
 publish_to: "none"
 
@@ -24,12 +24,16 @@ dependencies:
     path: packages/ui_x
   connectivity_plus: ^2.3.6
   feather_icons: ^1.2.0
+  recase: ^4.0.0
+#  firebase_core:
+#  firebase_messaging:
+#  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.3
-  flutter_native_splash: ^2.2.5
+  dcli: ^1.33.0
 
 # The following section is specific to Flutter.
 flutter:

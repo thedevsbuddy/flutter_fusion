@@ -31,7 +31,8 @@ InputDecorationTheme _inputTheme() {
       fontSize: 14,
       color: kcOffWhite.withOpacity(0.5),
     ),
-    contentPadding: const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),
+    contentPadding:
+        const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),
     border: _inputBorder(),
     enabledBorder: _inputBorder(),
     focusedBorder: _inputBorder(),
@@ -143,6 +144,5 @@ final ThemeData darkThemeData = ThemeData(
       ),
     ).headline6,
   ),
-
   inputDecorationTheme: _inputTheme(),
 );

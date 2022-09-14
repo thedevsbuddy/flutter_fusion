@@ -33,7 +33,8 @@ Color getContrastColor(Color color) {
   int d = 0;
 
 // Counting the perceptive luminance - human eye favors green color...
-  double luminance = (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
+  double luminance =
+      (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
 
   if (luminance > 0.7)
     d = 0; // bright colors - black font

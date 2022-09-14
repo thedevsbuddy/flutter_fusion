@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:ui_x/ui_x.dart';
 
 class AppController extends GetxController {
   ScrollController scrollController = new ScrollController(keepScrollOffset: false);
@@ -75,6 +77,43 @@ class AppController extends GetxController {
   void setBusy(bool val) {
     _isBusy = val;
     update();
+  }
+
+  void showBusy() {
+    Get.dialog(
+      Dialog(
+        child: Container(
+          decoration: BoxDecoration(
+            color: kcWhite,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/icons/loader-circular.gif',
+                height: 40,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Please wait...',
+                style: TextStyl.body,
+              ),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+    );
+  }
+
+  void hideBusy() {
+    if (Get.isDialogOpen!) Get.back();
+  }
+
+  static void quit() {
+    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
   }
 
   @override

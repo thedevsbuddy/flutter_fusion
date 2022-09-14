@@ -46,7 +46,8 @@ InputDecorationTheme _inputTheme() {
         fontSize: 14,
         color: kcDark.withOpacity(0.5),
       ),
-      contentPadding: const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),
+      contentPadding:
+          const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),
       prefixStyle: TextStyle(
         color: kcDark,
       ),

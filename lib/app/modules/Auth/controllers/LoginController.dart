@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../../config/Config.dart';
+import '../../../../routes/Routes.dart';
 import '../../../helpers/Global.dart';
 import '../../../models/ApiResponse.dart';
 import '../../../shared/controllers/AppController.dart';
@@ -10,7 +10,10 @@ import '../../../shared/views/errors/ServerErrorPage.dart';
 import '../../Modules.dart';
 
 class LoginController extends AppController {
-  static LoginController get instance => Get.find();
+  static LoginController get instance {
+    if (!Get.isRegistered<LoginController>()) Get.put(LoginController());
+    return Get.find<LoginController>();
+  }
 
   final LoginService _loginService = LoginService.instance;
 
@@ -26,7 +29,6 @@ class LoginController extends AppController {
     }
 
     try {
-
       /// Prepare form data to be sent to server
       Map<String, dynamic> body = {
         "email": identifierInput.text,
@@ -44,7 +46,7 @@ class LoginController extends AppController {
       await auth.setUserToken(response.data['token']);
       Toastr.show(message: "${response.message}");
 
-      Get.offAllNamed("${Config.homeUrl}");
+      Get.offAllNamed(Routes.dashboard);
     } on Exception catch (e) {
       Get.to(() => ServerErrorPage(message: "${e.toString()}"));
     }

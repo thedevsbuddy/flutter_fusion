@@ -13,7 +13,8 @@ class Countr extends StatelessWidget {
     this.onTimerComplete,
   }) : super(key: key);
 
-  final Widget Function(BuildContext context, CountrDuration remainingTime) builder;
+  final Widget Function(BuildContext context, CountrDuration remainingTime)
+      builder;
   final CountrController controller;
   final Function()? onTimerComplete;
 
@@ -30,16 +31,15 @@ class Countr extends StatelessWidget {
             CountrDuration(
               days: _strDigits(controller.remainingTime.inDays),
               hours: _strDigits(controller.remainingTime.inHours.remainder(24)),
-              minutes: _strDigits(controller.remainingTime.inMinutes.remainder(60)),
-              seconds: _strDigits(controller.remainingTime.inSeconds.remainder(60)),
+              minutes:
+                  _strDigits(controller.remainingTime.inMinutes.remainder(60)),
+              seconds:
+                  _strDigits(controller.remainingTime.inSeconds.remainder(60)),
             ),
           );
-        }
-    );
+        });
   }
 }
-
-
 
 class CountrController extends GetxController {
   CountrController({
@@ -60,11 +60,10 @@ class CountrController extends GetxController {
 
   bool get timeUp => _timeUp.value;
 
-
   @override
   void onInit() {
     super.onInit();
-    if(initialize) Future.delayed(initializationDelay, () => startTimer());
+    if (initialize) Future.delayed(initializationDelay, () => startTimer());
   }
 
   @override
@@ -73,24 +72,23 @@ class CountrController extends GetxController {
     super.onClose();
   }
 
-
   void startTimer() {
     countdownTimer = Timer.periodic(1.seconds, (_) => _setCountDown());
   }
 
   void stopTimer({bool disposing = false}) {
     countdownTimer!.cancel();
-    if(!disposing) update();
+    if (!disposing) update();
   }
 
   void resetTimer({bool disposing = false}) {
     stopTimer(disposing: disposing);
     remainingTime = endTime;
-    if(!disposing) update();
+    if (!disposing) update();
   }
 
-  void __onDoneCallback(Function()? callback){
-    if(callback != null) _callback = callback;
+  void __onDoneCallback(Function()? callback) {
+    if (callback != null) _callback = callback;
   }
 
   void _setCountDown() {
@@ -98,7 +96,7 @@ class CountrController extends GetxController {
     if (seconds < 0) {
       countdownTimer!.cancel();
       _timeUp(true);
-      if(_callback != null) _callback!();
+      if (_callback != null) _callback!();
     } else {
       remainingTime = Duration(seconds: seconds);
     }

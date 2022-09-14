@@ -14,7 +14,8 @@ abstract class SettingsService {
   }
 
   /// Login the user
-  Future<ApiResponse> login({required String identifier, required String password});
+  Future<ApiResponse> login(
+      {required String identifier, required String password});
 
   /// Registers the user
   Future<ApiResponse> googleLogin();

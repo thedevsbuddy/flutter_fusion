@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ui_x/helpers/ColorPalette.dart';
 
 class FormInputDate extends StatelessWidget {
-  FormInputDate({Key? key, this.value, this.onChanged, this.firstDate, this.lastDate}) : super(key: key);
+  FormInputDate(
+      {Key? key, this.value, this.onChanged, this.firstDate, this.lastDate})
+      : super(key: key);
 
   final DateTime? value;
   final DateTime? firstDate;
@@ -30,7 +32,8 @@ class FormInputDate extends StatelessWidget {
           border: Border.all(color: Colors.black.withOpacity(0.25), width: 1.0),
           borderRadius: BorderRadius.circular(4),
         ),
-        child: Text("${value!.year}-${value!.month < 10 ? "0" + value!.month.toString() : value!.month}-${value!.day}"),
+        child: Text(
+            "${value!.year}-${value!.month < 10 ? "0" + value!.month.toString() : value!.month}-${value!.day}"),
       ),
     );
   }

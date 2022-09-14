@@ -5,7 +5,14 @@ import 'package:ui_x/ui_x.dart';
 import '../../../helpers/Global.dart';
 
 class NoDataWidget extends StatelessWidget {
-  NoDataWidget({Key? key, this.message = 'No Data Yet!', this.action, this.showTitle = true, this.title = 'Oops!', this.icon}) : super(key: key);
+  NoDataWidget(
+      {Key? key,
+      this.message = 'No Data Yet!',
+      this.action,
+      this.showTitle = true,
+      this.title = 'Oops!',
+      this.icon})
+      : super(key: key);
 
   final String message;
   final String title;
@@ -26,16 +33,18 @@ class NoDataWidget extends StatelessWidget {
             icon != null
                 ? icon!
                 : Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-              child: SvgPicture.asset(
-                assetIcon('not_found.svg'),
-                width: MediaQuery.of(context).size.width * 0.65,
-              ),
-            ),
+                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                    child: SvgPicture.asset(
+                      assetIcon('not_found.svg'),
+                      width: MediaQuery.of(context).size.width * 0.65,
+                    ),
+                  ),
             const SizedBox(height: spacer),
-            if (showTitle) Text('$title', style: Theme.of(context).textTheme.headline3),
+            if (showTitle)
+              Text('$title', style: Theme.of(context).textTheme.headline3),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32.0)
+                  .copyWith(top: 8.0),
               child: Text(
                 '$message',
                 style: Theme.of(context).textTheme.subtitle1,

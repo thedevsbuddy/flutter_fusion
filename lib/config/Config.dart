@@ -1,5 +1,7 @@
 import 'package:google_fonts/google_fonts.dart';
 
+import '../routes/Routes.dart';
+
 class Config {
   ///======================================
   /// Is Auth Required In App
@@ -14,17 +16,17 @@ class Config {
   ///======================================
   /// API base url
   ///======================================
-  static String apiBaseUrl = "https://example.com/api";
+  static String apiBaseUrl = "https://api.example.com/v1";
 
   ///======================================
   /// App Name
   ///======================================
-  static String appName = "Flutter Starter MVC";
+  static String appName = "Flutter MVC Kit";
 
   ///======================================
   /// Home/Dashboard URL [To be used to redirect user after login]
   ///======================================
-  static String homeUrl = "/dashboard";
+  static String homeUrl = Routes.dashboard;
 
   ///======================================
   /// Font Family For The Headings And Titles

@@ -5,7 +5,10 @@ import '../../../shared/controllers/AppController.dart';
 import '../../../shared/views/widgets/ThemeBuilder.dart';
 
 class SettingController extends AppController {
-  static SettingController get instance => Get.find();
+  static SettingController get instance {
+    if (!Get.isRegistered<SettingController>()) Get.put(SettingController());
+    return Get.find<SettingController>();
+  }
 
   /// Observables
   RxString _selectedTheme = "system".obs;
