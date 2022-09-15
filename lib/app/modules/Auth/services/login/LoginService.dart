@@ -11,8 +11,7 @@ abstract class LoginService {
   /// Create and get the instance of [LoginService]
   static LoginService get instance {
     if (!Get.isRegistered<LoginService>())
-      Get.lazyPut<LoginService>(
-          () => MOCK_ENABLED ? MockLoginService() : AppLoginService());
+      Get.lazyPut<LoginService>(() => MOCK_ENABLED ? MockLoginService() : AppLoginService());
     return Get.find<LoginService>();
   }
 

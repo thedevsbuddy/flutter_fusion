@@ -1,11 +1,13 @@
-import '../../../../helpers/Request.dart';
+import '../../../../helpers/requests/Request.dart';
 import '../../../../models/ApiResponse.dart';
 import 'LoginService.dart';
 
 class AppLoginService implements LoginService {
+  final Request request = Request.instance;
+
   @override
   Future<ApiResponse> submit({required Map<String, dynamic> body}) async {
-    return await Request.post('/login', body: body);
+    return await request.get('/login');
   }
 
   @override
