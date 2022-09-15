@@ -11,7 +11,7 @@ import '../../config/Config.dart';
 import '../models/ApiResponse.dart';
 import 'Global.dart';
 
-class RequestOld {
+class Request {
   static const int TIME_OUT_DURATION = 30; // [ In Seconds ]
   static http.Client _client = http.Client();
 
