@@ -7,6 +7,17 @@ import '../LoadingIcon.dart';
 
 enum ButtonVariant { PRIMARY, SECONDARY, DANGER, SUCCESS, INFO, WARNING, DARK, LIGHT }
 
+Map<ButtonVariant, Color> _btnColors = {
+  ButtonVariant.PRIMARY: kcPrimary,
+  ButtonVariant.SECONDARY: kcSecondary,
+  ButtonVariant.DANGER: kcDanger,
+  ButtonVariant.SUCCESS: kcSuccess,
+  ButtonVariant.INFO: kcInfo,
+  ButtonVariant.WARNING: kcWarning,
+  ButtonVariant.DARK: kcDark,
+  ButtonVariant.LIGHT: kcOffWhite,
+};
+
 class Button extends StatelessWidget {
   final String label;
   final void Function(ButtonController)? onTap;
@@ -16,6 +27,7 @@ class Button extends StatelessWidget {
   final bool block;
   final bool flat;
   final ButtonVariant variant;
+  final EdgeInsets padding;
 
   Button({
     required Key key,
@@ -24,6 +36,7 @@ class Button extends StatelessWidget {
     this.leading,
     this.loadingIcon,
     this.flat = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : outline = false,
         block = false,
         variant = ButtonVariant.PRIMARY,
@@ -37,6 +50,7 @@ class Button extends StatelessWidget {
     this.loadingIcon,
     this.flat = false,
     this.variant = ButtonVariant.PRIMARY,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : block = false,
         outline = true,
         super(key: key);
@@ -49,6 +63,7 @@ class Button extends StatelessWidget {
     this.loadingIcon,
     this.flat = false,
     this.variant = ButtonVariant.PRIMARY,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : block = true,
         outline = true,
         super(key: key);
@@ -61,6 +76,7 @@ class Button extends StatelessWidget {
     this.loadingIcon,
     this.flat = false,
     this.variant = ButtonVariant.PRIMARY,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : block = true,
         outline = false,
         super(key: key);
@@ -74,6 +90,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.PRIMARY,
         super(key: key);
 
@@ -86,6 +103,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.SECONDARY,
         super(key: key);
 
@@ -98,6 +116,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.SUCCESS,
         super(key: key);
 
@@ -110,6 +129,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.DANGER,
         super(key: key);
 
@@ -122,6 +142,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.INFO,
         super(key: key);
 
@@ -134,6 +155,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.WARNING,
         super(key: key);
 
@@ -146,6 +168,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.DARK,
         super(key: key);
 
@@ -158,6 +181,7 @@ class Button extends StatelessWidget {
     this.flat = false,
     this.block = false,
     this.outline = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
   })  : variant = ButtonVariant.LIGHT,
         super(key: key);
 
@@ -165,135 +189,104 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color btnBgColor = variant == ButtonVariant.PRIMARY
-        ? kcPrimary
-        : (variant == ButtonVariant.SECONDARY)
-            ? kcSecondary
-            : (variant == ButtonVariant.DANGER)
-                ? kcDanger
-                : (variant == ButtonVariant.SUCCESS)
-                    ? kcSuccess
-                    : (variant == ButtonVariant.INFO)
-                        ? kcInfo
-                        : (variant == ButtonVariant.WARNING)
-                            ? kcWarning
-                            : (variant == ButtonVariant.DARK)
-                                ? kcDarker
-                                : (variant == ButtonVariant.LIGHT)
-                                    ? kcOffWhite
-                                    : kcPrimary;
-
-    Color btnTxtColor = variant == ButtonVariant.PRIMARY
-        ? kcWhite
-        : (variant == ButtonVariant.SECONDARY)
-            ? kcWhite
-            : (variant == ButtonVariant.DANGER)
-                ? kcWhite
-                : (variant == ButtonVariant.SUCCESS)
-                    ? kcWhite
-                    : (variant == ButtonVariant.INFO)
-                        ? kcWhite
-                        : (variant == ButtonVariant.WARNING)
-                            ? kcDarker
-                            : (variant == ButtonVariant.DARK)
-                                ? kcWhite
-                                : (variant == ButtonVariant.LIGHT)
-                                    ? kcDarker
-                                    : kcWhite;
+    Color _btnBgColor = _btnColors[variant]!;
+    Color _btnTxtColor = _btnBgColor.computeLuminance() > 0.6 ? kcDark : kcWhite;
 
     return Obx(
-      () => GestureDetector(
+          () => GestureDetector(
         onTap: () => onTap!(btnController),
         child: block
             ? AnimatedContainer(
-                duration: const Duration(milliseconds: 250),
-                padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-                width: double.infinity,
-                alignment: Alignment.center,
-                decoration: !outline
-                    ? BoxDecoration(
-                        color: !btnController.isDisabled ? btnBgColor : btnBgColor.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                      )
-                    : BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                        border: Border.all(
-                          color: !btnController.isDisabled ? btnBgColor : btnBgColor.withOpacity(0.5),
-                          width: 1,
-                        ),
-                      ),
-                child: !btnController.isBusy
-                    ? Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (leading != null) leading!,
-                          if (leading != null) SizedBox(width: 5),
-                          Text(
-                            label,
-                            style: TextStyl.button?.copyWith(
-                              fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                              color: !outline ? btnTxtColor : btnBgColor,
-                            ),
-                          ),
-                        ],
-                      )
-                    : loadingIcon != null
-                        ? SizedBox(height: 20, width: 20, child: loadingIcon)
-                        : LoadingIcon(
-                            color: !outline ? btnTxtColor : btnBgColor,
-                            height: 16,
-                          ),
-              )
+          duration: const Duration(milliseconds: 250),
+          padding: padding,
+          width: double.infinity,
+          alignment: Alignment.center,
+          decoration: !outline
+              ? BoxDecoration(
+            color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+          )
+              : BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+            border: Border.all(
+              color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+              width: 1,
+            ),
+          ),
+          child: !btnController.isBusy
+              ? Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (leading != null) leading!,
+              if (leading != null) SizedBox(width: 6),
+              Text(
+                label,
+                style: TextStyl.button?.copyWith(
+                  fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                  color: !outline ? _btnTxtColor : _btnBgColor,
+                ),
+              ),
+            ],
+          )
+              : loadingIcon != null
+              ? SizedBox(height: 20, width: 20, child: loadingIcon)
+              : LoadingIcon(
+            color: !outline ? _btnTxtColor : _btnBgColor,
+            height: 16,
+          ),
+        )
             : Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 250),
+              padding: padding,
+              alignment: Alignment.center,
+              decoration: !outline
+                  ? BoxDecoration(
+                color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                border: Border.all(
+                  color: _btnBgColor,
+                  width: 1,
+                ),
+              )
+                  : BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                border: Border.all(
+                  color: _btnBgColor,
+                  width: 1,
+                ),
+              ),
+              child: !btnController.isBusy
+                  ? Row(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-                    alignment: Alignment.center,
-                    decoration: !outline
-                        ? BoxDecoration(
-                            color: !btnController.isDisabled ? btnBgColor : btnBgColor.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                            border: Border.all(
-                              color: btnBgColor,
-                              width: 1,
-                            ),
-                          )
-                        : BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                            border: Border.all(
-                              color: btnBgColor,
-                              width: 1,
-                            ),
-                          ),
-                    child: !btnController.isBusy
-                        ? Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (leading != null) leading!,
-                              if (leading != null) SizedBox(width: 5),
-                              Text(
-                                label,
-                                style: TextStyl.button?.copyWith(
-                                  fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                                  color: !outline ? btnTxtColor : btnBgColor,
-                                ),
-                              ),
-                            ],
-                          )
-                        : loadingIcon != null
-                            ? SizedBox(height: 20, width: 20, child: loadingIcon)
-                            : LoadingIcon(
-                                color: !outline ? btnTxtColor : btnBgColor,
-                                height: 16,
-                              ),
+                  if (leading != null) leading!,
+                  if (leading != null) SizedBox(width: 6),
+                  Text(
+                    label,
+                    style: TextStyl.button?.copyWith(
+                      fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                      color: !outline ? _btnTxtColor : _btnBgColor,
+                    ),
                   ),
                 ],
+              )
+                  : loadingIcon != null
+                  ? SizedBox(height: 20, width: 20, child: loadingIcon)
+                  : LoadingIcon(
+                color: !outline ? _btnTxtColor : _btnBgColor,
+                height: 16,
               ),
+            ),
+          ],
+        ),
       ),
     );
   }

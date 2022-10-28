@@ -13,7 +13,15 @@ import 'Global.dart';
 
 class Request {
   static const int TIME_OUT_DURATION = 30; // [ In Seconds ]
-  static http.Client _client = http.Client();
+  static late http.Client _client;
+
+  static void start() {
+    _client = http.Client();
+  }
+
+  static void close() {
+    _client.close();
+  }
 
   ///====================
   /// GET Request
@@ -147,7 +155,6 @@ class Request {
   ///======================
   static dynamic _processResponse(http.Response response) {
     ApiResponse body = ApiResponse.fromJson(jsonDecode(response.body));
-    _client.close();
     switch (response.statusCode) {
       case 200:
         return body;
