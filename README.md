@@ -1,4 +1,4 @@
-# Flutter MVCs Starter
+# FlutterFusion
 
 A starter project to begin any new flutter project.
 It has the ```GetX``` package and some more custom made helpers and packages to help the dev to build their apps with ease.
@@ -7,7 +7,7 @@ It uses the ```MVC``` pattern which is one of the best pattern among developers.
 ### Getting Started
 Clone the repository
 ```shell
-git clone https://github.com/thedevsbuddy/flutter_mvc.git myAwesomeProject
+git clone https://github.com/thedevsbuddy/flutter_fusion.git myAwesomeProject
 ```
 
 ### Features

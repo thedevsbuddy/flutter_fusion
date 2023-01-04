@@ -1,7 +1,7 @@
 name: ui_x
 description: A new Flutter package project.
 version: 0.0.1
-homepage: "https://github.com/thedevsbuddy/flutter_mvc"
+homepage: "https://github.com/thedevsbuddy/flutter_fusion"
 
 environment:
   sdk: ">=2.17.0 <3.0.0"

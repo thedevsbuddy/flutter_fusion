@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvc/config/Config.dart';
+import 'package:flutter_fusion/config/Config.dart';
 
 class MasterLayout extends StatelessWidget {
   final Widget body;

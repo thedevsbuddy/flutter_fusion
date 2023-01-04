@@ -1,4 +1,4 @@
-import 'package:flutter_mvc/app/models/ApiResponse.dart';
+import 'package:flutter_fusion/app/models/ApiResponse.dart';
 import 'package:get/get.dart';
 
 import 'AppAuthService.dart';
