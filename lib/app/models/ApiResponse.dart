@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-ApiResponse apiResponseModelFromJson(String str) =>
-    ApiResponse.fromJson(json.decode(str));
+ApiResponse apiResponseModelFromJson(String str) => ApiResponse.fromJson(json.decode(str));
 
 String apiResponseModelToJson(ApiResponse data) => json.encode(data.toJson());
 
@@ -19,26 +18,20 @@ class ApiResponse {
   dynamic data;
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
-        status: json["success"] == null ? "0" : json["success"].toString(),
+        status: json["success"] == null ? "error" : json["success"].toString(),
         message: json["message"] == null ? null : json["message"],
-        validationError: json["errors"] == null
-            ? null
-            : json['errors'][json["errors"].keys.first].first,
+        validationError: json["errors"] == null ? null : json['errors'][json["errors"].keys.first].first,
         data: json["data"] == null ? null : json["data"],
       );
 
   Map<String, dynamic> toJson() => {
-        "success": status == null ? "0" : status.toString(),
+        "success": status == null ? "error" : status.toString(),
         "message": message == null ? null : message,
         "errors": validationError == null ? null : validationError,
         "data": data == null ? null : data,
       };
 
-  ApiResponse copyWith(
-      {String? status,
-      String? message,
-      dynamic validationError,
-      dynamic data}) {
+  ApiResponse copyWith({String? status, String? message, dynamic validationError, dynamic data}) {
     return ApiResponse(
       status: status ?? this.status,
       message: message ?? this.message,
@@ -47,10 +40,14 @@ class ApiResponse {
     );
   }
 
-  bool isOk() => status == "1";
-  bool isSuccessful() => status == '1';
-  bool hasError() => status == '0';
+  bool isOk() => status == "success";
+
+  bool isSuccessful() => status == 'success';
+
+  bool hasError() => status == 'error';
+
   bool hasValidationErrors() => validationError != null;
+
   bool hasData() {
     if (data == null) {
       return false;

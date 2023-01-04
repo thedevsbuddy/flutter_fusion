@@ -8,7 +8,7 @@ class MockRegisterService implements RegisterService {
   Future<ApiResponse> submit({required Map<String, dynamic> body}) async {
     return await Future.delayed(2.seconds, () {
       return ApiResponse(
-        status: "1",
+        status: "success",
         message: "Logged in successfully.",
         data: {
           "user": {

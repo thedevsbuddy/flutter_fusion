@@ -7,17 +7,16 @@ class MockLoginService implements LoginService {
   @override
   Future<ApiResponse> submit({required Map<String, dynamic> body}) async {
     return await Future.delayed(2.seconds, () {
-      if (body['email'] != 'shoaib@devsbuddy.com' &&
-          body['password'] != 'secret') {
+      if (body['email'] != 'shoaib' && body['password'] != 'secret') {
         return ApiResponse(
-          status: "0",
+          status: "error",
           message: "Credentials do not match in our records.",
           data: null,
         );
       }
 
       return ApiResponse(
-        status: "1",
+        status: "success",
         message: "Logged in successfully.",
         data: {
           "user": {
