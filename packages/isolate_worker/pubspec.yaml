@@ -1,4 +1,4 @@
-name: flutter_countr
+name: isolate_worker
 description: A simple countdown for flutter project.
 version: 0.1.0
 homepage:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get: ^4.3.4
+  easy_isolate:
 
 dev_dependencies:
   flutter_test:

@@ -18,14 +18,13 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   google_fonts: ^3.0.1
-  logger: ^1.1.0
   flutter_svg: ^1.1.1+1
   ui_x:
     path: packages/ui_x
   connectivity_plus: ^2.3.6
   feather_icons: ^1.2.0
-  recase: ^4.0.0
 #  firebase_core:
+#  firebase_auth:
 #  firebase_messaging:
 #  flutter_local_notifications:
 
@@ -34,7 +33,16 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.9.3
   dcli: ^1.33.0
+  logger: ^1.1.0
+  recase: ^4.0.0
+  modulr:
+    path: packages/flutter_modulr
 
+# Launcher Icon Configs
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
