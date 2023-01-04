@@ -31,12 +31,12 @@ flutter pub run modulr:generate Blog
 This will generate all the files required for a `Module` 
 
 Generated Files:
-    - `BlogController.dart` controller file.
-    - `BlogPage.dart` view file.
-    - Services
-        * `BlogService.dart` abstract service file.
-        * `MockBlogService.dart` mockable service file for test service.
-        * `AppBlogService.dart` main service file for Real API Service.
+- `BlogController.dart` controller file.
+- `BlogPage.dart` view file.
+- Services
+    * `BlogService.dart` abstract service file.
+    * `MockBlogService.dart` mockable service file for test service.
+    * `AppBlogService.dart` main service file for Real API Service.
 
 ### Generate Controller
 ```shell
