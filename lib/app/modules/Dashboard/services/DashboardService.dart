@@ -1,6 +1,6 @@
-import '../../../models/ApiResponse.dart';
 import 'package:get/get.dart';
 
+import '../../../models/ApiResponse.dart';
 import 'AppDashboardService.dart';
 import 'MockDashboardService.dart';
 
@@ -14,7 +14,12 @@ abstract class DashboardService {
     return Get.find<DashboardService>();
   }
 
+  /// Start the server request
+  void init();
+
+  /// Stop the server request
+  void close();
+
   /// Do Something
   Future<ApiResponse> doSomething();
 }
-

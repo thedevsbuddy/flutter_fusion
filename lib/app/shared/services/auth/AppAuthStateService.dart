@@ -2,9 +2,9 @@ import 'package:flutter_fusion/app/models/ApiResponse.dart';
 
 import '../../../helpers/Global.dart';
 import '../../../helpers/Request.dart';
-import 'AuthService.dart';
+import 'AuthStateService.dart';
 
-class AppAuthService implements AuthService {
+class AppAuthStateService implements AuthStateService {
   @override
   Future<ApiResponse> getUser() async {
     if (storage.read("token") != null) {

@@ -6,9 +6,12 @@
 export 'controllers/LoginController.dart';
 export 'controllers/RegisterController.dart';
 
+/// Routes
+export 'routes/AuthRouter.dart';
+export 'routes/AuthRoutes.dart';
+
 /// Services
-export 'services/login/LoginService.dart';
-export 'services/register/RegisterService.dart';
+export 'services/AuthService.dart';
 
 /// Views
 export 'views/LoginPage.dart';

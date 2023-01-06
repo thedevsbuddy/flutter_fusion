@@ -1,11 +1,10 @@
 import '../../../models/ApiResponse.dart';
-import 'SettingService.dart';
+import 'SettingsService.dart';
 
-class AppSettingService implements SettingService {
+class MockSettingsService implements SettingsService {
   @override
   Future<ApiResponse> doSomething() async {
     // TODO: implement googleLogin
     throw UnimplementedError();
   }
 }
-

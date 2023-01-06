@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fusion/app/helpers/Global.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
 import '../../../shared/views/errors/NotConnectedErrorPage.dart';
 import '../../../shared/views/layouts/MasterLayout.dart';
 import '../../../shared/views/widgets/LoadingIconWidget.dart';
-import '../controllers/SettingController.dart';
+import '../controllers/SettingsController.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SettingController>(
-      init: SettingController(),
-      builder: (SettingController controller) {
+    return GetBuilder<SettingsController>(
+      init: SettingsController(),
+      builder: (SettingsController controller) {
         return !controller.isConnected
             ? NotConnectedErrorPage()
             : controller.isBusy
@@ -33,26 +34,17 @@ class SettingsPage extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () => controller.changeTheme(
-                                        context, "system"),
+                                    onTap: () => controller.changeTheme(context, "system"),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 16),
+                                      padding: const EdgeInsets.symmetric(vertical: 16),
                                       decoration: BoxDecoration(
-                                        color:
-                                            Theme.of(context).backgroundColor,
+                                        color: Theme.of(context).backgroundColor,
                                         borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                            color: controller.selectedTheme ==
-                                                    'system'
-                                                ? kcPrimary
-                                                : Colors.transparent,
-                                            width: 2),
+                                        border: Border.all(color: controller.selectedTheme == 'system' ? kcPrimary : Colors.transparent, width: 2),
                                       ),
                                       child: Column(
                                         children: [
-                                          Icon(Icons.brightness_4_rounded,
-                                              size: 32),
+                                          Icon(Icons.brightness_4_rounded, size: 32),
                                           Text(
                                             'System',
                                             style: TextStyl.bodySm,
@@ -65,26 +57,17 @@ class SettingsPage extends StatelessWidget {
                                 SizedBox(width: 8),
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () => controller.changeTheme(
-                                        context, "light"),
+                                    onTap: () => controller.changeTheme(context, "light"),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 16),
+                                      padding: const EdgeInsets.symmetric(vertical: 16),
                                       decoration: BoxDecoration(
-                                        color:
-                                            Theme.of(context).backgroundColor,
+                                        color: Theme.of(context).backgroundColor,
                                         borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                            color: controller.selectedTheme ==
-                                                    'light'
-                                                ? kcPrimary
-                                                : Colors.transparent,
-                                            width: 2),
+                                        border: Border.all(color: controller.selectedTheme == 'light' ? kcPrimary : Colors.transparent, width: 2),
                                       ),
                                       child: Column(
                                         children: [
-                                          Icon(Icons.brightness_5_rounded,
-                                              size: 32),
+                                          Icon(Icons.brightness_5_rounded, size: 32),
                                           Text(
                                             'Light',
                                             style: TextStyl.bodySm,
@@ -97,26 +80,17 @@ class SettingsPage extends StatelessWidget {
                                 SizedBox(width: 8),
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () =>
-                                        controller.changeTheme(context, "dark"),
+                                    onTap: () => controller.changeTheme(context, "dark"),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 16),
+                                      padding: const EdgeInsets.symmetric(vertical: 16),
                                       decoration: BoxDecoration(
-                                        color:
-                                            Theme.of(context).backgroundColor,
+                                        color: Theme.of(context).backgroundColor,
                                         borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                            color: controller.selectedTheme ==
-                                                    'dark'
-                                                ? kcPrimary
-                                                : Colors.transparent,
-                                            width: 2),
+                                        border: Border.all(color: controller.selectedTheme == 'dark' ? kcPrimary : Colors.transparent, width: 2),
                                       ),
                                       child: Column(
                                         children: [
-                                          Icon(Icons.brightness_2_rounded,
-                                              size: 32),
+                                          Icon(Icons.brightness_2_rounded, size: 32),
                                           Text(
                                             'Dark',
                                             style: TextStyl.bodySm,
@@ -128,6 +102,17 @@ class SettingsPage extends StatelessWidget {
                                 )
                               ],
                             ),
+                            Text(
+                              "Account",
+                              style: TextStyl.bodySm,
+                            ),
+                            InkWell(
+                              onTap: auth.logout,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 12),
+                                child: Text("Logout"),
+                              ),
+                            )
                           ],
                         ),
                       ),

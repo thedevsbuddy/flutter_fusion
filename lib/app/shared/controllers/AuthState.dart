@@ -20,7 +20,7 @@ class AuthState extends AppController {
   }
 
   /// Get [AuthService] instance
-  final AuthService _authService = AuthService.instance;
+  final AuthStateService _authStateService = AuthStateService.instance;
 
   /// Observables
   var _user = UserModel().obs;
@@ -37,7 +37,7 @@ class AuthState extends AppController {
   /// Refreshes User data on every launch of the application
   Future<void> getUser() async {
     if (storage.read("token") != null) {
-      ApiResponse response = await _authService.getUser();
+      ApiResponse response = await _authStateService.getUser();
 
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");
@@ -52,7 +52,7 @@ class AuthState extends AppController {
 
   /// Logout the user
   Future<void> logout() async {
-    ApiResponse response = await _authService.logout();
+    ApiResponse response = await _authStateService.logout();
     if (response.hasError()) {
       Toastr.show(message: "${response.message}");
       return;

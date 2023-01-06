@@ -14,6 +14,12 @@ abstract class {MODULE}Service {
     if (!Get.isRegistered<{MODULE}Service>()) Get.lazyPut<{MODULE}Service>(() => MOCK_ENABLED ? Mock{MODULE}Service() : App{MODULE}Service());
     return Get.find<{MODULE}Service>();
   }
+  
+  /// Start the server request
+  void init();
+
+  /// Stop the server request
+  void close();
 
   /// Do Something
   Future<ApiResponse> doSomething();

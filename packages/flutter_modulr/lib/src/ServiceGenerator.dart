@@ -66,9 +66,9 @@ bool _validateArgs(List<String> args) {
   moduleName = moduleName.replaceAll('--on=', '');
 
   /// Assign module path
-  modulePath = "lib/app/modules/${Utils.ucFirst(moduleName)}";
+  modulePath = "lib/app/modules/${Utils.ucFirst(moduleName, preserveAfter: true)}";
 
-  servicePath = "lib/app/modules/${Utils.ucFirst(moduleName)}/services";
+  servicePath = "lib/app/modules/${Utils.ucFirst(moduleName, preserveAfter: true)}/services";
 
   /// Check if services directory already exists
   if (exists(servicePath)) {

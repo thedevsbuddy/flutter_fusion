@@ -15,7 +15,7 @@ Future<void> generate(List<String> args) async {
   /// Assign variable values
   viewName = args.first;
 
-  viewPath = "lib/app/modules/${Utils.ucFirst(moduleName)}/views";
+  viewPath = "lib/app/modules/${Utils.ucFirst(moduleName, preserveAfter: true)}/views";
 
   /// Generate Controller
   await generateController();
@@ -26,13 +26,13 @@ Future<void> generateController() async {
   /// Check and create directory
   Utils.makeDir(viewPath);
 
-  String _viewFile = modulrView.stub.replaceAll('{PAGE}', Utils.ucFirst(viewName));
+  String _viewFile = modulrView.stub.replaceAll('{PAGE}', Utils.ucFirst(viewName, preserveAfter: true));
 
   /// Write File
-  Utils.writeFile("$viewPath/${Utils.ucFirst(viewName)}Page.dart", _viewFile);
+  Utils.writeFile("$viewPath/${Utils.ucFirst(viewName, preserveAfter: true)}Page.dart", _viewFile);
 
   /// Show Success message
-  print(green('"$viewPath/${Utils.ucFirst(viewName)}Page.dart" generated successfully.'));
+  print(green('"$viewPath/${Utils.ucFirst(viewName, preserveAfter: true)}Page.dart" generated successfully.'));
 }
 
 bool _validateArgs(List<String> args) {
@@ -55,7 +55,7 @@ bool _validateArgs(List<String> args) {
   moduleName = moduleName.replaceAll('--on=', '');
 
   /// Assign module path
-  modulePath = "lib/app/modules/${Utils.ucFirst(moduleName)}";
+  modulePath = "lib/app/modules/${Utils.ucFirst(moduleName, preserveAfter: true)}";
 
   /// Check if the module exists or not
   if (!exists(modulePath)) {

@@ -35,6 +35,7 @@ dev_dependencies:
   dcli: ^1.33.0
   logger: ^1.1.0
   recase: ^4.0.0
+  faker: ^2.1.0
   modulr:
     path: packages/flutter_modulr
 

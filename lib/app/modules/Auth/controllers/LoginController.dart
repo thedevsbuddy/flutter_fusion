@@ -15,7 +15,7 @@ class LoginController extends AppController {
     return Get.find<LoginController>();
   }
 
-  final LoginService _loginService = LoginService.instance;
+  final AuthService _authService = AuthService.instance;
 
   /// Variables
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -31,12 +31,12 @@ class LoginController extends AppController {
     try {
       /// Prepare form data to be sent to server
       Map<String, dynamic> body = {
-        "email": identifierInput.text,
+        "identifier": identifierInput.text,
         "password": passwordInput.text,
       };
 
       /// Call api to login user
-      ApiResponse response = await _loginService.submit(body: body);
+      ApiResponse response = await _authService.login(body: body);
       // log.w(response.data);
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");

@@ -15,7 +15,7 @@ Future<void> generate(List<String> args) async {
   /// Assign variable values
   controllerName = args.first;
 
-  controllerPath = "lib/app/modules/${Utils.ucFirst(moduleName)}/controllers";
+  controllerPath = "lib/app/modules/${Utils.ucFirst(moduleName, preserveAfter: true)}/controllers";
 
   /// Generate Controller
   await generateController();
@@ -26,13 +26,13 @@ Future<void> generateController() async {
   /// Check and create directory
   Utils.makeDir(controllerPath);
 
-  String _controllerFile = modulrController.stub.replaceAll('{CONTROLLER}', Utils.ucFirst(controllerName));
+  String _controllerFile = modulrController.stub.replaceAll('{CONTROLLER}', Utils.ucFirst(controllerName, preserveAfter: true));
 
   /// Write File
-  Utils.writeFile("$controllerPath/${Utils.ucFirst(controllerName)}Controller.dart", _controllerFile);
+  Utils.writeFile("$controllerPath/${Utils.ucFirst(controllerName, preserveAfter: true)}Controller.dart", _controllerFile);
 
   /// Show Success message
-  print(green('"$controllerPath/${Utils.ucFirst(controllerName)}Controller.dart" generated successfully.'));
+  print(green('"$controllerPath/${Utils.ucFirst(controllerName, preserveAfter: true)}Controller.dart" generated successfully.'));
 }
 
 bool _validateArgs(List<String> args) {
@@ -55,7 +55,7 @@ bool _validateArgs(List<String> args) {
   moduleName = moduleName.replaceAll('--on=', '');
 
   /// Assign module path
-  modulePath = "lib/app/modules/${Utils.ucFirst(moduleName)}";
+  modulePath = "lib/app/modules/${Utils.ucFirst(moduleName, preserveAfter: true)}";
 
   /// Check if the module exists or not
   if (!exists(modulePath)) {

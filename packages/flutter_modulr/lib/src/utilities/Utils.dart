@@ -49,7 +49,7 @@ class Utils {
     return text.split(' ').map((element) => element.toLowerCase()).join('_');
   }
 
-  /// Convert String to [snake_case]
+  /// Convert String to [kebab-case]
   static String kebab(String text) {
     return text.trim().split(' ').map((element) => element.toLowerCase()).join('-');
   }

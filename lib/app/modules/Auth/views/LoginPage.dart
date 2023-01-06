@@ -52,9 +52,9 @@ class LoginPage extends StatelessWidget {
                       children: [
                         FormInput.text(
                           controller: controller.identifierInput,
-                          placeholder: "Username",
+                          placeholder: "Username / Email / Phone",
                           leading: Icon(FeatherIcons.user),
-                          validator: (value) => Validator("username", value!).specialCharacter().required().validate(),
+                          validator: (value) => Validator("Identifier", value!).required().validate(),
                         ),
                         SizedBox(height: 25),
                         FormInput.password(

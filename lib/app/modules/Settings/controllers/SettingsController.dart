@@ -4,10 +4,10 @@ import '../../../helpers/Global.dart';
 import '../../../shared/controllers/AppController.dart';
 import '../../../shared/views/widgets/ThemeBuilder.dart';
 
-class SettingController extends AppController {
-  static SettingController get instance {
-    if (!Get.isRegistered<SettingController>()) Get.put(SettingController());
-    return Get.find<SettingController>();
+class SettingsController extends AppController {
+  static SettingsController get instance {
+    if (!Get.isRegistered<SettingsController>()) Get.put(SettingsController());
+    return Get.find<SettingsController>();
   }
 
   /// Observables

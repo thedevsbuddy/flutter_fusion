@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fusion/app/models/UserModel.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
@@ -14,7 +15,7 @@ class RegisterController extends AppController {
   }
 
   final LoginController loginController = LoginController.instance;
-  final RegisterService _registerService = RegisterService.instance;
+  final AuthService _authService = AuthService.instance;
 
   /// Observable
   var _selectedState = 0.obs;
@@ -41,17 +42,14 @@ class RegisterController extends AppController {
     if (!formKey.currentState!.validate()) return;
 
     try {
-      Map<String, dynamic> body = {
-        "first_name": firstNameInput.text,
-        "last_name": lastNameInput.text,
-        "email": emailInput.text,
-        "password": passwordInput.text,
-        "phone": phoneInput.text,
-        "state": _selectedState.value,
-        "referral_code": "",
-      };
+      Map<String, dynamic> body = UserModel(
+        name: firstNameInput.text,
+        email: emailInput.text,
+        password: passwordInput.text,
+        phone: phoneInput.text,
+      ).toJson();
 
-      ApiResponse response = await _registerService.submit(body: body);
+      ApiResponse response = await _authService.register(body: body);
 
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");
