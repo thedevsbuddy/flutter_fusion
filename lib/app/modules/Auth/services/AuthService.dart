@@ -15,10 +15,10 @@ abstract class AuthService {
   }
 
   /// Start the server request
-  void init();
+  void init(String client);
 
   /// Stop the server request
-  void close();
+  void close(String client);
 
   /// Login the user
   Future<ApiResponse> login({required Map<String, dynamic> body});

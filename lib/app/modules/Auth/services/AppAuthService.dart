@@ -3,22 +3,27 @@ import '../../../models/ApiResponse.dart';
 import 'AuthService.dart';
 
 class AppAuthService implements AuthService {
+  late Request _request;
+  AppAuthService() {
+    _request = new Request();
+  }
+
   /// Start the server request
   @override
-  void init() => Request.start();
+  void init(String client) => _request.start(client);
 
   /// Stop the server request
   @override
-  void close() => Request.close();
+  void close(String client) => _request.close(client);
 
   @override
   Future<ApiResponse> login({required Map<String, dynamic> body}) async {
-    return await Request.post('/login', body: body);
+    return await _request.post('/login', client: 'login', body: body);
   }
 
   @override
   Future<ApiResponse> register({required Map<String, dynamic> body}) async {
-    return await Request.post('/register', body: body);
+    return await _request.post('/register', client: 'register', body: body);
   }
 
   @override

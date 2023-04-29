@@ -9,11 +9,11 @@ import 'AuthService.dart';
 class MockAuthService implements AuthService {
   /// Start the server request
   @override
-  void init() => null;
+  void init(String client) => null;
 
   /// Stop the server request
   @override
-  void close() => null;
+  void close(String client) => null;
 
   @override
   Future<ApiResponse> login({required Map<String, dynamic> body}) async {

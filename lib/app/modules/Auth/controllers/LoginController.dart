@@ -35,6 +35,10 @@ class LoginController extends AppController {
         "password": passwordInput.text,
       };
 
+      /// Initialize the Service and request server
+      /// With unique client id
+      _authService.init('login');
+
       /// Call api to login user
       ApiResponse response = await _authService.login(body: body);
       // log.w(response.data);
@@ -46,6 +50,11 @@ class LoginController extends AppController {
       await auth.setUserToken(response.data['token']);
       Toastr.show(message: "${response.message}");
 
+      /// Close the Service and request server
+      /// With unique client id
+      _authService.close('login');
+
+      /// Redirect user
       Get.offAllNamed(Routes.dashboard);
     } on Exception catch (e) {
       Get.to(() => ServerErrorPage(message: "${e.toString()}"));

@@ -49,6 +49,10 @@ class RegisterController extends AppController {
         phone: phoneInput.text,
       ).toJson();
 
+      /// Initialize the Service and request server
+      /// With unique client id
+      _authService.init('register');
+
       ApiResponse response = await _authService.register(body: body);
 
       if (response.hasError()) {
@@ -56,9 +60,14 @@ class RegisterController extends AppController {
         return;
       }
 
+      /// Close the Service and request server
+      /// With unique client id
+      _authService.close('register');
+
       loginController.identifierInput.text = emailInput.text;
       loginController.passwordInput.text = passwordInput.text;
 
+      /// Login the user after registration
       await loginController.submit();
     } on Exception catch (e) {
       Get.to(() => ServerErrorPage(message: "${e.toString()}"));

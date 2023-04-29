@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
 import 'package:ui_x/ui_x.dart';
 
 import '../../config/Config.dart';
@@ -13,117 +10,41 @@ import 'Global.dart';
 
 class Request {
   static const int TIME_OUT_DURATION = 30; // [ In Seconds ]
-  static late http.Client _client;
 
-  static void start() {
-    _client = http.Client();
+  final List<HttpClient> _clients = [];
+
+  void start(String client) {
+    _clients.add(HttpClient(id: client, client: http.Client()));
   }
 
-  static void close() {
-    _client.close();
+  void close(String client) {
+    HttpClient _client = _clients.firstWhere((element) => element.id == client);
+
+    _client.client.close();
+
+    _clients.add(HttpClient(id: client, client: http.Client()));
   }
 
   ///====================
   /// GET Request
   ///====================
-  static Future<dynamic> get(String url,
-      {Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
-    http.Response response = await _client
-        .get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers))
-        .timeout(Duration(seconds: TIME_OUT_DURATION));
+  Future<dynamic> get(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
+    HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
+    http.Response response =
+        await _httpClient.client.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// POST Request
   ///====================
-  static Future<dynamic> post(String url,
-      {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  Future<dynamic> post(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+    HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
     String payload = json.encode(body);
-    http.Response response = await _client
+    http.Response response = await _httpClient.client
         .post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
-  }
-
-  ///====================
-  /// MULTIPART Request
-  ///====================
-  static Future<dynamic> multipart(String url,
-      {String method = 'POST',
-      required Map<String, dynamic> body,
-      Map<String, dynamic>? params,
-      Map<String, String>? headers,
-      bool authenticate = false}) async {
-    assert(body.containsKey('files'));
-    assert(body['files'] != null);
-    assert(body['files'] is Map<String, File> || body['files'] is Map<String, List<File>>);
-    assert(method.toUpperCase() == "POST" || method.toUpperCase() == "PUT");
-    http.MultipartRequest request = http.MultipartRequest("$method", _sanitizedUri(url, params));
-
-    body.keys.forEach((key) {
-      if (key != 'files') {
-        request.fields['$key'] = body["$key"];
-      }
-    });
-
-    Map<String, dynamic> fileMap = body['files'];
-
-    fileMap.keys.forEach((key) async {
-      if (fileMap["$key"] is List<File>) {
-        for (File _file in fileMap["$key"]) {
-          request.files.add(await http.MultipartFile.fromPath(key + "[]", _file.path));
-        }
-      } else if (fileMap["$key"] is File) {
-        request.files.add(await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
-      }
-    });
-
-    /// Set Headers
-    request.headers.addAll(_getHeaders(token: authenticate));
-
-    http.Response response = await http.Response.fromStream(await _client.send(request));
-    return _processResponse(response);
-  }
-
-  ///====================
-  /// PUT Request
-  ///====================
-  static Future<dynamic> put(String url,
-      {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
-    String payload = json.encode(body);
-    http.Response response = await _client
-        .put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
-        .timeout(Duration(seconds: TIME_OUT_DURATION));
-
-    return _processResponse(response);
-  }
-
-  ///====================
-  /// DELETE Request
-  ///====================
-  static Future<dynamic> delete(String url,
-      {Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
-    String payload = json.encode(body);
-    http.Response response = await _client
-        .delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
-        .timeout(Duration(seconds: TIME_OUT_DURATION));
-
-    return _processResponse(response);
-  }
-
-  ///====================
-  /// DOWNLOAD [File] Request
-  ///====================
-  static Future<dynamic> download(String url, {String? fileName, bool authenticate = false}) async {
-    http.Response response = await _client
-        .get(_sanitizedUri(url, {}), headers: _getHeaders(token: authenticate, userHeaders: {}))
-        .timeout(Duration(seconds: TIME_OUT_DURATION));
-
-    String _dir = (await getApplicationDocumentsDirectory()).path;
-    File _file = new File('$_dir/$fileName');
-    await _file.writeAsBytes(response.bodyBytes);
-    return _file;
   }
 
   ///======================================
@@ -202,4 +123,15 @@ class Request {
     });
     return _params;
   }
+}
+
+/// HttpClient Class Model
+class HttpClient {
+  HttpClient({
+    required this.id,
+    required this.client,
+  });
+
+  String id;
+  http.Client client;
 }

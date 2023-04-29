@@ -10,12 +10,15 @@ abstract class AuthStateService {
 
   /// Create and get the instance of [AuthStateService]
   static AuthStateService get instance {
-    if (!Get.isRegistered<AuthStateService>())
-      Get.lazyPut<AuthStateService>(
-        () => MOCK_ENABLED ? MockAuthStateService() : AppAuthStateService(),
-      );
+    if (!Get.isRegistered<AuthStateService>()) Get.lazyPut<AuthStateService>(() => MOCK_ENABLED ? MockAuthStateService() : AppAuthStateService());
     return Get.find<AuthStateService>();
   }
+
+  /// Start the server request
+  void init(String client);
+
+  /// Stop the server request
+  void close(String client);
 
   /// Get and refresh user data
   Future<ApiResponse> getUser();
