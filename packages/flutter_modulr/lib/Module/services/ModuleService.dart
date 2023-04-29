@@ -16,10 +16,10 @@ abstract class {MODULE}Service {
   }
   
   /// Start the server request
-  void init();
+  void init(String client);
 
   /// Stop the server request
-  void close();
+  void close(String client);
 
   /// Do Something
   Future<ApiResponse> doSomething();

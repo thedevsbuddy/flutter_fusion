@@ -21,7 +21,7 @@ class Config {
   ///======================================
   /// App Name
   ///======================================
-  static String appName = "Flutter MVC Kit";
+  static String appName = "Flutter Fusion";
 
   ///======================================
   /// Home/Dashboard URL [To be used to redirect user after login]

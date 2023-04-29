@@ -46,6 +46,7 @@ Future<void> generateService() async {
   print(green('"$servicePath/App${Utils.ucFirst(serviceName, preserveAfter: true)}Service.dart" generated successfully.'));
 }
 
+
 bool _validateArgs(List<String> args) {
   /// Check if there are any args
   if (args.length <= 0) {
