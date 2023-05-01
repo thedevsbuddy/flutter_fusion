@@ -44,6 +44,7 @@ class Request {
     http.Response response = await _httpClient.client
         .post(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
         .timeout(Duration(seconds: TIME_OUT_DURATION));
+
     return _processResponse(response);
   }
 

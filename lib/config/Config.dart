@@ -16,7 +16,7 @@ class Config {
   ///======================================
   /// API base url
   ///======================================
-  static String apiBaseUrl = "https://api.example.com/v1";
+  static String apiBaseUrl = "https://jsonplaceholder.typicode.com";
 
   ///======================================
   /// App Name

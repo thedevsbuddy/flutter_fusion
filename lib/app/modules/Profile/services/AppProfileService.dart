@@ -1,11 +1,10 @@
-const String stub = """
 import '../../../models/ApiResponse.dart';
 import '../../../helpers/Request.dart';
-import '{MODULE}Service.dart';
+import 'ProfileService.dart';
 
-class App{MODULE}Service implements {MODULE}Service {
+class AppProfileService implements ProfileService {
   late Request _request;
-  App{MODULE}Service() {
+  AppProfileService() {
     _request = new Request();
   }
 
@@ -16,10 +15,9 @@ class App{MODULE}Service implements {MODULE}Service {
   /// Stop the server request
   @override
   void close(String client) => _request.close(client);
-  
+
   @override
-  Future<ApiResponse> doSomething() async {
-    throw UnimplementedError();
+  Future<ApiResponse> getData() async {
+    return await _request.get('/todos', client: "getData");
   }
 }
-""";

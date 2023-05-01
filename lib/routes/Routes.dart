@@ -8,6 +8,4 @@ class Routes {
   static String get dashboard => '/dashboard';
 
   static String get settings => '/settings';
-
-  static String get settingsStore => '/settings/store';
 }

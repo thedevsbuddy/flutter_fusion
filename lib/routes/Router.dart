@@ -14,4 +14,7 @@ List<GetPage> routes = [
 
   /// Setting Routes
   ...settingsRoutes,
+
+  /// Profile Routes
+  ...profileRoutes,
 ];

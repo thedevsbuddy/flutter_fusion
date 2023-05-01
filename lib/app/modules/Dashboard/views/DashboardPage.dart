@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../Modules.dart';
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
 import '../../../shared/views/errors/NotConnectedErrorPage.dart';
 import '../../../shared/views/layouts/MasterLayout.dart';
 import '../../../shared/views/widgets/Widgets.dart';
-import '../controllers/DashboardController.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -23,7 +23,7 @@ class DashboardPage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.settings),
                         onPressed: () {
-                          Get.toNamed('/settings');
+                          Get.toNamed(ProfileRoutes.profile);
                         },
                       ),
                     ],
@@ -43,14 +43,11 @@ class DashboardPage extends StatelessWidget {
                                   : ListView.separated(
                                       itemCount: controller.tasks.length,
                                       itemBuilder: (context, index) {
-                                        Map<String, dynamic> task =
-                                            controller.tasks[index];
+                                        Map<String, dynamic> task = controller.tasks[index];
                                         return GestureDetector(
-                                          onDoubleTap: () =>
-                                              controller.removeTask(index),
+                                          onDoubleTap: () => controller.removeTask(index),
                                           child: Container(
-                                            color: Theme.of(context)
-                                                .backgroundColor,
+                                            color: Theme.of(context).backgroundColor,
                                             child: ListTile(
                                               dense: true,
                                               title: Text(
@@ -59,23 +56,19 @@ class DashboardPage extends StatelessWidget {
                                               ),
                                               trailing: Checkbox(
                                                 value: task['completed'],
-                                                onChanged: (val) => controller
-                                                    .toggleTask(task['id']),
+                                                onChanged: (val) => controller.toggleTask(task['id']),
                                               ),
-                                              onTap: () => controller
-                                                  .toggleTask(task['id']),
+                                              onTap: () => controller.toggleTask(task['id']),
                                             ),
                                           ),
                                         );
                                       },
-                                      separatorBuilder: (context, idx) =>
-                                          Divider(height: 0),
+                                      separatorBuilder: (context, idx) => Divider(height: 0),
                                     ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: spacer3, vertical: spacer2),
+                            padding: const EdgeInsets.symmetric(horizontal: spacer3, vertical: spacer2),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
