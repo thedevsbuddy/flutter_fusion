@@ -27,7 +27,6 @@ const Color kcWarning = Color(0xFFF59E0B);
 
 /// Design specific colors
 const Color kcAppbarBackground = kcPrimary;
-const Color kcAppBarSearchBoxColor = Color(0xffD34A44);
 
 Color getContrastColor(Color color) {
   int d = 0;

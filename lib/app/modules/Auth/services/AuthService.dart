@@ -21,20 +21,20 @@ abstract class AuthService {
   void close(String client);
 
   /// Login the user
-  Future<ApiResponse> login({required Map<String, dynamic> body});
+  Future<ApiResponse> login({required String client, required Map<String, dynamic> body});
 
   /// Registers user
-  Future<ApiResponse> register({required Map<String, dynamic> body});
+  Future<ApiResponse> register({required String client, required Map<String, dynamic> body});
 
   /// Verifies OTP
-  Future<ApiResponse> verifyOtp({required Map<String, dynamic> body});
+  Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body});
 
   /// Login user with Google
-  Future<ApiResponse> google();
+  Future<ApiResponse> google({required String client});
 
   /// Login user with Github
-  Future<ApiResponse> github();
+  Future<ApiResponse> github({required String client});
 
   /// Login user with Facebook
-  Future<ApiResponse> facebook();
+  Future<ApiResponse> facebook({required String client});
 }

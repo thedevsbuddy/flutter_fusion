@@ -23,6 +23,7 @@ class LoginController extends AppController {
   final TextEditingController passwordInput = TextEditingController();
 
   Future<void> submit() async {
+    String _client = "loginSubmit";
     if (!formKey.currentState!.validate()) {
       // Toastr.show(message: "Please fill all the required fields!");
       return;
@@ -36,11 +37,10 @@ class LoginController extends AppController {
       };
 
       /// Initialize the Service and request server
-      /// With unique client id
-      _authService.init('login');
+      _authService.init(_client);
 
       /// Call api to login user
-      ApiResponse response = await _authService.login(body: body);
+      ApiResponse response = await _authService.login(body: body, client: _client);
       // log.w(response.data);
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");
@@ -51,8 +51,7 @@ class LoginController extends AppController {
       Toastr.show(message: "${response.message}");
 
       /// Close the Service and request server
-      /// With unique client id
-      _authService.close('login');
+      _authService.close(_client);
 
       /// Redirect user
       Get.offAllNamed(Routes.dashboard);

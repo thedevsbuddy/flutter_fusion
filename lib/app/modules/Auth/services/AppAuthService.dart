@@ -17,35 +17,35 @@ class AppAuthService implements AuthService {
   void close(String client) => _request.close(client);
 
   @override
-  Future<ApiResponse> login({required Map<String, dynamic> body}) async {
-    return await _request.post('/login', client: 'login', body: body);
+  Future<ApiResponse> login({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/login', client: client, body: body);
   }
 
   @override
-  Future<ApiResponse> register({required Map<String, dynamic> body}) async {
-    return await _request.post('/register', client: 'register', body: body);
+  Future<ApiResponse> register({required String client, required Map<String, dynamic> body}) async {
+    return await _request.post('/register', client: client, body: body);
   }
 
   @override
-  Future<ApiResponse> google() {
+  Future<ApiResponse> google({required String client}) {
     // TODO: implement google
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> facebook() {
+  Future<ApiResponse> facebook({required String client}) {
     // TODO: implement facebook
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> github() {
+  Future<ApiResponse> github({required String client}) {
     // TODO: implement github
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> verifyOtp({required Map<String, dynamic> body}) {
+  Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body}) {
     // TODO: implement verifyOtp
     throw UnimplementedError();
   }

@@ -5,7 +5,7 @@ class UsersData {
   static List<UserModel> users = [
     UserModel(
       id: 1,
-      name: "Shoaib",
+      name: "Shoaib khan",
       username: 'spyder',
       email: "shoabkhan33@gmail.com",
       phone: "9589988584",

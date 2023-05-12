@@ -16,7 +16,7 @@ class MockAuthService implements AuthService {
   void close(String client) => null;
 
   @override
-  Future<ApiResponse> login({required Map<String, dynamic> body}) async {
+  Future<ApiResponse> login({required String client, required Map<String, dynamic> body}) async {
     return await 300.milliseconds.delay(() {
       bool _userNotFound = UsersData.users.where((user) {
         String? _identifier = body['identifier'].contains('@')
@@ -36,25 +36,25 @@ class MockAuthService implements AuthService {
   }
 
   @override
-  Future<ApiResponse> google() {
+  Future<ApiResponse> google({required String client}) {
     // TODO: implement googleLogin
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> facebook() {
+  Future<ApiResponse> facebook({required String client}) {
     // TODO: implement facebook
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> github() {
+  Future<ApiResponse> github({required String client}) {
     // TODO: implement github
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResponse> register({required Map<String, dynamic> body}) async {
+  Future<ApiResponse> register({required String client, required Map<String, dynamic> body}) async {
     UsersData.users.add(UserModel.fromJson(body).copyWith(
       id: UsersData.users.last.id! + 1,
       avatar: "https://random.imagecdn.app/500/500",
@@ -63,7 +63,7 @@ class MockAuthService implements AuthService {
   }
 
   @override
-  Future<ApiResponse> verifyOtp({required Map<String, dynamic> body}) async {
+  Future<ApiResponse> verifyOtp({required String client, required Map<String, dynamic> body}) async {
     return await 300.milliseconds.delay(() => AuthData.loginSuccess);
   }
 }

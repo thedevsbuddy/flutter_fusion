@@ -40,6 +40,7 @@ class RegisterController extends AppController {
 
   Future<void> submit() async {
     if (!formKey.currentState!.validate()) return;
+    String _client = "registerSubmit";
 
     try {
       Map<String, dynamic> body = UserModel(
@@ -50,10 +51,9 @@ class RegisterController extends AppController {
       ).toJson();
 
       /// Initialize the Service and request server
-      /// With unique client id
-      _authService.init('register');
+      _authService.init(_client);
 
-      ApiResponse response = await _authService.register(body: body);
+      ApiResponse response = await _authService.register(body: body, client: _client);
 
       if (response.hasError()) {
         Toastr.show(message: "${response.message}");
@@ -61,8 +61,7 @@ class RegisterController extends AppController {
       }
 
       /// Close the Service and request server
-      /// With unique client id
-      _authService.close('register');
+      _authService.close(_client);
 
       loginController.identifierInput.text = emailInput.text;
       loginController.passwordInput.text = passwordInput.text;

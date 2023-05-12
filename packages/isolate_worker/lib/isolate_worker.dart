@@ -1,1 +1,0 @@
-library isolate_worker;

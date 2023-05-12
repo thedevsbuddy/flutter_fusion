@@ -8,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'app/shared/controllers/AuthState.dart';
 import 'app/shared/views/widgets/ThemeBuilder.dart';
 import 'config/Config.dart';
+import 'config/common/MyHttpOverrides.dart';
 import 'config/theme/AppTheme.dart';
 import 'routes/Router.dart';
 import 'routes/Routes.dart';
@@ -20,13 +21,14 @@ void main() async {
   await GetStorage.init();
 
   /// Initialize [AuthState]
-  Get.lazyPut<AuthState>(() => AuthState(), fenix: true);
+  Get.put<AuthState>(AuthState(), permanent: true);
 
+  /// Set and lock device Orientation
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -53,9 +55,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
-  }
-}
+

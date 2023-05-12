@@ -9,7 +9,7 @@ class AuthData {
   /// Create a user model to use in whole file.
   static UserModel _userObject = UserModel(
     id: 1,
-    name: "Shoaib",
+    name: "Shoaib khan",
     email: "shoabkhan33@gmail.com",
     phone: "9589988584",
     avatar: "https://random.imagecdn.app/500/500",

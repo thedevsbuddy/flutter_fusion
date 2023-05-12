@@ -23,6 +23,7 @@ dependencies:
     path: packages/ui_x
   connectivity_plus: ^2.3.6
   feather_icons: ^1.2.0
+  # Enable below Firebase related package to use firebase
 #  firebase_core:
 #  firebase_auth:
 #  firebase_messaging:
@@ -36,6 +37,8 @@ dev_dependencies:
   logger: ^1.1.0
   recase: ^4.0.0
   faker: ^2.1.0
+
+  # Modulr Package to generate Modules
   modulr:
     path: packages/flutter_modulr
 
@@ -44,6 +47,7 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/icon/icon.png"
+
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
