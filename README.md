@@ -19,7 +19,7 @@ Here are some awesome features which you will get by default when scaffolding yo
 - **MVCs Pattern**: We are using MVC pattern to manage whole project easily as it separates the Logic and UI and models. But i added new layer as Service which will help us communicate with APIs.
 - **Modular Structure**: Most of the developers are the fan of Modular Structure as it gives the flexibility to use a module on any project we build.
 - **Module Generator Tool**: I have built a simple module generator tool to help you generate any module with just a single command.
-- **Mockable Services**: Sometimes we don't have any api to test and build our apps so we need to do some mockups for apps here we cover that as well.
+- **Mock-Able Services**: Sometimes we don't have any api to test and build our apps so we need to do some mockups for apps here we cover that as well.
 
 ## New features
 
@@ -45,7 +45,7 @@ Generated Files:
   - `BlogRouter.dart` Router Class file.
 - Services
   - `BlogService.dart` abstract service file.
-  - `MockBlogService.dart` mockable service file for test service.
+  - `MockBlogService.dart` mock-able service file for test service.
   - `AppBlogService.dart` main service file for Real API Service.
 - `BlogModule.dart` view file.
 

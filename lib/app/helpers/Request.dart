@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +24,7 @@ class Request {
 
     _client.client.close();
 
-    _clients.add(HttpClient(id: client, client: http.Client()));
+    _clients.remove(_client);
   }
 
   ///====================
@@ -46,6 +48,91 @@ class Request {
         .timeout(Duration(seconds: TIME_OUT_DURATION));
 
     return _processResponse(response);
+  }
+
+  ///====================
+  /// MULTIPART Request
+  ///====================
+  Future<dynamic> multipart(String url,
+      {String method = 'POST',
+      required String client,
+      required Map<String, dynamic> body,
+      Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      bool authenticate = false}) async {
+    assert(body.containsKey('files'), "The body must contain [files] list");
+    assert(body['files'] != null, "[files] list can not be null or empty");
+    assert(body['files'] is Map<String, File> || body['files'] is Map<String, List<File>>, "[files] list must be [Map<String, File>] or [Map<String, List<File>>].");
+    assert(method.toUpperCase() == "POST" || method.toUpperCase() == "PUT", "[method] can be either [POST] or [PUT].");
+    HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
+    http.MultipartRequest request = http.MultipartRequest("$method", _sanitizedUri(url, params));
+
+    body.keys.forEach((key) {
+      if (key != 'files') {
+        request.fields['$key'] = body["$key"];
+      }
+    });
+
+    Map<String, dynamic> fileMap = body['files'];
+
+    fileMap.keys.forEach((key) async {
+      if (fileMap["$key"] is List<File>) {
+        for (File _file in fileMap["$key"]) {
+          request.files.add(await http.MultipartFile.fromPath(key + "[]", _file.path));
+        }
+      } else if (fileMap["$key"] is File) {
+        request.files.add(await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
+      }
+    });
+
+    /// Set Headers
+    request.headers.addAll(_getHeaders(token: authenticate));
+
+    http.Response response = await http.Response.fromStream(await _httpClient.client.send(request));
+    return _processResponse(response);
+  }
+
+  ///====================
+  /// PUT Request
+  ///====================
+  Future<dynamic> put(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+    String payload = json.encode(body);
+    HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
+    http.Response response = await _httpClient.client
+        .put(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
+
+    return _processResponse(response);
+  }
+
+  ///====================
+  /// DELETE Request
+  ///====================
+  Future<dynamic> delete(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+    String payload = json.encode(body);
+
+    HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
+    http.Response response = await _httpClient.client
+        .delete(_sanitizedUri(url, params), body: payload, headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
+
+    return _processResponse(response);
+  }
+
+
+  ///====================
+  /// DOWNLOAD [File] Request
+  ///====================
+  Future<dynamic> download(String url, {required String client, String? fileName, bool authenticate = false}) async {
+
+
+    HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
+    http.Response response = await _httpClient.client.get(_sanitizedUri(url, {}), headers: _getHeaders(token: authenticate, userHeaders: {})).timeout(Duration(seconds: TIME_OUT_DURATION));
+
+    String _dir = (await getApplicationDocumentsDirectory()).path;
+    File _file = new File('$_dir/$fileName');
+    await _file.writeAsBytes(response.bodyBytes);
+    return _file;
   }
 
   ///======================================

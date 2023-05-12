@@ -18,6 +18,6 @@ class AppProfileService implements ProfileService {
 
   @override
   Future<ApiResponse> getData() async {
-    return await _request.get('/todos', client: "getData");
+    throw UnimplementedError('Add this method');
   }
 }
