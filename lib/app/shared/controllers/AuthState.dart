@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ui_x/ui_x.dart';
 
-import '../../../routes/Routes.dart';
 import '../../helpers/Global.dart';
 import '../../models/ApiResponse.dart';
 import '../../models/UserModel.dart';
