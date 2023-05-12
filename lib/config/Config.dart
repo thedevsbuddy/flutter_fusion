@@ -1,5 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 
+import '../app/modules/Modules.dart';
 import '../routes/Routes.dart';
 
 class Config {
@@ -26,7 +27,7 @@ class Config {
   ///======================================
   /// Home/Dashboard URL [To be used to redirect user after login]
   ///======================================
-  static String homeUrl = Routes.dashboard;
+  static String homeUrl = DashboardRoutes.dashboard;
 
   ///======================================
   /// Font Family For The Headings And Titles

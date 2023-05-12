@@ -5,6 +5,7 @@ import '../../../routes/Routes.dart';
 import '../../helpers/Global.dart';
 import '../../models/ApiResponse.dart';
 import '../../models/UserModel.dart';
+import '../../modules/Modules.dart';
 import '../services/Services.dart';
 import 'AppController.dart';
 
@@ -60,7 +61,7 @@ class AuthState extends AppController {
     Toastr.show(message: "${response.message}");
     await storage.remove('token');
     await storage.remove('user');
-    Get.offAllNamed(Routes.login);
+    Get.offAllNamed(AuthRoutes.login);
   }
 
   /// Setter for user data [setUserData(String)]

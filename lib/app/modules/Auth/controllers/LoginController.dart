@@ -54,7 +54,7 @@ class LoginController extends AppController {
       _authService.close(_client);
 
       /// Redirect user
-      Get.offAllNamed(Routes.dashboard);
+      Get.offAllNamed(DashboardRoutes.dashboard);
     } on Exception catch (e) {
       Get.to(() => ServerErrorPage(message: "${e.toString()}"));
     }
