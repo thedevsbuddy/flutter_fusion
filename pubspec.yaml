@@ -23,6 +23,7 @@ dependencies:
     path: packages/ui_x
   connectivity_plus: ^2.3.6
   feather_icons: ^1.2.0
+  flutter_local_notifications: ^14.0.1
   # Enable below Firebase related package to use firebase
 #  firebase_core:
 #  firebase_auth:
