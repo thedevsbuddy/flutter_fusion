@@ -29,71 +29,19 @@ class DashboardPage extends StatelessWidget {
                     ],
                     body: Padding(
                       padding: EdgeInsets.all(0.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Obx(
-                            () => Expanded(
-                              child: controller.tasks.length <= 0
-                                  ? Center(
-                                      child: Text("No tasks yet!"),
-                                    )
-                                  : ListView.separated(
-                                      itemCount: controller.tasks.length,
-                                      itemBuilder: (context, index) {
-                                        Map<String, dynamic> task = controller.tasks[index];
-                                        return GestureDetector(
-                                          onDoubleTap: () => controller.removeTask(index),
-                                          child: Container(
-                                            color: Theme.of(context).backgroundColor,
-                                            child: ListTile(
-                                              dense: true,
-                                              title: Text(
-                                                "${task['task']}",
-                                                style: TextStyl.body,
-                                              ),
-                                              trailing: Checkbox(
-                                                value: task['completed'],
-                                                onChanged: (val) => controller.toggleTask(task['id']),
-                                              ),
-                                              onTap: () => controller.toggleTask(task['id']),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, idx) => Divider(height: 0),
-                                    ),
-                            ),
+                      child: Center(
+                        child: Container(
+                          width: double.maxFinite,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('I am a dashboard', style: TextStyl.subtitle,),
+                              SizedBox(height: spacer),
+                              Text('Create awesome application'),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: spacer3, vertical: spacer2),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: FormInput.text(
-                                    controller: controller.taskInput,
-                                    placeholder: "Enter task",
-                                  ),
-                                ),
-                                SizedBox(width: 12),
-                                Button(
-                                  key: UniqueKey(),
-                                  label: "Create",
-                                  onTap: (btn) async {
-                                    btn.setBusy(true);
-                                    await controller.saveTask();
-                                    btn.setBusy(false);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      )
                     ),
                   );
       },

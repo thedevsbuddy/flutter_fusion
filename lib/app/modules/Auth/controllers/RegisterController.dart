@@ -5,7 +5,7 @@ import 'package:ui_x/ui_x.dart';
 
 import '../../../models/ApiResponse.dart';
 import '../../../shared/controllers/AppController.dart';
-import '../../../shared/views/errors/ServerErrorPage.dart';
+import '../../../shared/views/errors/ErrorPage.dart';
 import '../../Modules.dart';
 
 class RegisterController extends AppController {
@@ -69,7 +69,7 @@ class RegisterController extends AppController {
       /// Login the user after registration
       await loginController.submit();
     } on Exception catch (e) {
-      Get.to(() => ServerErrorPage(message: "${e.toString()}"));
+      Get.to(() => ErrorPage(message: "${e.toString()}"));
     }
   }
 

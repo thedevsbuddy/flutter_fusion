@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import '../../../helpers/Global.dart';
 
-class ServerErrorPage extends StatelessWidget {
-  ServerErrorPage(
+class ErrorPage extends StatelessWidget {
+  ErrorPage(
       {Key? key,
       required this.message,
       this.action,

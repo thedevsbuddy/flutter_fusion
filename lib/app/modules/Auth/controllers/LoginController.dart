@@ -6,7 +6,7 @@ import '../../../../routes/Routes.dart';
 import '../../../helpers/Global.dart';
 import '../../../models/ApiResponse.dart';
 import '../../../shared/controllers/AppController.dart';
-import '../../../shared/views/errors/ServerErrorPage.dart';
+import '../../../shared/views/errors/ErrorPage.dart';
 import '../../Modules.dart';
 
 class LoginController extends AppController {
@@ -56,7 +56,7 @@ class LoginController extends AppController {
       /// Redirect user
       Get.offAllNamed(DashboardRoutes.dashboard);
     } on Exception catch (e) {
-      Get.to(() => ServerErrorPage(message: "${e.toString()}"));
+      Get.to(() => ErrorPage(message: "${e.toString()}"));
     }
   }
 }

@@ -1,10 +1,11 @@
+import 'package:flutter_fusion/app/shared/services/BaseService.dart';
 import 'package:get/get.dart';
 
 import '../../../models/ApiResponse.dart';
 import 'AppDashboardService.dart';
 import 'MockDashboardService.dart';
 
-abstract class DashboardService {
+abstract class DashboardService extends BaseService {
   /// Configure if Mock is enabled or not @accepts[true|false]
   static const MOCK_ENABLED = true;
 
@@ -14,12 +15,6 @@ abstract class DashboardService {
     return Get.find<DashboardService>();
   }
 
-  /// Start the server request
-  void init(String client);
-
-  /// Stop the server request
-  void close(String client);
-
   /// Do Something
-  Future<ApiResponse> doSomething();
+  Future<ApiResponse> doSomething({required String client});
 }

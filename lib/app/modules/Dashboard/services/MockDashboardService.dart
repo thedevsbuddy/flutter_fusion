@@ -1,17 +1,10 @@
 import '../../../models/ApiResponse.dart';
+import '../../../shared/services/Services.dart';
 import 'DashboardService.dart';
 
-class MockDashboardService implements DashboardService {
-  /// Start the server request
+class MockDashboardService extends BaseService implements DashboardService {
   @override
-  void init(String client) => null;
-
-  /// Stop the server request
-  @override
-  void close(String client) => null;
-
-  @override
-  Future<ApiResponse> doSomething() async {
+  Future<ApiResponse> doSomething({required String client}) async {
     // TODO: implement googleLogin
     throw UnimplementedError();
   }
