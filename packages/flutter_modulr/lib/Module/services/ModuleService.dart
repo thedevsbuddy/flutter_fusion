@@ -1,11 +1,12 @@
 const String stub = """
 import '../../../models/ApiResponse.dart';
+import '../../../shared/services/Services.dart';
 import 'package:get/get.dart';
 
 import 'App{MODULE}Service.dart';
 import 'Mock{MODULE}Service.dart';
 
-abstract class {MODULE}Service {
+abstract class {MODULE}Service extends BaseService {
   /// Configure if Mock is enabled or not @accepts[true|false]
   static const MOCK_ENABLED = true;
 
@@ -15,12 +16,6 @@ abstract class {MODULE}Service {
     return Get.find<{MODULE}Service>();
   }
   
-  /// Start the server request
-  void init(String client);
-
-  /// Stop the server request
-  void close(String client);
-
   /// Do Something
   Future<ApiResponse> doSomething();
 }

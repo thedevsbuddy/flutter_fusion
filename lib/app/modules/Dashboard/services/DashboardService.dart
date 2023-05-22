@@ -1,7 +1,7 @@
-import 'package:flutter_fusion/app/shared/services/BaseService.dart';
 import 'package:get/get.dart';
 
 import '../../../models/ApiResponse.dart';
+import '../../../shared/services/Services.dart';
 import 'AppDashboardService.dart';
 import 'MockDashboardService.dart';
 
