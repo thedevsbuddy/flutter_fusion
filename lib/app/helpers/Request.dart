@@ -213,7 +213,7 @@ class Request {
   }
 }
 
-/// HttpClient Class Model
+/// HttpClient Model Class
 class HttpClient {
   HttpClient({
     required this.id,

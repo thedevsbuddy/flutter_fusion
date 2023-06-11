@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 
 import 'AppAuthStateService.dart';
 import 'MockAuthStateService.dart';
+import '../Services.dart';
 
-abstract class AuthStateService {
+abstract class AuthStateService extends BaseService {
   /// Configure if Mock is enabled or not
   static const MOCK_ENABLED = true;
 
@@ -13,12 +14,6 @@ abstract class AuthStateService {
     if (!Get.isRegistered<AuthStateService>()) Get.lazyPut<AuthStateService>(() => MOCK_ENABLED ? MockAuthStateService() : AppAuthStateService());
     return Get.find<AuthStateService>();
   }
-
-  /// Start the server request
-  void init(String client);
-
-  /// Stop the server request
-  void close(String client);
 
   /// Get and refresh user data
   Future<ApiResponse> getUser();

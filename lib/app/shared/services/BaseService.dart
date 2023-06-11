@@ -1,9 +1,6 @@
 import '../../helpers/Request.dart';
 
 class BaseService  {
-  /// Do we need pagination?
-  bool withPagination = false;
-
   /// Create a request class instance
   late Request api;
 
