@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app/shared/controllers/AuthState.dart';
-import 'app/shared/views/widgets/ThemeBuilder.dart';
 import 'config/Config.dart';
 import 'config/common/MyHttpOverrides.dart';
 import 'config/theme/AppTheme.dart';
@@ -38,19 +37,15 @@ class App extends StatelessWidget {
       ),
     );
 
-    return ThemeBuilder(
-      builder: (context, _themeMode) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          defaultTransition: Transition.fadeIn,
-          title: "${Config.appName}",
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: _themeMode,
-          initialRoute: Routes.splash,
-          getPages: routes,
-        );
-      },
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.fadeIn,
+      title: "${Config.appName}",
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      initialRoute: Routes.splash,
+      getPages: routes,
     );
   }
 }
