@@ -36,18 +36,24 @@ flutter pub run modulr:generate Blog
 
 This will generate all the files required for a `Module`
 
-Generated Files:
+Generated Files Inside your project's `lib/app/modules` directory.
 
-- `BlogController.dart` controller file.
-- `BlogPage.dart` view file.
-- Routes
-  - `BlogRouter.dart` Router file.
-  - `BlogRouter.dart` Router Class file.
-- Services
-  - `BlogService.dart` abstract service file.
-  - `MockBlogService.dart` mock-able service file for test service.
-  - `AppBlogService.dart` main service file for Real API Service.
-- `BlogModule.dart` view file.
+```txt
+📂 Blog
+├── 📂 controllers
+│   └── 📄 BlogController.dart
+├── 📂 routes
+│   ├── 📄 BlogRouter.dart
+│   └── 📄 BlogRoutes.dart
+├── 📂 services
+│   ├── 📄 AppBlogService.dart
+│   ├── 📄 BlogService.dart
+│   └── 📄 MockBlogService.dart
+├── 📂 views
+│   └── 📄 BlogPage.dart
+└── 📄 BlogModule.dart
+```
+
 
 ### Generate Controller
 
@@ -57,9 +63,12 @@ flutter pub run modulr:controller Comment --on=Blog
 
 This will generate the new controller (`CommentController.dart`) inside the `Blog` Module.
 
-Generated Files:
-
-- `CommentController.dart` controller file.
+```txt
+📂 Blog
+├── 📂 controllers
+│   ├── 📄 BlogController.dart
+│   └── 📄 CommentController.dart
+```
 
 ### Generate Service
 
@@ -69,11 +78,14 @@ flutter pub run modulr:service Comment --on=Blog
 
 If any module doesn't have services already you can generate services for the module using this command.
 
-**_Note: This will check for the services directory inside the provided module name. if it exists it wont generate any file and return void._**
-
 Generated Files:
 
-- Services
-  - `CommentService.dart` abstract service file.
-  - `MockCommentService.dart` mockable service file for test service.
-  - `AppCommentService.dart` main service file for Real API Service.
+```txt
+📂 Blog
+├── 📂 services
+│   ├── 📄 AppCommentService.dart
+│   ├── 📄 CommentService.dart
+│   └── 📄 MockCommentService.dart
+```
+
+**_Note: This will check for the services directory inside the provided module name. if it exists it wont generate any file and return void._**

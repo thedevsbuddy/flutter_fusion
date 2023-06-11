@@ -28,17 +28,18 @@ class SettingsPage extends StatelessWidget {
                           children: [
                             Text(
                               "Theme",
-                              style: TextStyl.bodySm,
+                              style: TextStyl.bodySm(context),
                             ),
                             Row(
                               children: [
                                 Expanded(
-                                  child: GestureDetector(
+                                  child: InkWell(
+                                    splashFactory: NoSplash.splashFactory,
                                     onTap: () => controller.changeTheme(context, "system"),
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(vertical: 16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).backgroundColor,
+                                        color: Theme.of(context).colorScheme.background,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(color: controller.selectedTheme == 'system' ? kcPrimary : Colors.transparent, width: 2),
                                       ),
@@ -47,7 +48,7 @@ class SettingsPage extends StatelessWidget {
                                           Icon(Icons.brightness_4_rounded, size: 32),
                                           Text(
                                             'System',
-                                            style: TextStyl.bodySm,
+                                            style: TextStyl.bodySm(context),
                                           ),
                                         ],
                                       ),
@@ -56,12 +57,13 @@ class SettingsPage extends StatelessWidget {
                                 ),
                                 SizedBox(width: 8),
                                 Expanded(
-                                  child: GestureDetector(
+                                  child: InkWell(
+                                    splashFactory: NoSplash.splashFactory,
                                     onTap: () => controller.changeTheme(context, "light"),
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(vertical: 16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).backgroundColor,
+                                        color: Theme.of(context).colorScheme.background,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(color: controller.selectedTheme == 'light' ? kcPrimary : Colors.transparent, width: 2),
                                       ),
@@ -70,7 +72,7 @@ class SettingsPage extends StatelessWidget {
                                           Icon(Icons.brightness_5_rounded, size: 32),
                                           Text(
                                             'Light',
-                                            style: TextStyl.bodySm,
+                                            style: TextStyl.bodySm(context),
                                           ),
                                         ],
                                       ),
@@ -79,12 +81,13 @@ class SettingsPage extends StatelessWidget {
                                 ),
                                 SizedBox(width: 8),
                                 Expanded(
-                                  child: GestureDetector(
+                                  child: InkWell(
+                                    splashFactory: NoSplash.splashFactory,
                                     onTap: () => controller.changeTheme(context, "dark"),
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(vertical: 16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).backgroundColor,
+                                        color: Theme.of(context).colorScheme.background,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(color: controller.selectedTheme == 'dark' ? kcPrimary : Colors.transparent, width: 2),
                                       ),
@@ -93,7 +96,7 @@ class SettingsPage extends StatelessWidget {
                                           Icon(Icons.brightness_2_rounded, size: 32),
                                           Text(
                                             'Dark',
-                                            style: TextStyl.bodySm,
+                                            style: TextStyl.bodySm(context),
                                           ),
                                         ],
                                       ),
@@ -102,15 +105,22 @@ class SettingsPage extends StatelessWidget {
                                 )
                               ],
                             ),
+                            const SizedBox(height: 16),
                             Text(
                               "Account",
-                              style: TextStyl.bodySm,
+                              style: TextStyl.bodySm(context),
                             ),
+                            const SizedBox(height: 4),
                             InkWell(
                               onTap: auth.logout,
                               child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 12),
-                                child: Text("Logout"),
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                                child: Text("Logout", style: TextStyl.button(context),),
                               ),
                             )
                           ],

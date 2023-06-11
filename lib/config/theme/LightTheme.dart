@@ -35,26 +35,26 @@ OutlineInputBorder _inputErrorBorder() {
 //======================================
 InputDecorationTheme _inputTheme() {
   return InputDecorationTheme(
-      isDense: true,
-      filled: true,
-      fillColor: kcWhite,
-      labelStyle: TextStyle(
-        color: kcDark,
-      ),
-      hintStyle: TextStyle(
-        height: 1,
-        fontSize: 14,
-        color: kcDark.withOpacity(0.5),
-      ),
-      contentPadding:
-          const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),
-      prefixStyle: TextStyle(
-        color: kcDark,
-      ),
-      border: _inputBorder(),
-      enabledBorder: _inputBorder(),
-      focusedBorder: _inputBorder(),
-      errorBorder: _inputErrorBorder());
+    isDense: true,
+    filled: true,
+    fillColor: kcWhite,
+    labelStyle: TextStyle(
+      color: kcDark,
+    ),
+    hintStyle: TextStyle(
+      height: 1,
+      fontSize: 14,
+      color: kcDark.withOpacity(0.5),
+    ),
+    contentPadding: const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),
+    prefixStyle: TextStyle(
+      color: kcDark,
+    ),
+    border: _inputBorder(),
+    enabledBorder: _inputBorder(),
+    focusedBorder: _inputBorder(),
+    errorBorder: _inputErrorBorder(),
+  );
 }
 
 //======================================
@@ -69,54 +69,54 @@ IconThemeData _iconTheme = IconThemeData(
 // Light Text Theme
 //======================================
 TextTheme _textThemeLight = TextTheme(
-  headline1: TextStyle(
+  displayLarge: TextStyle(
     fontSize: 35,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcDarker,
   ),
-  headline2: TextStyle(
+  displayMedium: TextStyle(
     fontSize: 30,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcDarker,
   ),
-  headline3: TextStyle(
+  displaySmall: TextStyle(
     fontSize: 25,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcDarker,
   ),
-  headline4: TextStyle(
+  headlineMedium: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline5: TextStyle(
+  headlineSmall: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline6: TextStyle(
+  titleLarge: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  bodyText1: TextStyle(
+  bodyLarge: TextStyle(
     fontSize: 16.0,
     fontFamily: Config.bodyFontFamily,
     color: kcDarker,
   ),
-  bodyText2: TextStyle(
+  bodyMedium: TextStyle(
     fontSize: 14.0,
     fontFamily: Config.bodyFontFamily,
     color: kcDarker,
   ),
-  button: TextStyle(
+  labelLarge: TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w600,
     fontFamily: Config.bodyFontFamily,
-    color: kcOffWhite,
+    color: kcDarkAlt,
   ),
 );
 
@@ -128,7 +128,10 @@ final ThemeData lightThemeData = ThemeData(
   iconTheme: _iconTheme,
   textTheme: _textThemeLight,
   scaffoldBackgroundColor: kcOffWhite,
-  backgroundColor: kcWhite,
+  colorScheme: ColorScheme.light(
+    background: kcWhite,
+    brightness: Brightness.light,
+  ),
   primaryColor: kcPrimary,
   primaryColorLight: kcPrimaryLight,
   primarySwatch: generateMaterialColor(kcPrimary),
@@ -145,21 +148,21 @@ final ThemeData lightThemeData = ThemeData(
   appBarTheme: AppBarTheme(
     elevation: 0.0,
     backgroundColor: kcPrimary,
-    iconTheme: IconThemeData(color: kcOffWhite),
+    iconTheme: IconThemeData(color: kcOffWhite, size: 24),
     toolbarTextStyle: TextTheme(
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: kcOffWhite,
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-    ).headline6,
+    ).titleLarge,
     titleTextStyle: TextTheme(
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: kcOffWhite,
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-    ).headline6,
+    ).titleLarge,
   ),
   inputDecorationTheme: _inputTheme(),
 );

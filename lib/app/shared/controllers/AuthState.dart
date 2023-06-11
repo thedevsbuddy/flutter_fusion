@@ -83,4 +83,6 @@ class AuthState extends AppController {
 
     return false;
   }
+
+  Future<bool> isLoggedIn() => check();
 }

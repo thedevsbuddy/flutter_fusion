@@ -52,50 +52,50 @@ IconThemeData _iconTheme = IconThemeData(
 /// Dark Text Theme
 ///======================================
 TextTheme _textThemeDark = TextTheme(
-  headline1: TextStyle(
+  displayLarge: TextStyle(
     fontSize: 30,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline2: TextStyle(
+  displayMedium: TextStyle(
     fontSize: 25,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline3: TextStyle(
+  displaySmall: TextStyle(
     fontSize: 20,
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline4: TextStyle(
+  headlineMedium: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline5: TextStyle(
+  headlineSmall: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  headline6: TextStyle(
+  titleLarge: TextStyle(
     fontFamily: Config.headingFontFamily,
     fontWeight: FontWeight.w600,
     color: kcWhite,
   ),
-  bodyText1: TextStyle(
+  bodyLarge: TextStyle(
     fontSize: 16.0,
     fontFamily: Config.bodyFontFamily,
     color: kcOffWhite,
   ),
-  bodyText2: TextStyle(
+  bodyMedium: TextStyle(
     fontSize: 14.0,
     fontFamily: Config.bodyFontFamily,
     color: kcOffWhite,
   ),
-  button: TextStyle(
+  labelLarge: TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w600,
     fontFamily: Config.bodyFontFamily,
@@ -111,7 +111,10 @@ final ThemeData darkThemeData = ThemeData(
   iconTheme: _iconTheme,
   textTheme: _textThemeDark,
   scaffoldBackgroundColor: kcDarkest,
-  backgroundColor: kcDarker,
+  colorScheme: ColorScheme.dark(
+    background: kcDarker,
+    brightness: Brightness.dark,
+  ),
   primaryColor: kcPrimary,
   primaryColorLight: kcPrimaryLight,
   hintColor: kcAccent,
@@ -128,21 +131,21 @@ final ThemeData darkThemeData = ThemeData(
   appBarTheme: AppBarTheme(
     elevation: 0.0,
     backgroundColor: kcPrimary,
-    iconTheme: IconThemeData(color: kcOffWhite),
+    iconTheme: IconThemeData(color: kcOffWhite, size: 24),
     toolbarTextStyle: TextTheme(
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: kcOffWhite,
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-    ).headline6,
+    ).titleLarge,
     titleTextStyle: TextTheme(
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: kcOffWhite,
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-    ).headline6,
+    ).titleLarge,
   ),
   inputDecorationTheme: _inputTheme(),
 );

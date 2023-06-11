@@ -193,100 +193,100 @@ class Button extends StatelessWidget {
     Color _btnTxtColor = _btnBgColor.computeLuminance() > 0.6 ? kcDark : kcWhite;
 
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTap: () => onTap!(btnController),
         child: block
             ? AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
-          padding: padding,
-          width: double.infinity,
-          alignment: Alignment.center,
-          decoration: !outline
-              ? BoxDecoration(
-            color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-          )
-              : BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-            border: Border.all(
-              color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
-              width: 1,
-            ),
-          ),
-          child: !btnController.isBusy
-              ? Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              if (leading != null) leading!,
-              if (leading != null) SizedBox(width: 6),
-              Text(
-                label,
-                style: TextStyl.button?.copyWith(
-                  fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                  color: !outline ? _btnTxtColor : _btnBgColor,
-                ),
-              ),
-            ],
-          )
-              : loadingIcon != null
-              ? SizedBox(height: 20, width: 20, child: loadingIcon)
-              : LoadingIcon(
-            color: !outline ? _btnTxtColor : _btnBgColor,
-            height: 16,
-          ),
-        )
-            : Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 250),
-              padding: padding,
-              alignment: Alignment.center,
-              decoration: !outline
-                  ? BoxDecoration(
-                color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                border: Border.all(
-                  color: _btnBgColor,
-                  width: 1,
-                ),
+                duration: const Duration(milliseconds: 250),
+                padding: padding,
+                width: double.infinity,
+                alignment: Alignment.center,
+                decoration: !outline
+                    ? BoxDecoration(
+                        color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                      )
+                    : BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                        border: Border.all(
+                          color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                          width: 1,
+                        ),
+                      ),
+                child: !btnController.isBusy
+                    ? Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          if (leading != null) leading!,
+                          if (leading != null) SizedBox(width: 6),
+                          Text(
+                            label,
+                            style: TextStyl.button(context)?.copyWith(
+                              fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                              color: !outline ? _btnTxtColor : _btnBgColor,
+                            ),
+                          ),
+                        ],
+                      )
+                    : loadingIcon != null
+                        ? SizedBox(height: 20, width: 20, child: loadingIcon)
+                        : LoadingIcon(
+                            color: !outline ? _btnTxtColor : _btnBgColor,
+                            height: 16,
+                          ),
               )
-                  : BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(!flat ? 8 : 0),
-                border: Border.all(
-                  color: _btnBgColor,
-                  width: 1,
-                ),
-              ),
-              child: !btnController.isBusy
-                  ? Row(
-                mainAxisSize: MainAxisSize.min,
+            : Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (leading != null) leading!,
-                  if (leading != null) SizedBox(width: 6),
-                  Text(
-                    label,
-                    style: TextStyl.button?.copyWith(
-                      fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                      color: !outline ? _btnTxtColor : _btnBgColor,
-                    ),
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 250),
+                    padding: padding,
+                    alignment: Alignment.center,
+                    decoration: !outline
+                        ? BoxDecoration(
+                            color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                            border: Border.all(
+                              color: _btnBgColor,
+                              width: 1,
+                            ),
+                          )
+                        : BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(!flat ? 8 : 0),
+                            border: Border.all(
+                              color: _btnBgColor,
+                              width: 1,
+                            ),
+                          ),
+                    child: !btnController.isBusy
+                        ? Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              if (leading != null) leading!,
+                              if (leading != null) SizedBox(width: 6),
+                              Text(
+                                label,
+                                style: TextStyl.button(context)?.copyWith(
+                                  fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                                  color: !outline ? _btnTxtColor : _btnBgColor,
+                                ),
+                              ),
+                            ],
+                          )
+                        : loadingIcon != null
+                            ? SizedBox(height: 20, width: 20, child: loadingIcon)
+                            : LoadingIcon(
+                                color: !outline ? _btnTxtColor : _btnBgColor,
+                                height: 16,
+                              ),
                   ),
                 ],
-              )
-                  : loadingIcon != null
-                  ? SizedBox(height: 20, width: 20, child: loadingIcon)
-                  : LoadingIcon(
-                color: !outline ? _btnTxtColor : _btnBgColor,
-                height: 16,
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -302,6 +302,7 @@ class ButtonController extends GetxController {
   RxBool _isDisabled = RxBool(false);
 
   bool get isBusy => _isBusy.value;
+
   bool get isDisabled => _isDisabled.value;
 
   ButtonController setBusy(bool val) {

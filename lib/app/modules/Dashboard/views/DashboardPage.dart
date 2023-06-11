@@ -23,26 +23,28 @@ class DashboardPage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.settings),
                         onPressed: () {
-                          Get.toNamed(ProfileRoutes.profile);
+                          Get.toNamed(SettingsRoutes.settings);
                         },
                       ),
                     ],
                     body: Padding(
-                      padding: EdgeInsets.all(0.0),
-                      child: Center(
-                        child: Container(
-                          width: double.maxFinite,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('I am a dashboard', style: TextStyl.subtitle,),
-                              SizedBox(height: spacer),
-                              Text('Create awesome application'),
-                            ],
+                        padding: EdgeInsets.all(0.0),
+                        child: Center(
+                          child: Container(
+                            width: double.maxFinite,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'I am a dashboard',
+                                  style: TextStyl.subtitle(context),
+                                ),
+                                SizedBox(height: spacer),
+                                Text('Create awesome application'),
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                    ),
+                        )),
                   );
       },
     );

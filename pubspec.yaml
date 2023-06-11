@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -16,14 +16,14 @@ dependencies:
   cupertino_icons: ^1.0.5
   http: ^0.13.4
   get: ^4.6.5
-  get_storage: ^2.0.3
+  get_storage: ^2.1.1
   google_fonts: ^3.0.1
-  flutter_svg: ^1.1.1+1
+  flutter_svg: ^1.1.6
   ui_x:
     path: packages/ui_x
-  connectivity_plus: ^2.3.6
+  connectivity_plus: ^2.3.9
   feather_icons: ^1.2.0
-  flutter_local_notifications: ^14.0.1
+  flutter_local_notifications: ^14.1.1
   # Enable below Firebase related package to use firebase
 #  firebase_core:
 #  firebase_auth:
@@ -34,9 +34,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.3
-  dcli: ^1.33.0
-  logger: ^1.1.0
-  recase: ^4.0.0
+  dcli: ^1.36.2
+  logger: ^1.4.0
+  recase: ^4.1.0
   faker: ^2.1.0
 
   # Modulr Package to generate Modules

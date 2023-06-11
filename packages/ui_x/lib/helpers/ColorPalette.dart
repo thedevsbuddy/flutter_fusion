@@ -32,8 +32,7 @@ Color getContrastColor(Color color) {
   int d = 0;
 
 // Counting the perceptive luminance - human eye favors green color...
-  double luminance =
-      (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
+  double luminance = (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
 
   if (luminance > 0.7)
     d = 0; // bright colors - black font
@@ -41,4 +40,38 @@ Color getContrastColor(Color color) {
     d = 255; // dark colors - white font
 
   return Color.fromARGB(color.alpha, d, d, d);
+}
+
+
+Color tintColor(Color baseColor, int shade) {
+  final int red = baseColor.red;
+  final int green = baseColor.green;
+  final int blue = baseColor.blue;
+
+  final double shadeRatio = (shade - 500) / 1000.0;
+
+  final int tintedRed = (red + (red * shadeRatio)).round().clamp(0, 255);
+  final int tintedGreen = (green + (green * shadeRatio)).round().clamp(0, 255);
+  final int tintedBlue = (blue + (blue * shadeRatio)).round().clamp(0, 255);
+
+  return Color.fromARGB(
+    baseColor.alpha,
+    tintedRed,
+    tintedGreen,
+    tintedBlue,
+  );
+}
+
+
+Color lightenColor(Color baseColor, double amount) {
+  final int red = (baseColor.red + ((255 - baseColor.red) * amount)).round().clamp(0, 255);
+  final int green = (baseColor.green + ((255 - baseColor.green) * amount)).round().clamp(0, 255);
+  final int blue = (baseColor.blue + ((255 - baseColor.blue) * amount)).round().clamp(0, 255);
+
+  return Color.fromARGB(
+    baseColor.alpha,
+    red,
+    green,
+    blue,
+  );
 }

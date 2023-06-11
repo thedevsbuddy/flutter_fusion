@@ -39,7 +39,7 @@ class LoadingIconWidget extends StatelessWidget {
                   SizedBox(height: 20),
                   Text(
                     "$message",
-                    style: TextStyl.body,
+                    style: TextStyl.body(context),
                     textAlign: TextAlign.center,
                   ),
                 ],

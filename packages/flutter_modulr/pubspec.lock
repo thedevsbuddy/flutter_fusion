@@ -109,26 +109,26 @@ packages:
     dependency: transitive
     description:
       name: dart_console2
-      sha256: f4d556196f1273d1d2f2657c045ad731623d2aa1b85be7182759ee8a759fd933
+      sha256: ef1c79a8aef31bec96163e0f7ae399bd7ad93c37c6f42162a4e6f365a86a5013
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   dcli:
     dependency: "direct main"
     description:
       name: dcli
-      sha256: fa7ee24c79fea40afca75eb11496c334ec8670998a912a4d3379f0fb01234a86
+      sha256: "9d37d558960714690675c3f250aa94602d0ff701e654316944a5cea489618b80"
       url: "https://pub.dev"
     source: hosted
-    version: "1.35.4"
+    version: "1.36.2"
   dcli_core:
     dependency: transitive
     description:
       name: dcli_core
-      sha256: "144a6cbc697ee98d9720630eea7927cfeaac8970c53364ea0b229fb9586f143d"
+      sha256: "86c71b7bf3d93ca51ad3d64227acd3e595c98e4694aa3a48cce1c335409006b7"
       url: "https://pub.dev"
     source: hosted
-    version: "1.36.0"
+    version: "1.36.2"
   equatable:
     dependency: transitive
     description:
@@ -179,6 +179,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  functional_data:
+    dependency: transitive
+    description:
+      name: functional_data
+      sha256: aefdec4365452283b2a7cf420a3169654d51d3e9553069a22d76680d7a9d7c3d
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   glob:
     dependency: transitive
     description:
@@ -235,6 +243,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
+  json2yaml:
+    dependency: transitive
+    description:
+      name: json2yaml
+      sha256: da94630fbc56079426fdd167ae58373286f603371075b69bf46d848d63ba3e51
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   json_annotation:
     dependency: transitive
     description:
@@ -323,6 +339,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  pubspec_lock:
+    dependency: transitive
+    description:
+      name: pubspec_lock
+      sha256: ed5fc1ecd0cdc0e14475a091afcb2c4cbb00e74cebff17635e9abbec18d76cc4
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   quiver:
     dependency: transitive
     description:
@@ -351,10 +375,10 @@ packages:
     dependency: transitive
     description:
       name: settings_yaml
-      sha256: c73512069690260c6ab0b210dc2e040edda8f467723522f86e42546ec1efb42b
+      sha256: "76e7cbce59398e663df0b8e2d08c7719dcb6016137f01b3338a0bb0448f4ec71"
       url: "https://pub.dev"
     source: hosted
-    version: "3.5.1"
+    version: "4.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -400,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  sum_types:
+    dependency: transitive
+    description:
+      name: sum_types
+      sha256: c0a0fad9a518d011987e1d9f27fc336194294e55dafdc3699363e52aa5776e09
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.5"
   system_info2:
     dependency: transitive
     description:
@@ -476,10 +508,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "6b75ac2ddd42f5c226fdaf4498a2b04071c06f1f2b8f7ab1c3f77cc7f2285ff1"
+      sha256: a6f0236dbda0f63aa9a25ad1ff9a9d8a4eaaa5012da0dc59d21afdb1dc361ca4
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.0"
+    version: "3.1.4"
   yaml:
     dependency: transitive
     description:

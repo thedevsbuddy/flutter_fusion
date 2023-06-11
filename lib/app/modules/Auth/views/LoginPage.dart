@@ -40,9 +40,9 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: spacer),
-                      Text("Welcome Back,", style: TextStyl.title!.copyWith(fontWeight: FontWeight.w700)),
+                      Text("Welcome Back,", style: TextStyl.title(context)!.copyWith(fontWeight: FontWeight.w700)),
                       const SizedBox(height: spacer1),
-                      Text("Sign in to continue", style: TextStyl.body!.copyWith(fontWeight: FontWeight.bold)),
+                      Text("Sign in to continue", style: TextStyl.body(context)!.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   Form(
@@ -80,11 +80,11 @@ class LoginPage extends StatelessWidget {
                           child: Text.rich(
                             TextSpan(
                               text: "Don't have an account?",
-                              style: TextStyl.button?.copyWith(color: Theme.of(context).textTheme.bodyText1?.color),
+                              style: TextStyl.button(context)?.copyWith(color: Theme.of(context).textTheme.bodyText1?.color),
                               children: [
                                 TextSpan(
                                   text: " Join Now",
-                                  style: TextStyl.button?.copyWith(color: Theme.of(context).primaryColor),
+                                  style: TextStyl.button(context)?.copyWith(color: Theme.of(context).primaryColor),
                                 ),
                               ],
                             ),

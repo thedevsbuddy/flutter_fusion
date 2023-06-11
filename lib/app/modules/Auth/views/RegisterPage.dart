@@ -37,12 +37,10 @@ class RegisterPage extends StatelessWidget {
                       ),
                       SizedBox(height: 15),
                       Text("Welcome,",
-                          style: TextStyl.title!
-                              .copyWith(fontWeight: FontWeight.w700)),
+                          style: TextStyl.title(context)?.copyWith(fontWeight: FontWeight.w700)),
                       SizedBox(height: 5),
                       Text("Create an account to continue.",
-                          style: TextStyl.body!
-                              .copyWith(fontWeight: FontWeight.bold)),
+                          style: TextStyl.body(context)?.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   Form(
@@ -101,7 +99,7 @@ class RegisterPage extends StatelessWidget {
                           child: Text.rich(
                             TextSpan(
                               text: "Already have an account?",
-                              style: TextStyl.button?.copyWith(
+                              style: TextStyl.button(context)?.copyWith(
                                   color: Theme.of(context)
                                       .textTheme
                                       .bodyText1
@@ -109,7 +107,7 @@ class RegisterPage extends StatelessWidget {
                               children: [
                                 TextSpan(
                                   text: " Login",
-                                  style: TextStyl.button?.copyWith(
+                                  style: TextStyl.button(context)?.copyWith(
                                       color: Theme.of(context).primaryColor),
                                 ),
                               ],
