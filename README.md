@@ -12,6 +12,27 @@ Clone the repository
 git clone https://github.com/thedevsbuddy/flutter_fusion.git myAwesomeProject
 ```
 
+#### Want to use without `ThemeBuilder` option.
+
+- Change working directory to `myAwesomeProject`.
+    ```shell
+    cd myAwesomeProject
+    ```
+- Swith branch to `without_theme_builder`.
+    ```shell
+    git checkout without_theme_builder
+    ```
+
+#### Now remove git from your project.
+- Change working directory to `myAwesomeProject` (if not already).
+    ```shell
+    cd myAwesomeProject
+    ```
+- Delete `.git` directory.
+    ```shell
+    rm -rf .git
+    ```
+    
 ### Features
 
 Here are some awesome features which you will get by default when scaffolding your project with this starting project.
