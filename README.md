@@ -6,11 +6,25 @@ It uses the `MVC` pattern which is one of the best pattern among developers.
 
 ### Getting Started
 
-Clone the repository
+#### Clone the repository
 
 ```shell
 git clone https://github.com/thedevsbuddy/flutter_fusion.git myAwesomeProject
 ```
+
+#### Now remove git from your project.
+- Change working directory to `myAwesomeProject` (if not already).
+    ```shell
+    cd myAwesomeProject
+    ```
+- Delete `.git` directory.
+    ```shell
+    rm -rf .git
+    ```
+
+#### Initialize your own repository
+
+You can now initialize your own repositry for your project.
 
 ### Features
 
