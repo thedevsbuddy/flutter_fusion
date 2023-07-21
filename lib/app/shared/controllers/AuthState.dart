@@ -50,7 +50,7 @@ class AuthState extends AppController {
     }
   }
 
-  /// Logout the user
+  /// Logout the user + Server
   Future<void> logout() async {
     ApiResponse response = await _authStateService.logout();
     if (response.hasError()) {
@@ -58,6 +58,13 @@ class AuthState extends AppController {
       return;
     }
     Toastr.show(message: "${response.message}");
+    await storage.remove('token');
+    await storage.remove('user');
+    Get.offAllNamed(AuthRoutes.login);
+  }
+
+  /// Logout the user
+  Future<void> logoutSilently() async {
     await storage.remove('token');
     await storage.remove('user');
     Get.offAllNamed(AuthRoutes.login);

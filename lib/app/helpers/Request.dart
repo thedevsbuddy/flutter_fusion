@@ -11,11 +11,19 @@ import '../models/ApiResponse.dart';
 import 'Global.dart';
 
 class Request {
-  static const int TIME_OUT_DURATION = 30; // [ In Seconds ]
+  static const int TIME_OUT_DURATION = 300; // [ In Seconds ]
 
   final List<HttpClient> _clients = [];
 
   void start(String client) {
+    if(_clients.length > 0){
+      HttpClient? _client = _clients.firstWhere((element) => element.id == client, orElse: null);
+      if(_client != null){
+       Toastr.show(message: "$client is already in use please use different client name.");
+       return;
+      }
+    }
+
     _clients.add(HttpClient(id: client, client: http.Client()));
   }
 
@@ -174,7 +182,7 @@ class Request {
       case 401:
       case 403:
         Toastr.show(message: "You are logged out!");
-        auth.logout();
+        auth.logoutSilently();
         return;
       case 422:
         return body;
