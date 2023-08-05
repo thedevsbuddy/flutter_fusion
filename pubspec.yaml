@@ -24,10 +24,11 @@ dependencies:
   connectivity_plus: ^2.3.9
   feather_icons: ^1.2.0
   flutter_local_notifications: ^14.1.1
-  # Enable below Firebase related package to use firebase
-#  firebase_core:
-#  firebase_auth:
-#  firebase_messaging:
+
+  # Enable firebase essential services
+#  fire_connect:
+#    path: packages/fire_connect
+
 #  flutter_local_notifications:
 
 dev_dependencies:
