@@ -16,11 +16,11 @@ class Request {
   final List<HttpClient> _clients = [];
 
   void start(String client) {
-    if(_clients.length > 0){
-      HttpClient? _client = _clients.firstWhere((element) => element.id == client, orElse: null);
-      if(_client != null){
-       Toastr.show(message: "$client is already in use please use different client name.");
-       return;
+    if (_clients.length > 0) {
+      HttpClient? _client = _clients.firstWhereOrNull((element) => element.id == client);
+      if (_client != null) {
+        Toastr.show(message: "$client is already in use please use different client name.");
+        return;
       }
     }
 
@@ -28,27 +28,35 @@ class Request {
   }
 
   void close(String client) {
-    HttpClient _client = _clients.firstWhere((element) => element.id == client);
+    HttpClient? _client = _clients.firstWhereOrNull((element) => element.id == client);
 
-    _client.client.close();
-
-    _clients.remove(_client);
+    if (_client != null) {
+      _client.client.close();
+      _clients.remove(_client);
+    }
   }
 
   ///====================
   /// GET Request
   ///====================
-  Future<dynamic> get(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
+  Future<dynamic> get(String url,
+      {required String client, Map<String, dynamic>? params, Map<String, String>? headers, bool authenticate = false}) async {
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
-    http.Response response =
-        await _httpClient.client.get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers)).timeout(Duration(seconds: TIME_OUT_DURATION));
+    http.Response response = await _httpClient.client
+        .get(_sanitizedUri(url, params), headers: _getHeaders(token: authenticate, userHeaders: headers))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
     return _processResponse(response);
   }
 
   ///====================
   /// POST Request
   ///====================
-  Future<dynamic> post(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  Future<dynamic> post(String url,
+      {required String client,
+      Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      dynamic body,
+      bool authenticate = false}) async {
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
     String payload = json.encode(body);
     http.Response response = await _httpClient.client
@@ -70,7 +78,8 @@ class Request {
       bool authenticate = false}) async {
     assert(body.containsKey('files'), "The body must contain [files] list");
     assert(body['files'] != null, "[files] list can not be null or empty");
-    assert(body['files'] is Map<String, File> || body['files'] is Map<String, List<File>>, "[files] list must be [Map<String, File>] or [Map<String, List<File>>].");
+    assert(body['files'] is Map<String, File> || body['files'] is Map<String, List<File>>,
+        "[files] list must be [Map<String, File>] or [Map<String, List<File>>].");
     assert(method.toUpperCase() == "POST" || method.toUpperCase() == "PUT", "[method] can be either [POST] or [PUT].");
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
     http.MultipartRequest request = http.MultipartRequest("$method", _sanitizedUri(url, params));
@@ -86,7 +95,7 @@ class Request {
     fileMap.keys.forEach((key) async {
       if (fileMap["$key"] is List<File>) {
         for (File _file in fileMap["$key"]) {
-          request.files.add(await http.MultipartFile.fromPath(key + "[]", _file.path));
+          request.files.add(await http.MultipartFile.fromPath("$key[]", _file.path));
         }
       } else if (fileMap["$key"] is File) {
         request.files.add(await http.MultipartFile.fromPath("$key", fileMap["$key"].path));
@@ -103,7 +112,12 @@ class Request {
   ///====================
   /// PUT Request
   ///====================
-  Future<dynamic> put(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  Future<dynamic> put(String url,
+      {required String client,
+      Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      dynamic body,
+      bool authenticate = false}) async {
     String payload = json.encode(body);
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
     http.Response response = await _httpClient.client
@@ -116,7 +130,12 @@ class Request {
   ///====================
   /// DELETE Request
   ///====================
-  Future<dynamic> delete(String url, {required String client, Map<String, dynamic>? params, Map<String, String>? headers, dynamic body, bool authenticate = false}) async {
+  Future<dynamic> delete(String url,
+      {required String client,
+      Map<String, dynamic>? params,
+      Map<String, String>? headers,
+      dynamic body,
+      bool authenticate = false}) async {
     String payload = json.encode(body);
 
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
@@ -127,15 +146,14 @@ class Request {
     return _processResponse(response);
   }
 
-
   ///====================
   /// DOWNLOAD [File] Request
   ///====================
   Future<dynamic> download(String url, {required String client, String? fileName, bool authenticate = false}) async {
-
-
     HttpClient _httpClient = _clients.firstWhere((element) => element.id == client);
-    http.Response response = await _httpClient.client.get(_sanitizedUri(url, {}), headers: _getHeaders(token: authenticate, userHeaders: {})).timeout(Duration(seconds: TIME_OUT_DURATION));
+    http.Response response = await _httpClient.client
+        .get(_sanitizedUri(url, {}), headers: _getHeaders(token: authenticate, userHeaders: {}))
+        .timeout(Duration(seconds: TIME_OUT_DURATION));
 
     String _dir = (await getApplicationDocumentsDirectory()).path;
     File _file = new File('$_dir/$fileName');
@@ -181,7 +199,7 @@ class Request {
         return body;
       case 401:
       case 403:
-        Toastr.show(message: "You are logged out!");
+        Toastr.show(message: "You are logged out.");
         auth.logoutSilently();
         return;
       case 422:

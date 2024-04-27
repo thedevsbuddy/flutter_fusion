@@ -1,7 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 
 import '../app/modules/Modules.dart';
-import '../routes/Routes.dart';
 
 class Config {
   ///======================================
@@ -38,14 +37,4 @@ class Config {
   /// Font Family For The Body Text
   ///======================================
   static String? bodyFontFamily = GoogleFonts.poppins().fontFamily;
-
-  ///======================================
-  /// Design screen width
-  ///======================================
-  static double screenWidth = 375.0;
-
-  ///======================================
-  /// Design screen height
-  ///======================================
-  static double screenHeight = 812.0;
 }

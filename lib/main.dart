@@ -1,6 +1,5 @@
 import 'dart:io';
 
-// import 'package:fire_connect/fire_connect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -17,9 +16,6 @@ import 'routes/Routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
-
-  // FireConnect _fireConnect = FireConnect();
-  // await _fireConnect.init();
 
   /// Initialize the storage
   await GetStorage.init();
