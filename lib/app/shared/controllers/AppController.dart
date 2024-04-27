@@ -25,14 +25,14 @@ class AppController extends GetxController {
   /// ```dart
   /// StreamSubscription<ConnectivityResult>
   /// ```
-  late StreamSubscription<ConnectivityResult> connectivitySubscription;
+  late StreamSubscription<List<ConnectivityResult>> connectivitySubscription;
 
   @override
   void onInit() {
     super.onInit();
     this.checkConnection();
-    connectivitySubscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-      if (result == ConnectivityResult.none) {
+    connectivitySubscription = Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> connectivityResult) {
+      if (connectivityResult.contains(ConnectivityResult.none)) {
         _isConnected = false;
       } else {
         _isConnected = true;
