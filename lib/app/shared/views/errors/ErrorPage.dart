@@ -1,17 +1,12 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ui_x/ui_x.dart';
 
 import '../../../helpers/Global.dart';
 
 class ErrorPage extends StatelessWidget {
-  ErrorPage(
-      {Key? key,
-      required this.message,
-      this.action,
-      this.actionLabel = "Retry"})
-      : super(key: key);
+  ErrorPage({Key? key, required this.message, this.action, this.actionLabel = "Retry"}) : super(key: key);
 
   final String message;
   final VoidCallback? action;
@@ -35,13 +30,12 @@ class ErrorPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 24.0),
-            Text('Oops!', style: Theme.of(context).textTheme.headline3),
+            Text('Oops!', style: Theme.of(context).textTheme.displaySmall),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0)
-                  .copyWith(top: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
               child: Text(
                 '$message',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
                 textAlign: TextAlign.center,
               ),
             ),

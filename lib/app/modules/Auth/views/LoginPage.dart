@@ -80,7 +80,7 @@ class LoginPage extends StatelessWidget {
                           child: Text.rich(
                             TextSpan(
                               text: "Don't have an account?",
-                              style: TextStyl.button(context)?.copyWith(color: Theme.of(context).textTheme.bodyText1?.color),
+                              style: TextStyl.button(context)?.copyWith(color: Theme.of(context).textTheme.bodyLarge?.color),
                               children: [
                                 TextSpan(
                                   text: " Join Now",

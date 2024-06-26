@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class TextStyl {
   static TextStyle? heading1(BuildContext context) {
-    return Theme.of(context).textTheme.headline1;
+    return Theme.of(context).textTheme.displayLarge;
   }
 
   static TextStyle? heading2(BuildContext context) {
-    return Theme.of(context).textTheme.headline2;
+    return Theme.of(context).textTheme.displayMedium;
   }
 
   static TextStyle? heading3(BuildContext context) {
-    return Theme.of(context).textTheme.headline3;
+    return Theme.of(context).textTheme.displaySmall;
   }
 
   static TextStyle? title(BuildContext context) {
-    return Theme.of(context).textTheme.headline2?.copyWith(
+    return Theme.of(context).textTheme.displayMedium?.copyWith(
           fontSize: 28.0,
           fontWeight: FontWeight.w600,
         );
@@ -44,16 +43,10 @@ class TextStyl {
   }
 
   static TextStyle? button(BuildContext context) {
-    return Theme.of(context)
-        .textTheme
-        .labelLarge
-        ?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, height: 1.07);
+    return Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, height: 1.07);
   }
 
   static TextStyle? label(BuildContext context) {
-    return Theme.of(context)
-        .textTheme
-        .labelLarge
-        ?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
+    return Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
   }
 }

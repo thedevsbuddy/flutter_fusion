@@ -1,4 +1,3 @@
-import 'package:flutter_fusion/app/models/ApiResponse.dart';
 import 'package:flutter_fusion/app/modules/Modules.dart';
 import 'package:get/get.dart';
 
@@ -19,14 +18,14 @@ class DashboardController extends AppController {
   }
 
   Future<void> getData() async {
-    try{
+    try {
       String _client = 'dashboard-get-data';
       _dashboardService.init(_client);
-      ApiResponse response = await _dashboardService.doSomething(client: _client);
-    } on Exception catch(e){
-        Get.to(() => ErrorPage(message: "$e"));
-    } on Error catch(e){
-        Get.to(() => ErrorPage(message: "$e"));
+      await _dashboardService.doSomething(client: _client);
+    } on Exception catch (e) {
+      Get.to(() => ErrorPage(message: "$e"));
+    } on Error catch (e) {
+      Get.to(() => ErrorPage(message: "$e"));
     }
   }
 }

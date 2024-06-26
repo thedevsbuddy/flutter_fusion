@@ -5,13 +5,7 @@ import 'package:ui_x/ui_x.dart';
 import '../../../helpers/Global.dart';
 
 class NoDataWidget extends StatelessWidget {
-  NoDataWidget(
-      {Key? key,
-      this.message = 'No Data Yet!',
-      this.action,
-      this.showTitle = true,
-      this.title = 'Oops!',
-      this.icon})
+  NoDataWidget({Key? key, this.message = 'No Data Yet!', this.action, this.showTitle = true, this.title = 'Oops!', this.icon})
       : super(key: key);
 
   final String message;
@@ -40,14 +34,12 @@ class NoDataWidget extends StatelessWidget {
                     ),
                   ),
             const SizedBox(height: spacer),
-            if (showTitle)
-              Text('$title', style: Theme.of(context).textTheme.headline3),
+            if (showTitle) Text('$title', style: Theme.of(context).textTheme.displaySmall),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0)
-                  .copyWith(top: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
               child: Text(
                 '$message',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
                 textAlign: TextAlign.center,
               ),
             ),

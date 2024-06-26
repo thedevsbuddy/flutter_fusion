@@ -4,12 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../helpers/Global.dart';
 
 class NotFoundErrorPage extends StatelessWidget {
-  NotFoundErrorPage(
-      {Key? key,
-      required this.message,
-      this.action,
-      this.actionLabel = "Retry"})
-      : super(key: key);
+  NotFoundErrorPage({Key? key, required this.message, this.action, this.actionLabel = "Retry"}) : super(key: key);
 
   final String message;
   final VoidCallback? action;
@@ -31,34 +26,28 @@ class NotFoundErrorPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16.0),
-          Text('Oops!', style: Theme.of(context).textTheme.headline3),
+          Text('Oops!', style: Theme.of(context).textTheme.displaySmall),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 32.0).copyWith(top: 8.0),
             child: Text(
               '$message',
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
           ),
           Spacer(flex: 1),
           action != null
               ? Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 32.0)
-                      .copyWith(bottom: 32.0),
+                  padding: EdgeInsets.symmetric(horizontal: 32.0).copyWith(bottom: 32.0),
                   child: TextButton(
                     onPressed: action,
                     child: Text(
                       '$actionLabel',
-                      style: Theme.of(context)
-                          .textTheme
-                          .button
-                          ?.copyWith(color: Colors.white),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.white),
                     ),
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.grey[800],
-                      minimumSize:
-                          Size(MediaQuery.of(context).size.width, 40.0),
+                      minimumSize: Size(MediaQuery.of(context).size.width, 40.0),
                       padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     ),
                   ),
