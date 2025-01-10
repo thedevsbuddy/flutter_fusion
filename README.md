@@ -16,7 +16,9 @@ git clone https://github.com/thedevsbuddy/flutter_fusion.git my_awesome_project
 ```shell
 git clone https://github.com/thedevsbuddy/flutter_fusion.git my_awesome_project --branch without_theme_builder
 ```
-    
+
+**Note:- Know about the _[ThemeBuilder*](#theme-builder)_**
+
 ### Features
 
 Here are some awesome features which you will get by default when scaffolding your project with this starting project.
@@ -94,3 +96,11 @@ Generated Files:
 ```
 
 **_Note: This will check for the services directory inside the provided module name. if it exists it wont generate any file and return void._**
+
+
+---
+
+## Theme Builder
+ThemeBuilder is a helper Widget created to easily manage light and dark theme for your application.
+
+If you want to provide theming feature on your application you can select this project with ThemeBuilder so it will come with the necessary code to manage light and dark theme.

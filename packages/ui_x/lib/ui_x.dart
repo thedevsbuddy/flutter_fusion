@@ -3,21 +3,21 @@ library ui_x;
 /// ========================
 /// Export all Config files
 /// ========================
-export 'helpers/ColorPalette.dart';
+export 'helpers/color_palette.dart';
 
 /// =========================
 /// Export all Helpers files
 /// =========================
-export 'helpers/Helpers.dart';
-export 'widgets/LoadingIcon.dart';
+export 'helpers/helpers.dart';
+export 'widgets/loading_icon.dart';
 
 /// =========================
 /// Export all Widgets files
 /// =========================
-export 'widgets/buttons/Button.dart';
-export 'widgets/buttons/ButtonIcon.dart';
-export 'widgets/forms/FormLabel.dart';
-export 'widgets/forms/FormSelect.dart';
-export 'widgets/forms/FormInput.dart';
-export 'widgets/forms/FormInputDate.dart';
-export 'widgets/forms/FormInputTime.dart';
+export 'widgets/buttons/button.dart';
+export 'widgets/buttons/button_icon.dart';
+export 'widgets/forms/form_label.dart';
+export 'widgets/forms/form_select.dart';
+export 'widgets/forms/form_input.dart';
+export 'widgets/forms/form_input_date.dart';
+export 'widgets/forms/form_input_time.dart';

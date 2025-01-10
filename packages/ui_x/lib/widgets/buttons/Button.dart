@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../helpers/ColorPalette.dart';
-import '../../helpers/TextStyl.dart';
-import '../LoadingIcon.dart';
+import '../../helpers/color_palette.dart';
+import '../../helpers/text_styl.dart';
+import '../loading_icon.dart';
 
 enum ButtonVariant { PRIMARY, SECONDARY, DANGER, SUCCESS, INFO, WARNING, DARK, LIGHT }
 

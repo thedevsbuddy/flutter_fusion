@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../helpers/ColorPalette.dart';
-import '../LoadingIcon.dart';
+import '../../helpers/color_palette.dart';
+import '../loading_icon.dart';
 
 class ButtonIcon extends StatelessWidget {
   final Widget icon;

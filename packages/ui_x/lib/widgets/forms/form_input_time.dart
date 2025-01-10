@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_x/helpers/ColorPalette.dart';
+import 'package:ui_x/helpers/color_palette.dart';
 
 class FormInputTime extends StatelessWidget {
   FormInputTime(

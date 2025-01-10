@@ -32,21 +32,22 @@ Color getContrastColor(Color color) {
   int d = 0;
 
 // Counting the perceptive luminance - human eye favors green color...
-  double luminance = (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue) / 255;
+  double luminance = (0.299 * color.r + 0.587 * color.g + 0.114 * color.b) / 255;
 
-  if (luminance > 0.7)
+  if (luminance > 0.7) {
     d = 0; // bright colors - black font
-  else
+  } else {
     d = 255; // dark colors - white font
+  }
 
-  return Color.fromARGB(color.alpha, d, d, d);
+  return Color.fromARGB(color.a as int, d, d, d);
 }
 
 
 Color tintColor(Color baseColor, int shade) {
-  final int red = baseColor.red;
-  final int green = baseColor.green;
-  final int blue = baseColor.blue;
+  final double red = baseColor.r;
+  final double green = baseColor.g;
+  final double blue = baseColor.b;
 
   final double shadeRatio = (shade - 500) / 1000.0;
 
@@ -55,7 +56,7 @@ Color tintColor(Color baseColor, int shade) {
   final int tintedBlue = (blue + (blue * shadeRatio)).round().clamp(0, 255);
 
   return Color.fromARGB(
-    baseColor.alpha,
+    baseColor.a as int,
     tintedRed,
     tintedGreen,
     tintedBlue,
@@ -64,12 +65,12 @@ Color tintColor(Color baseColor, int shade) {
 
 
 Color lightenColor(Color baseColor, double amount) {
-  final int red = (baseColor.red + ((255 - baseColor.red) * amount)).round().clamp(0, 255);
-  final int green = (baseColor.green + ((255 - baseColor.green) * amount)).round().clamp(0, 255);
-  final int blue = (baseColor.blue + ((255 - baseColor.blue) * amount)).round().clamp(0, 255);
+  final int red = (baseColor.r + ((255 - baseColor.r) * amount)).round().clamp(0, 255);
+  final int green = (baseColor.g + ((255 - baseColor.g) * amount)).round().clamp(0, 255);
+  final int blue = (baseColor.b + ((255 - baseColor.b) * amount)).round().clamp(0, 255);
 
   return Color.fromARGB(
-    baseColor.alpha,
+    baseColor.a as int,
     red,
     green,
     blue,
