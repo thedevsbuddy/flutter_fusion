@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/views/errors/NotConnectedErrorPage.dart';
-import '../../../shared/views/layouts/MasterLayout.dart';
-import '../../../shared/views/widgets/LoadingIconWidget.dart';
-import '../controllers/ProfileController.dart';
+import '../../../shared/views/errors/not_connected_error_page.dart';
+import '../../../shared/views/layouts/master_layout.dart';
+import '../../../shared/views/widgets/loading_icon_widget.dart';
+import '../controllers/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
   @override

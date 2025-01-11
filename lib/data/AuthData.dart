@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 
-import '../app/models/ApiResponse.dart';
-import '../app/models/UserModel.dart';
+import '../app/models/api_response.dart';
+import '../app/models/user_model.dart';
 
 class AuthData {
   static Faker _faker = new Faker();
@@ -43,5 +43,6 @@ class AuthData {
       );
 
   /// Logout response
-  static ApiResponse get logoutSuccess => ApiResponse(status: "success", message: "You are logged out");
+  static ApiResponse get logoutSuccess =>
+      ApiResponse(status: "success", message: "You are logged out");
 }

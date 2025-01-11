@@ -5,7 +5,16 @@ import '../../helpers/color_palette.dart';
 import '../../helpers/text_styl.dart';
 import '../loading_icon.dart';
 
-enum ButtonVariant { PRIMARY, SECONDARY, DANGER, SUCCESS, INFO, WARNING, DARK, LIGHT }
+enum ButtonVariant {
+  PRIMARY,
+  SECONDARY,
+  DANGER,
+  SUCCESS,
+  INFO,
+  WARNING,
+  DARK,
+  LIGHT
+}
 
 Map<ButtonVariant, Color> _btnColors = {
   ButtonVariant.PRIMARY: kcPrimary,
@@ -190,7 +199,8 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color _btnBgColor = _btnColors[variant]!;
-    Color _btnTxtColor = _btnBgColor.computeLuminance() > 0.6 ? kcDark : kcWhite;
+    Color _btnTxtColor =
+        _btnBgColor.computeLuminance() > 0.6 ? kcDark : kcWhite;
 
     return Obx(
       () => GestureDetector(
@@ -203,14 +213,18 @@ class Button extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: !outline
                     ? BoxDecoration(
-                        color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                        color: !btnController.isDisabled
+                            ? _btnBgColor
+                            : _btnBgColor.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                       )
                     : BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                         border: Border.all(
-                          color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                          color: !btnController.isDisabled
+                              ? _btnBgColor
+                              : _btnBgColor.withOpacity(0.5),
                           width: 1,
                         ),
                       ),
@@ -224,7 +238,8 @@ class Button extends StatelessWidget {
                           Text(
                             label,
                             style: TextStyl.button(context)?.copyWith(
-                              fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                              fontWeight:
+                                  !outline ? FontWeight.bold : FontWeight.w400,
                               color: !outline ? _btnTxtColor : _btnBgColor,
                             ),
                           ),
@@ -247,7 +262,9 @@ class Button extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: !outline
                         ? BoxDecoration(
-                            color: !btnController.isDisabled ? _btnBgColor : _btnBgColor.withOpacity(0.5),
+                            color: !btnController.isDisabled
+                                ? _btnBgColor
+                                : _btnBgColor.withOpacity(0.5),
                             borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                             border: Border.all(
                               color: _btnBgColor,
@@ -272,14 +289,17 @@ class Button extends StatelessWidget {
                               Text(
                                 label,
                                 style: TextStyl.button(context)?.copyWith(
-                                  fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                                  fontWeight: !outline
+                                      ? FontWeight.bold
+                                      : FontWeight.w400,
                                   color: !outline ? _btnTxtColor : _btnBgColor,
                                 ),
                               ),
                             ],
                           )
                         : loadingIcon != null
-                            ? SizedBox(height: 20, width: 20, child: loadingIcon)
+                            ? SizedBox(
+                                height: 20, width: 20, child: loadingIcon)
                             : LoadingIcon(
                                 color: !outline ? _btnTxtColor : _btnBgColor,
                                 height: 16,
@@ -294,7 +314,8 @@ class Button extends StatelessWidget {
 
 class ButtonController extends GetxController {
   static ButtonController get instance {
-    if (!Get.isRegistered<ButtonController>()) Get.create(() => ButtonController());
+    if (!Get.isRegistered<ButtonController>())
+      Get.create(() => ButtonController());
     return Get.find<ButtonController>();
   }
 

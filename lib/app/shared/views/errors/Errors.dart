@@ -1,3 +1,3 @@
-export 'ErrorPage.dart';
-export 'NotConnectedErrorPage.dart';
-export 'NotFoundErrorPage.dart';
+export 'error_page.dart';
+export 'not_connected_error_page.dart';
+export 'not_found_error_page.dart';

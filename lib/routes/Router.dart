@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../app/modules/Modules.dart';
+import '../app/modules/modules.dart';
 
 List<GetPage> routes = [
   /// Basic Routes

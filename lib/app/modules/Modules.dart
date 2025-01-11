@@ -1,5 +1,5 @@
-export 'Auth/AuthModule.dart';
-export "Dashboard/DashboardModule.dart";
-export "Settings/SettingsModule.dart";
-export "Splash/SplashModule.dart";
-export "Profile/ProfileModule.dart";
+export 'auth/auth_module.dart';
+export "dashboard/dashboard_module.dart";
+export "settings/settings_module.dart";
+export "splash/splash_module.dart";
+export "profile/profile_module.dart";

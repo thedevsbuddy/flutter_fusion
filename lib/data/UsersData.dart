@@ -1,4 +1,4 @@
-import '../app/models/UserModel.dart';
+import '../app/models/user_model.dart';
 
 class UsersData {
   /// Create a user model to use in whole file.

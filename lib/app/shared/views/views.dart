@@ -2,7 +2,7 @@
 export 'errors/Errors.dart';
 
 /// Layouts
-export 'layouts/Layouts.dart';
+export 'layouts/layouts.dart';
 
 /// Widgets
-export 'widgets/Widgets.dart';
+export 'widgets/widgets.dart';

@@ -43,10 +43,16 @@ class TextStyl {
   }
 
   static TextStyle? button(BuildContext context) {
-    return Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, height: 1.07);
+    return Theme.of(context)
+        .textTheme
+        .labelLarge
+        ?.copyWith(fontSize: 14.0, fontWeight: FontWeight.w600, height: 1.07);
   }
 
   static TextStyle? label(BuildContext context) {
-    return Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
+    return Theme.of(context)
+        .textTheme
+        .labelLarge
+        ?.copyWith(fontWeight: FontWeight.w600, fontSize: 14.0);
   }
 }

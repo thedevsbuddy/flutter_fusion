@@ -12,12 +12,7 @@ Clone the repository
 git clone https://github.com/thedevsbuddy/flutter_fusion.git my_awesome_project
 ```
 
-#### Want to use without `ThemeBuilder` option.
-```shell
-git clone https://github.com/thedevsbuddy/flutter_fusion.git my_awesome_project --branch without_theme_builder
-```
-
-**Note:- Know about the _[ThemeBuilder*](#theme-builder)_**
+**Note:- Know about the _[ThemeBuilder\*](#theme-builder)_**
 
 ### Features
 
@@ -36,6 +31,7 @@ This package is added as a helper toolkit to generate the module in the project 
 line.
 
 ## Modulr
+
 Modulr is a code generator tool specially created for `FlutterFusion` starter kit, This helps you to generate all the files required for a Module.
 
 ### Usage of Modulr
@@ -106,10 +102,10 @@ This will generate the new view/page (`comment_page.dart`) file inside the `Blog
 │   └── 📄 comment_page.dart
 ```
 
-
 ---
 
 ## Theme Builder
+
 ThemeBuilder is a helper Widget created to easily manage light and dark theme for your application.
 
 If you want to provide theming feature on your application you can select this project with ThemeBuilder so it will come with the necessary code to manage light and dark theme.
