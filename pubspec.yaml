@@ -40,7 +40,9 @@ dev_dependencies:
 
   # Modulr Package to generate Modules
   modulr:
-    path: packages/flutter_modulr
+    git:
+      url: https://github.com/thedevsbuddy/flutter_modulr.git
+      ref: main
 
 # Launcher Icon Configs
 flutter_icons:
