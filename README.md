@@ -35,67 +35,76 @@ Here are some awesome features which you will get by default when scaffolding yo
 This package is added as a helper toolkit to generate the module in the project with just a command
 line.
 
+## Modulr
+Modulr is a code generator tool specially created for `FlutterFusion` starter kit, This helps you to generate all the files required for a Module.
+
+### Usage of Modulr
+
+Below is the example of how you can use this package and provided commands
+
+1. `modulr:generate`: This is generates whole code for a module.
+2. `modulr:controller`: This command generates a Controller file inside the provided module.
+3. `modulr:page`: This command generates a Page/View file inside the provided module.
+
 ### Generate Module
 
 ```shell
-flutter pub run modulr:generate Blog
+dart pub run modulr:generate Blog
 ```
 
 This will generate all the files required for a `Module`
 
-Generated Files Inside your project's `lib/app/modules` directory.
+#### Generated Files Inside your project's `lib/app/modules` directory.
 
 ```txt
-📂 Blog
+📂 blog
 ├── 📂 controllers
-│   └── 📄 BlogController.dart
+│   └── 📄 blog_controller.dart
 ├── 📂 routes
-│   ├── 📄 BlogRouter.dart
-│   └── 📄 BlogRoutes.dart
+│   ├── 📄 blog_router.dart
+│   └── 📄 blog_routes.dart
 ├── 📂 services
-│   ├── 📄 AppBlogService.dart
-│   ├── 📄 BlogService.dart
-│   └── 📄 MockBlogService.dart
+│   ├── 📄 api_blog_service.dart
+│   ├── 📄 blog_service.dart
+│   └── 📄 local_blog_service.dart
 ├── 📂 views
-│   └── 📄 BlogPage.dart
-└── 📄 BlogModule.dart
+│   └── 📄 blog_page.dart
+└── 📄 blog_module.dart
 ```
-
 
 ### Generate Controller
 
 ```shell
-flutter pub run modulr:controller Comment --on=Blog
+dart pub run modulr:controller Comment --on=Blog
 ```
 
-This will generate the new controller (`CommentController.dart`) inside the `Blog` Module.
+This will generate the new controller (`comment_controller.dart`) inside the `Blog` Module.
+
+#### Generated files (including previously generated controllers)
 
 ```txt
-📂 Blog
+📂 blog
 ├── 📂 controllers
-│   ├── 📄 BlogController.dart
-│   └── 📄 CommentController.dart
+│   ├── 📄 blog_controller.dart
+│   └── 📄 comment_controller.dart
 ```
 
-### Generate Service
+### Generate Page/View
 
 ```shell
-flutter pub run modulr:service Comment --on=Blog
+flutter pub run modulr:page Comment --on=Blog
 ```
 
-If any module doesn't have services already you can generate services for the module using this command.
+This will generate the new view/page (`comment_page.dart`) file inside the `Blog` Module.
 
-Generated Files:
+#### Generated files (including previously generated views)
 
 ```txt
-📂 Blog
-├── 📂 services
-│   ├── 📄 AppCommentService.dart
-│   ├── 📄 CommentService.dart
-│   └── 📄 MockCommentService.dart
+📂 blog
+├── 📂 views
+│   └── 📄 blog_page.dart
+│   └── 📄 comment_page.dart
 ```
-
-**_Note: This will check for the services directory inside the provided module name. if it exists it wont generate any file and return void._**
 
 
 ---
