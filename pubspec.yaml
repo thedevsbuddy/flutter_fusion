@@ -22,8 +22,6 @@ dependencies:
   connectivity_plus: ^6.1.1
   feather_icons: ^1.2.0
   flutter_local_notifications: ^18.0.1
-#  ui_x:
-#    path: packages/ui_x
 
   # Enable firebase essential services
 #  fire_connect:
@@ -35,8 +33,6 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   logger: ^2.2.0
   faker: ^2.1.0
-
-  # Modulr Package to generate Modules
   modulr:
     git:
       url: https://github.com/thedevsbuddy/flutter_modulr.git

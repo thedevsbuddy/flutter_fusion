@@ -147,8 +147,7 @@ class SettingsPage extends StatelessWidget {
                               child: Container(
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.surface,
+                                  color: Theme.of(context).colorScheme.surface,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 padding: EdgeInsets.symmetric(
