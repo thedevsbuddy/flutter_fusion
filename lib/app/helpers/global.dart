@@ -7,53 +7,37 @@ import 'package:logger/logger.dart';
 
 import '../shared/controllers/auth_state.dart';
 
-///======================================
 /// Get Instance of [AuthState]
-///======================================
 AuthState authState = AuthState.instance;
 AuthState auth = AuthState.instance;
 
-///======================================
 /// Get storage Helper
-///======================================
 GetStorage storage = new GetStorage();
 
-///======================================
 /// Get screen size helper
-///======================================
 Size screen = Get.size;
 
-///======================================
 /// Image Helper
-///======================================
 String image(name) {
   return "assets/images/$name";
 }
 
-///======================================
 /// Icon Helper
-///======================================
 String assetIcon(name) {
   return "assets/icons/$name";
 }
 
-///======================================
 /// Check current route
-///======================================
 bool routeIs(name) {
   return Get.routing.current == name;
 }
 
-///======================================
 /// Console Logger
-///======================================
 var log = Logger(
   printer: PrettyPrinter(),
 );
 
-///======================================
 /// Generate and get MaterialColor From a Color
-///======================================
 MaterialColor generateMaterialColor(Color color) {
   return MaterialColor(color.value, {
     50: _tintColor(color, 0.9),

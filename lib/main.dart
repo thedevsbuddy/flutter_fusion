@@ -10,7 +10,6 @@ import 'app/shared/views/widgets/theme_builder.dart';
 import 'config/config.dart';
 import 'config/common/app_http_overrides.dart';
 import 'config/theme/app_theme.dart';
-import 'routes/router.dart';
 import 'routes/routes.dart';
 
 void main() async {
@@ -45,7 +44,7 @@ class App extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           defaultTransition: Transition.fadeIn,
-          title: "${Config.appName}",
+          title: Config.appName,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: _themeMode,

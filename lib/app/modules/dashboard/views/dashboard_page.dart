@@ -4,9 +4,6 @@ import '../../../shared/shared.dart';
 import '../../modules.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/views/errors/not_connected_error_page.dart';
-import '../../../shared/views/layouts/master_layout.dart';
-import '../../../shared/views/widgets/widgets.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});

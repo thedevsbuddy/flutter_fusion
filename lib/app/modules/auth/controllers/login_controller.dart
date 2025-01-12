@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import '../../../helpers/global.dart';
 import '../../../helpers/helpers.dart';
 import '../../../models/api_response.dart';
-import '../../../shared/controllers/app_controller.dart';
 import '../../../shared/shared.dart';
-import '../../../shared/views/errors/error_page.dart';
 import '../../modules.dart';
 
 class LoginController extends AppController {

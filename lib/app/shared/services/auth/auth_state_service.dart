@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 import '../../../models/api_response.dart';
-import 'api_auth_state_service.dart';
-import 'local_auth_state_service.dart';
 import '../services.dart';
 
 abstract class AuthStateService extends BaseService {

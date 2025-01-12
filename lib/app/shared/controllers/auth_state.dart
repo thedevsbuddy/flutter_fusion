@@ -5,9 +5,7 @@ import '../../helpers/helpers.dart';
 import '../../models/api_response.dart';
 import '../../models/user_model.dart';
 import '../../modules/modules.dart';
-import '../services/services.dart';
 import '../shared.dart';
-import 'app_controller.dart';
 
 /// Manages authentication states and logics
 /// for entire application

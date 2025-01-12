@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import '../../../helpers/helpers.dart';
 import '../../../models/api_response.dart';
 import '../../../models/user_model.dart';
-import '../../../shared/controllers/app_controller.dart';
 import '../../../shared/shared.dart';
-import '../../../shared/views/errors/error_page.dart';
 import '../../modules.dart';
 
 class RegisterController extends AppController {

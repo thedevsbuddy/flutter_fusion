@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 import '../../../helpers/global.dart';
 import '../../../helpers/helpers.dart';
 import '../../../shared/shared.dart';
-import '../../../shared/views/errors/not_connected_error_page.dart';
-import '../../../shared/views/layouts/master_layout.dart';
-import '../../../shared/views/widgets/loading_icon_widget.dart';
 import '../controllers/settings_controller.dart';
 
 class SettingsPage extends StatelessWidget {
