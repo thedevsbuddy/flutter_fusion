@@ -214,7 +214,7 @@ class Button extends StatelessWidget {
                     ? BoxDecoration(
                         color: !btnController.isDisabled
                             ? _btnBgColor
-                            : _btnBgColor.withOpacity(0.5),
+                            : _btnBgColor.withAlpha(alpha(0.5)),
                         borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                       )
                     : BoxDecoration(
@@ -223,7 +223,7 @@ class Button extends StatelessWidget {
                         border: Border.all(
                           color: !btnController.isDisabled
                               ? _btnBgColor
-                              : _btnBgColor.withOpacity(0.5),
+                              : _btnBgColor.withAlpha(alpha(0.5)),
                           width: 1,
                         ),
                       ),
@@ -263,7 +263,7 @@ class Button extends StatelessWidget {
                         ? BoxDecoration(
                             color: !btnController.isDisabled
                                 ? _btnBgColor
-                                : _btnBgColor.withOpacity(0.5),
+                                : _btnBgColor.withAlpha(alpha(0.5)),
                             borderRadius: BorderRadius.circular(!flat ? 8 : 0),
                             border: Border.all(
                               color: _btnBgColor,

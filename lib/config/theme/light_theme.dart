@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../app/helpers/global.dart';
 import '../../app/helpers/helpers.dart';
 import '../config.dart';
 
@@ -10,7 +9,7 @@ import '../config.dart';
 OutlineInputBorder _inputBorder() {
   return OutlineInputBorder(
     borderSide: BorderSide(
-      color: kcDarker.withOpacity(0.3),
+      color: kcDarker.withAlpha(alpha(0.3)),
       width: 1,
     ),
     borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -23,7 +22,7 @@ OutlineInputBorder _inputBorder() {
 OutlineInputBorder _inputErrorBorder() {
   return OutlineInputBorder(
     borderSide: BorderSide(
-      color: kcDanger.withOpacity(0.3),
+      color: kcDanger.withAlpha(alpha(0.3)),
       width: 1,
     ),
     borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -44,7 +43,7 @@ InputDecorationTheme _inputTheme() {
     hintStyle: TextStyle(
       height: 1,
       fontSize: 14,
-      color: kcDark.withOpacity(0.5),
+      color: kcDark.withAlpha(alpha(0.5)),
     ),
     contentPadding:
         const EdgeInsets.symmetric(vertical: spacer3, horizontal: spacer4),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../helpers/helpers.dart';
-import '../../../helpers/global.dart';
 
 class LoadingIconWidget extends StatelessWidget {
   LoadingIconWidget({Key? key, this.message = "Loading..."}) : super(key: key);
@@ -15,7 +14,7 @@ class LoadingIconWidget extends StatelessWidget {
           width: double.maxFinite,
           padding: const EdgeInsets.symmetric(horizontal: 32),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.75),
+            color: Colors.black.withAlpha(alpha(0.75)),
           ),
           child: Center(
             child: Container(
@@ -26,7 +25,7 @@ class LoadingIconWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.15), blurRadius: 5),
+                      color: Colors.black.withAlpha(alpha(0.15)), blurRadius: 5),
                 ],
               ),
               child: Column(

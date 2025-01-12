@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../helpers/global.dart';
 import '../../../helpers/helpers.dart';
 import '../../../shared/shared.dart';
 import '../controllers/splash_controller.dart';

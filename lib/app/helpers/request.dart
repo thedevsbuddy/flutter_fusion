@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 
 import '../../config/config.dart';
 import '../models/api_response.dart';
-import 'global.dart';
 import 'helpers.dart';
 
 class Request {

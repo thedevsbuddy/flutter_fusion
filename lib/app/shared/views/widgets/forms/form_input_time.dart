@@ -30,7 +30,7 @@ class FormInputTime extends StatelessWidget {
         width: double.maxFinite,
         decoration: BoxDecoration(
           color: kcWhite,
-          border: Border.all(color: Colors.black.withOpacity(0.25), width: 1.0),
+          border: Border.all(color: Colors.black.withAlpha(alpha(0.25)), width: 1.0),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Text(

@@ -49,7 +49,7 @@ class ButtonIcon extends StatelessWidget {
                   ? BoxDecoration(
                       color: !btnController.isDisabled
                           ? backgroundColor
-                          : backgroundColor!.withOpacity(0.5),
+                          : backgroundColor!.withAlpha(alpha(0.5)),
                       borderRadius:
                           BorderRadius.circular(radius.toDouble() * 2),
                     )
@@ -61,7 +61,7 @@ class ButtonIcon extends StatelessWidget {
                         color: !btnController.isDisabled
                             ? getContrastColor(backgroundColor!)
                             : getContrastColor(backgroundColor!)
-                                .withOpacity(0.5),
+                                .withAlpha(alpha(0.5)),
                         width: 1,
                       ),
                     ),

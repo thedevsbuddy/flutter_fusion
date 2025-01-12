@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
 
-import '../shared/controllers/auth_state.dart';
+import '../shared/shared.dart';
 
 /// Get Instance of [AuthState]
 AuthState authState = AuthState.instance;
-AuthState auth = AuthState.instance;
+Auth auth = Auth.instance;
 
 /// Get storage Helper
 GetStorage storage = new GetStorage();
@@ -71,3 +71,7 @@ Color _shadeColor(Color color, double factor) => Color.fromRGBO(
       _shadeValue(color.b.toInt(), factor),
       1,
     );
+
+int alpha(double opacity){
+  return (255 * opacity).toInt();
+}

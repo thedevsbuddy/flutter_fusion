@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../helpers/global.dart';
 import '../../../helpers/helpers.dart';
 
 class NoDataWidget extends StatelessWidget {

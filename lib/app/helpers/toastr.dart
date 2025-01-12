@@ -82,7 +82,7 @@ class Toastr {
       "",
       snackPosition: position,
       titleText: SizedBox.shrink(),
-      backgroundColor: Colors.black.withOpacity(0.95),
+      backgroundColor: Colors.black.withAlpha(alpha(0.95)),
       messageText: Text(
         "${Str.ucFirst(message)}",
         style: TextStyle(color: Colors.white, fontSize: 14),

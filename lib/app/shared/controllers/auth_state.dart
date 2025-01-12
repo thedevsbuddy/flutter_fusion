@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import '../../helpers/global.dart';
 import '../../helpers/helpers.dart';
 import '../../models/api_response.dart';
 import '../../models/user_model.dart';

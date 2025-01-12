@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../helpers/helpers.dart';
+
 class FormSelect extends StatelessWidget {
   FormSelect({Key? key, required this.options, this.value, this.onChanged})
       : super(key: key);
@@ -14,7 +16,7 @@ class FormSelect extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.black.withOpacity(0.25), width: 1.0),
+        border: Border.all(color: Colors.black.withAlpha(alpha(0.25)), width: 1.0),
         borderRadius: BorderRadius.circular(4),
       ),
       child: DropdownButtonHideUnderline(
