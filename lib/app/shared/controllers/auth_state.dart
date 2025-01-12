@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
 
 import '../../helpers/global.dart';
+import '../../helpers/helpers.dart';
 import '../../models/api_response.dart';
 import '../../models/user_model.dart';
 import '../../modules/modules.dart';
 import '../services/services.dart';
+import '../shared.dart';
 import 'app_controller.dart';
 
 /// Manages authentication states and logics

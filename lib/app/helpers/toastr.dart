@@ -1,6 +1,7 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'helpers.dart';
 
 class Toastr {
   /// Success

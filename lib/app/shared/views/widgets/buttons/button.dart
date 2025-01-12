@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../helpers/color_palette.dart';
-import '../../helpers/text_styl.dart';
-import '../loading_icon.dart';
+import '../../../../helpers/helpers.dart';
+import '../../../shared.dart';
 
 enum ButtonVariant {
   PRIMARY,

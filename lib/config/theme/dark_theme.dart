@@ -1,7 +1,7 @@
-import 'package:ui_x/ui_x.dart';
 import 'package:flutter/material.dart';
 
 import '../../app/helpers/global.dart';
+import '../../app/helpers/helpers.dart';
 import '../config.dart';
 
 ///======================================
@@ -112,7 +112,7 @@ final ThemeData darkThemeData = ThemeData(
   textTheme: _textThemeDark,
   scaffoldBackgroundColor: kcDarkest,
   colorScheme: ColorScheme.dark(
-    background: kcDarker,
+    surface: kcDarker,
     brightness: Brightness.dark,
   ),
   primaryColor: kcPrimary,

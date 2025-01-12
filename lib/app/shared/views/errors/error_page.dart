@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
 
 import '../../../helpers/global.dart';
+import '../../shared.dart';
 
 class ErrorPage extends StatelessWidget {
   ErrorPage(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ui_x/ui_x.dart';
 
+import '../../../helpers/helpers.dart';
 import '../../../helpers/global.dart';
 
 class LoadingIconWidget extends StatelessWidget {
@@ -22,7 +22,7 @@ class LoadingIconWidget extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               width: screen.width * 0.5,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(

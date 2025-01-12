@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
 
 import '../../../helpers/global.dart';
+import '../../../helpers/helpers.dart';
+import '../../../shared/shared.dart';
 import '../../../shared/views/errors/not_connected_error_page.dart';
 import '../../../shared/views/layouts/master_layout.dart';
 import '../../../shared/views/widgets/loading_icon_widget.dart';
@@ -43,7 +44,7 @@ class SettingsPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .background,
+                                            .surface,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                             color: controller.selectedTheme ==
@@ -77,7 +78,7 @@ class SettingsPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .background,
+                                            .surface,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                             color: controller.selectedTheme ==
@@ -111,7 +112,7 @@ class SettingsPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .background,
+                                            .surface,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                             color: controller.selectedTheme ==
@@ -147,7 +148,7 @@ class SettingsPage extends StatelessWidget {
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
                                   color:
-                                      Theme.of(context).colorScheme.background,
+                                      Theme.of(context).colorScheme.surface,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 padding: EdgeInsets.symmetric(

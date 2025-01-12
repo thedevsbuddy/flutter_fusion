@@ -1,9 +1,10 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
 
 import '../../../helpers/global.dart';
+import '../../../helpers/helpers.dart';
+import '../../../shared/shared.dart';
 import '../../../shared/views/layouts/auth_layout.dart';
 import '../controllers/login_controller.dart';
 

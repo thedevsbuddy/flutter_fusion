@@ -4,11 +4,11 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:ui_x/ui_x.dart';
 
 import '../../config/config.dart';
 import '../models/api_response.dart';
 import 'global.dart';
+import 'helpers.dart';
 
 class Request {
   static const int TIME_OUT_DURATION = 300; // [ In Seconds ]

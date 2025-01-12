@@ -22,8 +22,8 @@ dependencies:
   connectivity_plus: ^6.1.1
   feather_icons: ^1.2.0
   flutter_local_notifications: ^18.0.1
-  ui_x:
-    path: packages/ui_x
+#  ui_x:
+#    path: packages/ui_x
 
   # Enable firebase essential services
 #  fire_connect:

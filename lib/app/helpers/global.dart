@@ -73,17 +73,17 @@ int _tintValue(int value, double factor) =>
     max(0, min((value + ((255 - value) * factor)).round(), 255));
 
 Color _tintColor(Color color, double factor) => Color.fromRGBO(
-    _tintValue(color.red, factor),
-    _tintValue(color.green, factor),
-    _tintValue(color.blue, factor),
+    _tintValue(color.r.toInt(), factor),
+    _tintValue(color.g.toInt(), factor),
+    _tintValue(color.b.toInt(), factor),
     1);
 
 int _shadeValue(int value, double factor) =>
     max(0, min(value - (value * factor).round(), 255));
 
 Color _shadeColor(Color color, double factor) => Color.fromRGBO(
-      _shadeValue(color.red, factor),
-      _shadeValue(color.green, factor),
-      _shadeValue(color.blue, factor),
+      _shadeValue(color.r.toInt(), factor),
+      _shadeValue(color.g.toInt(), factor),
+      _shadeValue(color.b.toInt(), factor),
       1,
     );

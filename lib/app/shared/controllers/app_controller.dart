@@ -4,7 +4,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
+
+import '../../helpers/helpers.dart';
 
 class AppController extends GetxController {
   ScrollController scrollController = ScrollController(keepScrollOffset: false);

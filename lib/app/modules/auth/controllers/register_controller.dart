@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
 
+import '../../../helpers/helpers.dart';
 import '../../../models/api_response.dart';
 import '../../../models/user_model.dart';
 import '../../../shared/controllers/app_controller.dart';
+import '../../../shared/shared.dart';
 import '../../../shared/views/errors/error_page.dart';
 import '../../modules.dart';
 

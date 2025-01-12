@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../helpers/helpers.dart';
+import '../../../shared/shared.dart';
 import '../../modules.dart';
 import 'package:get/get.dart';
-import 'package:ui_x/ui_x.dart';
 
 import '../../../shared/views/errors/not_connected_error_page.dart';
 import '../../../shared/views/layouts/master_layout.dart';

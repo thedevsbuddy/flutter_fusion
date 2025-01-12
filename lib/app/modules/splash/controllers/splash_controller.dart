@@ -16,7 +16,7 @@ class SplashController extends AppController {
   @override
   void onInit() {
     super.onInit();
-    redirectUser();
+    // redirectUser();
   }
 
   Future<void> redirectUser() async {
